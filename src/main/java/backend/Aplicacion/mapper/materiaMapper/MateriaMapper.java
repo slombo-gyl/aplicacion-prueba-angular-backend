@@ -4,7 +4,6 @@ import backend.Dominio.modelo.MateriaModel;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 
 public class MateriaMapper {
-
     public static MateriaEntity toEntity(MateriaModel model) {
         MateriaEntity entity = new MateriaEntity();
         entity.setId(model.getId());

@@ -8,7 +8,6 @@ import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
 
 public class PuntajeMapper {
-
     public static PuntajeEntity toEntity(PuntajeModel model,
                                          MateriaEntity materia,
                                          EstudianteEntity estudiante) {
@@ -24,7 +23,6 @@ public class PuntajeMapper {
         PuntajeModel model = new PuntajeModel();
         model.setId(entity.getId());
         model.setValor(entity.getValor());
-
 
         if (entity.getEstudiante() != null) {
             EstudianteModel estudianteModel = new EstudianteModel();

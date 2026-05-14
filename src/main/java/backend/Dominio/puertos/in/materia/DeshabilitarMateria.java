@@ -1,5 +1,5 @@
 package backend.Dominio.puertos.in.materia;
 
-public interface DeshabilitarMateria {
+import java.time.LocalDateTime;
 
-}
+public interface DeshabilitarMateria {LocalDateTime ejecutar(Long id);}

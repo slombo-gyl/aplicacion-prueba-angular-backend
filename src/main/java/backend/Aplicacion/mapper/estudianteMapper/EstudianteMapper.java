@@ -4,7 +4,6 @@ import backend.Dominio.modelo.EstudianteModel;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 
 public class EstudianteMapper {
-
     public static EstudianteEntity toEntity(EstudianteModel model) {
         EstudianteEntity entity = new EstudianteEntity();
         entity.setId(model.getId());
@@ -14,7 +13,6 @@ public class EstudianteMapper {
         entity.setDni(model.getDni());
         return entity;
     }
-
 
     public static EstudianteModel toModel(EstudianteEntity entity) {
         EstudianteModel model = new EstudianteModel();
