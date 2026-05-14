@@ -5,12 +5,13 @@ import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "puntajes")
 public class PuntajeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

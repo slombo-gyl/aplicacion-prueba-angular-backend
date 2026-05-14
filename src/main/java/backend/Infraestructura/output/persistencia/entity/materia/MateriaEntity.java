@@ -6,12 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @Data
 @Table(name = "materia")
 public class MateriaEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,4 +21,7 @@ public class MateriaEntity {
     private String nombre;
 
     private int puntaje;
+
+    @Column(name = "fecha_baja")
+    private LocalDateTime fechaBaja;
 }

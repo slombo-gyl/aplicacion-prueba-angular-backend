@@ -1,4 +1,4 @@
-package backend.Aplicacion.usecase.puntaje.Obtener;
+package backend.Aplicacion.usecase.puntaje.obtener;
 
 import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Infraestructura.output.persistencia.repository.puntaje.PuntajeJpaRepository;
@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ObtenerPuntajes {
-
+public class ObtenerPuntajesUseCase {
     private final PuntajeJpaRepository puntajeJpaRepository;
 
     public ObtenerPuntajesDTOResponse ejecutar(){
@@ -27,5 +26,4 @@ public class ObtenerPuntajes {
 
         return new ObtenerPuntajesDTOResponse(labels,data);
     }
-
 }

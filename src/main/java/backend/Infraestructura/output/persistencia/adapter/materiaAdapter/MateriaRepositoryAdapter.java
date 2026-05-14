@@ -1,4 +1,4 @@
-package backend.Infraestructura.output.persistencia.adapater.materiaAdapter;
+package backend.Infraestructura.output.persistencia.adapter.materiaAdapter;
 
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
 import backend.Dominio.modelo.MateriaModel;
@@ -8,11 +8,9 @@ import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpa
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 @AllArgsConstructor
-public class MateriaRepositryAdapter implements MateriaRepositoryPort {
-
+public class MateriaRepositoryAdapter implements MateriaRepositoryPort {
     private final MateriaJpaRepository materiaJpaRepository;
 
     @Override
@@ -21,6 +19,5 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
         MateriaEntity saved = materiaJpaRepository.save(entity);
 
         return MateriaMapper.toModel(saved);
-
     }
 }

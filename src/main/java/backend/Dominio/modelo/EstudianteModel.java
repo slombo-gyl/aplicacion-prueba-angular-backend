@@ -1,8 +1,6 @@
 package backend.Dominio.modelo;
 
-
 public class EstudianteModel {
-
     private Long id;
     private String nombre;
     private String apellido;

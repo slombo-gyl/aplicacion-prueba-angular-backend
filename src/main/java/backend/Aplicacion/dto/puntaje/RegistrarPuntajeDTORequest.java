@@ -11,5 +11,4 @@ public record RegistrarPuntajeDTORequest(
 
         @NotNull(message = "Puntaje es requerido")
         double valor
-) {
-}
+) {}

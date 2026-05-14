@@ -2,8 +2,8 @@ package backend.Infraestructura.input.controller;
 
 import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
-import backend.Aplicacion.usecase.puntaje.Obtener.ObtenerPuntajes;
-import backend.Aplicacion.usecase.puntaje.registrar.RegistrarPuntaje;
+import backend.Aplicacion.usecase.puntaje.obtener.ObtenerPuntajesUseCase;
+import backend.Aplicacion.usecase.puntaje.registrar.RegistrarPuntajeUseCase;
 import backend.Dominio.modelo.PuntajeModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class PuntajeController {
 
 
-    private final ObtenerPuntajes obtenerPuntajes;
-    private final RegistrarPuntaje registrarPuntaje;
+    private final ObtenerPuntajesUseCase obtenerPuntajes;
+    private final RegistrarPuntajeUseCase registrarPuntaje;
 
 
     @GetMapping("/chart")

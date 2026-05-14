@@ -3,7 +3,7 @@ package backend.Aplicacion.mapper.estudianteMapper;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 
-public class StudentMapper {
+public class EstudianteMapper {
 
     public static EstudianteEntity toEntity(EstudianteModel model) {
         EstudianteEntity entity = new EstudianteEntity();

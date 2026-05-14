@@ -8,12 +8,13 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @Data
 @Table(name = "students")
 public class EstudianteEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,4 +37,7 @@ public class EstudianteEntity {
     @Email
     @Column(name = "email")
     private String email;
+
+    @Column(name = "fecha_baja")
+    private LocalDateTime fechaBaja;
 }

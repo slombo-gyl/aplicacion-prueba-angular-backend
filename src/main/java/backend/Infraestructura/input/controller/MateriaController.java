@@ -15,14 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @CrossOrigin(origins= "*")
 public class MateriaController {
-
     private final RegistrarMateriaUseCase registrarMateriaUseCase;
-
 
     @PostMapping
     public ResponseEntity<Long> creaMateria(@RequestBody RegistrarMateriaDTORequest req){
         Long id = registrarMateriaUseCase.ejecutar(req);
         return  ResponseEntity.ok(id);
     }
-
 }
