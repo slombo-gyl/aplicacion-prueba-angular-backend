@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/students")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
-public class StudentController {
+public class EstudianteController {
 
     private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
 

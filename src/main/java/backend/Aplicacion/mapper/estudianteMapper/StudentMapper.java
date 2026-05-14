@@ -1,12 +1,12 @@
 package backend.Aplicacion.mapper.estudianteMapper;
 
 import backend.Dominio.modelo.EstudianteModel;
-import backend.Infraestructura.output.persistencia.entity.estudiante.StudentEntity;
+import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 
 public class StudentMapper {
 
-    public static StudentEntity toEntity(EstudianteModel model) {
-        StudentEntity entity = new StudentEntity();
+    public static EstudianteEntity toEntity(EstudianteModel model) {
+        EstudianteEntity entity = new EstudianteEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
         entity.setApellido(model.getApellido());
@@ -16,7 +16,7 @@ public class StudentMapper {
     }
 
 
-    public static EstudianteModel toModel(StudentEntity entity) {
+    public static EstudianteModel toModel(EstudianteEntity entity) {
         EstudianteModel model = new EstudianteModel();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
