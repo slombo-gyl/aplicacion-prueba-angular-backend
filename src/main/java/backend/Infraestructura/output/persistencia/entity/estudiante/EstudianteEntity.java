@@ -28,9 +28,8 @@ public class EstudianteEntity {
     private String apellido;
 
     @NotNull
-    @Digits(integer = 8,fraction = 0)
     @Column(name = "dni")
-    private int dni;
+    private String dni;
 
     @NotNull
     @Email

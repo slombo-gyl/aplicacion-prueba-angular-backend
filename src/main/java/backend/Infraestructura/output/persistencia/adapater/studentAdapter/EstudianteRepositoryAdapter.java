@@ -8,6 +8,8 @@ import backend.Infraestructura.output.persistencia.repository.estudiante.Estudia
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @AllArgsConstructor
 public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
@@ -19,6 +21,12 @@ public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
         EstudianteEntity entity = StudentMapper.toEntity(student);
         EstudianteEntity saved = estudianteJpaRepository.save(entity);
         return StudentMapper.toModel(saved);
+    }
+
+    @Override
+    public Optional<EstudianteModel> obtenerPorId(Long id) {
+        return estudianteJpaRepository.findById(id).
+                map(StudentMapper::toModel);
     }
 
 

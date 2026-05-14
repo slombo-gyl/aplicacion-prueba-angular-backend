@@ -1,8 +1,12 @@
 package backend.Aplicacion.mapper.estudianteMapper;
 
+import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StudentMapper {
 
     public static EstudianteEntity toEntity(EstudianteModel model) {
@@ -24,5 +28,32 @@ public class StudentMapper {
         model.setEmail(entity.getEmail());
         model.setDni(entity.getDni());
         return model;
+    }
+
+    public static void updateEntityFromDto(ActualizarEstudianteDTORequest dto, EstudianteModel estudiante) {
+        if (dto == null) return;
+
+        if (dto.nombre() != null) {
+            estudiante.setNombre(dto.nombre());
+        }
+        if (dto.apellido() != null) {
+            estudiante.setApellido(dto.apellido());
+        }
+        if (dto.email() != null) {
+            estudiante.setEmail(dto.email());
+        }
+        if (dto.dni() != null) {
+            estudiante.setDni(dto.dni());
+        }
+    }
+
+    public static EstudianteDTOResponse toDTOResponse(EstudianteModel estudiante) {
+        return new EstudianteDTOResponse(
+                estudiante.getId(),
+                estudiante.getNombre(),
+                estudiante.getApellido(),
+                estudiante.getEmail(),
+                String.valueOf(estudiante.getDni())
+        );
     }
 }

@@ -7,7 +7,7 @@ public class EstudianteModel {
     private String nombre;
     private String apellido;
     private String email;
-    private int dni;
+    private String dni;
 
     public Long getId() {
         return id;
@@ -41,11 +41,11 @@ public class EstudianteModel {
         this.email = email;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 }
