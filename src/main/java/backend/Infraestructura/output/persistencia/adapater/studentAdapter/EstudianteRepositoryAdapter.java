@@ -37,5 +37,11 @@ public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
                 stream().map(StudentMapper::toModel).toList();
     }
 
+    @Override
+    public Optional<EstudianteModel> obtenerActivoPorId(Long id) {
+        return estudianteJpaRepository.findByIdAndEstado(id,Estado.ACTIVO)
+                .map(StudentMapper::toModel);
+    }
+
 
 }

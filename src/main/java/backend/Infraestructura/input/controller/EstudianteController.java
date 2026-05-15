@@ -25,6 +25,7 @@ public class EstudianteController {
     private final BajaEstudiante bajaEstudiante;
     private final ListarTodosLosEstudiantes listarTodosLosEstudiantes;
     private final ReactivarEstudiante reactivarEstudiante;
+    private final BuscarEstudiantePorId buscarEstudiantePorId;
 
     @PostMapping
     public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
@@ -36,6 +37,12 @@ public class EstudianteController {
     public ResponseEntity<List<EstudianteDTOResponse>> listarEstudiantes() {
         List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantes.ejecutar();
         return ResponseEntity.ok(estudiantes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EstudianteDTOResponse> obtenerEstudiantePorId(@PathVariable Long id) {
+        EstudianteDTOResponse estudiante = buscarEstudiantePorId.ejecutar(id);
+        return ResponseEntity.ok(estudiante);
     }
 
     @PatchMapping("/{id}")

@@ -9,4 +9,5 @@ public interface EstudianteRepositoryPort {
     EstudianteModel guardar(EstudianteModel estudiante);
     Optional<EstudianteModel> obtenerPorId(Long id);
     List<EstudianteModel> obtenerTodosLosEstudiantesActivos();
+    Optional<EstudianteModel> obtenerActivoPorId(Long id);
 }

@@ -8,6 +8,7 @@ import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.puertos.in.materia.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,19 @@ public class MateriaController {
     private final EliminarMateria eliminarMateria;
     private final RestaurarMateria restaurarMateria;
     private final ListarTodasLasMaterias listarTodasLasMaterias;
+    private final BuscarMateriaPorId buscarMateriaPorId;
 
 
     @PostMapping
-    public ResponseEntity<Long> creaMateria(@RequestBody RegistrarMateriaDTORequest req){
-        Long id = registrarMateria.ejecutar(req);
-        return  ResponseEntity.ok(id);
+    public ResponseEntity<MateriaResponseDTO> crearMateria(@RequestBody RegistrarMateriaDTORequest req){
+        MateriaResponseDTO materia = registrarMateria.ejecutar(req);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(materia);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MateriaResponseDTO> obtenerMateriaPorId(@PathVariable Long id){
+        MateriaResponseDTO materia = buscarMateriaPorId.ejecutar(id);
+        return ResponseEntity.ok(materia);
     }
 
     @GetMapping
