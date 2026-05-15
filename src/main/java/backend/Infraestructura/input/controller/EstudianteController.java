@@ -5,8 +5,11 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Aplicacion.usecase.estudiante.actualizar.ActualizarEstudianteUseCase;
 import backend.Aplicacion.usecase.estudiante.registrar.RegistrarEstudianteUseCase;
+import backend.Dominio.puertos.in.Student.ActualizarEstudiante;
+import backend.Dominio.puertos.in.Student.RegistrarEstudiante;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,18 +20,18 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class EstudianteController {
 
-    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
-    private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
+    private final RegistrarEstudiante registrarEstudiante;
+    private final ActualizarEstudiante actualizarEstudiante;
 
     @PostMapping
-    public ResponseEntity<Long> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest req) {
-        Long id = registrarEstudianteUseCase.ejecutar(req);
-        return ResponseEntity.ok(id);
+    public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
+        EstudianteDTOResponse estudianteResponse = registrarEstudiante.ejecutar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(estudianteResponse);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@PathVariable Long id, @Valid @RequestBody ActualizarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = actualizarEstudianteUseCase.ejecutar(id, dto);
+        EstudianteDTOResponse estudianteResponse = actualizarEstudiante.ejecutar(id, dto);
         return ResponseEntity.ok(estudianteResponse);
     }
 }

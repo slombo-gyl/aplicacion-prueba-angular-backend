@@ -21,7 +21,7 @@ public class ActualizarEstudianteUseCase implements ActualizarEstudiante {
         EstudianteModel estudiante = repository.obtenerPorId(id).
                 orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
 
-        StudentMapper.updateEntityFromDto(dto, estudiante);
+        StudentMapper.updateModelFromDto(dto, estudiante);
         repository.guardar(estudiante);
 
         return StudentMapper.toDTOResponse(estudiante);
