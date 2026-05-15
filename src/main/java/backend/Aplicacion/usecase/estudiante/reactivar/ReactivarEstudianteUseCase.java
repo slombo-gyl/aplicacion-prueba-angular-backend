@@ -1,26 +1,26 @@
-package backend.Aplicacion.usecase.estudiante.baja;
+package backend.Aplicacion.usecase.estudiante.reactivar;
 
 import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.in.Student.BajaEstudiante;
+import backend.Dominio.puertos.in.Student.ReactivarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BajaEstudianteUseCase implements BajaEstudiante {
+public class ReactivarEstudianteUseCase implements ReactivarEstudiante {
     private final EstudianteRepositoryPort repository;
 
     @Override
     public EstadoEstudianteDTOResponse ejecutar(Long id) {
         EstudianteModel estudiante = repository.obtenerPorId(id)
-                        .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
 
-        estudiante.setEstado(Estado.INACTIVO);
+        estudiante.setEstado(Estado.ACTIVO);
         repository.guardar(estudiante);
 
-        return new EstadoEstudianteDTOResponse(estudiante.getId(), "El estudiante fue dado de baja");
+        return new EstadoEstudianteDTOResponse(estudiante.getId(), "El estudiante fue dado de reactivado");
     }
 }

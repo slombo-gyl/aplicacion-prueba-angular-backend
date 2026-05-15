@@ -1,16 +1,10 @@
 package backend.Infraestructura.input.controller;
 
 import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
-import backend.Aplicacion.dto.estudiante.BajaEstudianteDTOResponse;
+import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
-import backend.Aplicacion.usecase.estudiante.actualizar.ActualizarEstudianteUseCase;
-import backend.Aplicacion.usecase.estudiante.listar.ListarTodosLosEstudiantesUseCase;
-import backend.Aplicacion.usecase.estudiante.registrar.RegistrarEstudianteUseCase;
-import backend.Dominio.puertos.in.Student.ActualizarEstudiante;
-import backend.Dominio.puertos.in.Student.BajaEstudiante;
-import backend.Dominio.puertos.in.Student.ListarTodosLosEstudiantes;
-import backend.Dominio.puertos.in.Student.RegistrarEstudiante;
+import backend.Dominio.puertos.in.Student.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -30,6 +24,7 @@ public class EstudianteController {
     private final ActualizarEstudiante actualizarEstudiante;
     private final BajaEstudiante bajaEstudiante;
     private final ListarTodosLosEstudiantes listarTodosLosEstudiantes;
+    private final ReactivarEstudiante reactivarEstudiante;
 
     @PostMapping
     public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
@@ -50,7 +45,12 @@ public class EstudianteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<BajaEstudianteDTOResponse> darBaja(@PathVariable Long id) {
+    public ResponseEntity<EstadoEstudianteDTOResponse> darBaja(@PathVariable Long id) {
         return ResponseEntity.ok(bajaEstudiante.ejecutar(id));
+    }
+
+    @PatchMapping("/reactivar/{id}")
+    public ResponseEntity<EstadoEstudianteDTOResponse> reactivar(@PathVariable Long id) {
+        return ResponseEntity.ok(reactivarEstudiante.ejecutar(id));
     }
 }
