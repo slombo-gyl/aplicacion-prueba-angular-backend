@@ -1,27 +1,25 @@
 package backend.Aplicacion.usecase.materia.deshabilitar;
 
+import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.puertos.in.materia.DeshabilitarMateria;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
-import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpaRepository;
+import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
 public class DeshabilitarMateriaUseCase implements DeshabilitarMateria {
-    private final MateriaJpaRepository repository;
+    private final MateriaRepositoryPort repository;
 
     @Override
     public LocalDateTime ejecutar(Long id) {
-        MateriaEntity materiaBuscada = repository.findById(id).orElseThrow(NoSuchElementException::new);
+        MateriaModel materiaBuscada = repository.buscarPorId(id);
 
-        LocalDateTime fechaBaja = LocalDateTime.now();
+        materiaBuscada.setFechaBaja(LocalDateTime.now());
 
-        materiaBuscada.setFechaBaja(fechaBaja);
+        repository.guardar(materiaBuscada);
 
-        return fechaBaja;
+        return materiaBuscada.getFechaBaja();
     }
 }

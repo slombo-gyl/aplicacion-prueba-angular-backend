@@ -11,6 +11,7 @@ public class EstudianteMapper {
         entity.setApellido(model.getApellido());
         entity.setEmail(model.getEmail());
         entity.setDni(model.getDni());
+        entity.setFechaBaja(model.getFechaBaja());
         return entity;
     }
 
@@ -21,6 +22,7 @@ public class EstudianteMapper {
         model.setApellido(entity.getApellido());
         model.setEmail(entity.getEmail());
         model.setDni(entity.getDni());
+        model.setFechaBaja(entity.getFechaBaja());
         return model;
     }
 }

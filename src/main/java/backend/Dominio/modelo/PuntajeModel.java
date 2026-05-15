@@ -1,6 +1,5 @@
 package backend.Dominio.modelo;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,12 +17,9 @@ public class PuntajeModel {
         this.materia = materia;
     }
 
-
     public void validar() {
         if (valor < 0 || valor > 10) {
             throw new IllegalArgumentException("El puntaje debe estar entre 0 y 10");
         }
     }
-
-
 }

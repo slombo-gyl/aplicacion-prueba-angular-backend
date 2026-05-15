@@ -8,6 +8,7 @@ public class MateriaMapper {
         MateriaEntity entity = new MateriaEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
+        entity.setFechaBaja(model.getFechaBaja());
         return entity;
     }
 
@@ -15,6 +16,7 @@ public class MateriaMapper {
         MateriaModel model = new MateriaModel();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
+        model.setFechaBaja(entity.getFechaBaja());
         return  model;
     }
 }

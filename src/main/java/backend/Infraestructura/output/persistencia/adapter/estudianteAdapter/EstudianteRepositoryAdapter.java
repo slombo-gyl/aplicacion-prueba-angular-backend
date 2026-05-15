@@ -8,6 +8,8 @@ import backend.Infraestructura.output.persistencia.repository.estudiante.Estudia
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.NoSuchElementException;
+
 @Repository
 @AllArgsConstructor
 public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
@@ -18,5 +20,9 @@ public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
         EstudianteEntity entity = EstudianteMapper.toEntity(student);
         EstudianteEntity saved = estudianteJpaRepository.save(entity);
         return EstudianteMapper.toModel(saved);
+    }
+    @Override
+    public EstudianteModel buscarPorId(Long id) {
+        return EstudianteMapper.toModel(estudianteJpaRepository.findById(id).orElseThrow(NoSuchElementException::new));
     }
 }

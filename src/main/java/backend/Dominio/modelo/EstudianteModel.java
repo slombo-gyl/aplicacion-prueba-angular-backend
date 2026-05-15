@@ -1,11 +1,14 @@
 package backend.Dominio.modelo;
 
+import java.time.LocalDateTime;
+
 public class EstudianteModel {
     private Long id;
     private String nombre;
     private String apellido;
     private String email;
     private int dni;
+    private LocalDateTime fechaBaja;
 
     public Long getId() {
         return id;
@@ -45,5 +48,13 @@ public class EstudianteModel {
 
     public void setDni(int dni) {
         this.dni = dni;
+    }
+
+    public LocalDateTime getFechaBaja() {
+        return fechaBaja;
+    }
+
+    public void setFechaBaja(LocalDateTime fechaBaja) {
+        this.fechaBaja = fechaBaja;
     }
 }
