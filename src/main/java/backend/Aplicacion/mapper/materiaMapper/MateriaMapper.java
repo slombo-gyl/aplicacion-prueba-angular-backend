@@ -9,6 +9,8 @@ public class MateriaMapper {
         MateriaEntity entity = new MateriaEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
+        entity.setPuntaje(model.getPuntaje());
+        entity.setEstado(model.getEstado());
         return entity;
     }
 
@@ -16,6 +18,8 @@ public class MateriaMapper {
         MateriaModel model = new MateriaModel();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
+        model.setPuntaje(entity.getPuntaje());
+        model.setEstado(entity.getEstado());
         return  model;
     }
 }
