@@ -9,6 +9,7 @@ import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpa
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -37,5 +38,11 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
     public Optional<MateriaModel> buscarActivaPorId(Long id) {
         return materiaJpaRepository.findByIdAndEstado(id, Estado.ACTIVO)
                 .map(MateriaMapper::toModel);
+    }
+
+    @Override
+    public List<MateriaModel> obtenerTodasLasMateriasActivas() {
+        return materiaJpaRepository.findAllByEstado(Estado.ACTIVO).
+                stream().map(MateriaMapper::toModel).toList();
     }
 }

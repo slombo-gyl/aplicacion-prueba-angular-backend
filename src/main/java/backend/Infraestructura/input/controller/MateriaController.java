@@ -1,17 +1,18 @@
 package backend.Infraestructura.input.controller;
 
+import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Dominio.modelo.MateriaModel;
-import backend.Dominio.puertos.in.materia.EliminarMateria;
-import backend.Dominio.puertos.in.materia.ModificarMateria;
-import backend.Dominio.puertos.in.materia.RegistrarMateria;
-import backend.Dominio.puertos.in.materia.RestaurarMateria;
+import backend.Dominio.puertos.in.materia.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/materias")
@@ -23,6 +24,7 @@ public class MateriaController {
     private final ModificarMateria modificarMateria;
     private final EliminarMateria eliminarMateria;
     private final RestaurarMateria restaurarMateria;
+    private final ListarTodasLasMaterias listarTodasLasMaterias;
 
 
     @PostMapping
@@ -30,6 +32,13 @@ public class MateriaController {
         Long id = registrarMateria.ejecutar(req);
         return  ResponseEntity.ok(id);
     }
+
+    @GetMapping
+    public ResponseEntity<List<MateriaResponseDTO>> listarMaterias(){
+        List<MateriaResponseDTO> materias = listarTodasLasMaterias.ejecutar();
+        return ResponseEntity.ok(materias);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @RequestBody ModificarMateriaDTORequest req)
     {

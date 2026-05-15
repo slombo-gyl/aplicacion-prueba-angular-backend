@@ -1,5 +1,8 @@
 package backend.Aplicacion.mapper.materiaMapper;
 
+import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.Aplicacion.dto.materia.MateriaResponseDTO;
+import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 
@@ -21,5 +24,12 @@ public class MateriaMapper {
         model.setPuntaje(entity.getPuntaje());
         model.setEstado(entity.getEstado());
         return  model;
+    }
+
+    public static MateriaResponseDTO toDTOResponse(MateriaModel materia) {
+        return new MateriaResponseDTO(
+                materia.getId(),
+                materia.getNombre()
+        );
     }
 }
