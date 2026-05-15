@@ -1,14 +1,14 @@
 package backend.Infraestructura.input.controller;
 
+import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
+import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
-import backend.Aplicacion.usecase.materia.registrar.RegistrarMateriaUseCase;
+import backend.Dominio.puertos.in.materia.ModificarMateria;
+import backend.Dominio.puertos.in.materia.RegistrarMateria;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/materias")
@@ -16,13 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @CrossOrigin(origins= "*")
 public class MateriaController {
 
-    private final RegistrarMateriaUseCase registrarMateriaUseCase;
+    private final RegistrarMateria registrarMateriaUse;
+    private final ModificarMateria modificarMateriaUse;
 
 
     @PostMapping
     public ResponseEntity<Long> creaMateria(@RequestBody RegistrarMateriaDTORequest req){
-        Long id = registrarMateriaUseCase.ejecutar(req);
+        Long id = registrarMateriaUse.ejecutar(req);
         return  ResponseEntity.ok(id);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @RequestBody ModificarMateriaDTORequest req)
+    {
+        ModificarMateriaDTOResponse response = modificarMateriaUse.ejecutar(id,req);
+        return ResponseEntity.ok(response);
     }
 
 }
