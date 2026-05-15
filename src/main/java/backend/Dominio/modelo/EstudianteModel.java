@@ -1,6 +1,8 @@
 package backend.Dominio.modelo;
 
 
+import backend.Dominio.modelo.enums.Estado;
+
 public class EstudianteModel {
 
     private Long id;
@@ -8,6 +10,7 @@ public class EstudianteModel {
     private String apellido;
     private String email;
     private String dni;
+    private Estado estado = Estado.ACTIVO;
 
     public Long getId() {
         return id;
@@ -47,5 +50,13 @@ public class EstudianteModel {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }

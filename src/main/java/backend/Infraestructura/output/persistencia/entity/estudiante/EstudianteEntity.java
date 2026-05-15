@@ -1,5 +1,6 @@
 package backend.Infraestructura.output.persistencia.entity.estudiante;
 
+import backend.Dominio.modelo.enums.Estado;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
@@ -35,4 +36,9 @@ public class EstudianteEntity {
     @Email
     @Column(name = "email")
     private String email;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado")
+    private Estado estado = Estado.ACTIVO;
 }

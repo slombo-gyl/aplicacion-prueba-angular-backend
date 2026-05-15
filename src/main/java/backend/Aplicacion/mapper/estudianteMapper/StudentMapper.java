@@ -4,6 +4,7 @@ import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Dominio.modelo.EstudianteModel;
+import backend.Dominio.modelo.enums.Estado;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ public class StudentMapper {
         entity.setApellido(model.getApellido());
         entity.setEmail(model.getEmail());
         entity.setDni(model.getDni());
+        entity.setEstado(model.getEstado());
         return entity;
     }
 
@@ -28,6 +30,7 @@ public class StudentMapper {
         model.setApellido(entity.getApellido());
         model.setEmail(entity.getEmail());
         model.setDni(entity.getDni());
+        model.setEstado(entity.getEstado());
         return model;
     }
 
@@ -37,6 +40,7 @@ public class StudentMapper {
         model.setApellido(dto.apellido());
         model.setEmail(dto.email());
         model.setDni(dto.dni());
+        model.setEstado(Estado.ACTIVO);
         return model;
     }
 
@@ -63,7 +67,8 @@ public class StudentMapper {
                 estudiante.getNombre(),
                 estudiante.getApellido(),
                 estudiante.getEmail(),
-                String.valueOf(estudiante.getDni())
+                String.valueOf(estudiante.getDni()),
+                estudiante.getEstado()
         );
     }
 }

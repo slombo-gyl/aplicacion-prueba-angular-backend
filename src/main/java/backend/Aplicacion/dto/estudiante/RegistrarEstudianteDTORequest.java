@@ -1,5 +1,6 @@
 package backend.Aplicacion.dto.estudiante;
 
+import backend.Dominio.modelo.enums.Estado;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -15,5 +16,8 @@ public record RegistrarEstudianteDTORequest(
 
         @Pattern(regexp = "\\d{7,8}", message = "El DNI debe tener 7 u 8 dígitos")
         String dni
+//
+//        @NotNull(message = "Estado es requerido")
+//        Estado estado
 ) {
 }
