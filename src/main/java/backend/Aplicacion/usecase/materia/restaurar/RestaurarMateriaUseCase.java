@@ -4,6 +4,7 @@ import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.in.materia.RestaurarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -16,7 +17,7 @@ public class RestaurarMateriaUseCase implements RestaurarMateria {
     @Override
     public MateriaModel ejecutar(Long id) {
         MateriaModel materia = materiaRepositoryPort.buscarPorId(id)
-                .orElseThrow(() -> new RuntimeException(
+                .orElseThrow(() -> new NoEncontradoException(
                         "No se ha encontrado la materia con el id " + id
                 ));
         Assert.isTrue(materia.getEstado() == Estado.INACTIVO, "La materia ya se encuentra activa");

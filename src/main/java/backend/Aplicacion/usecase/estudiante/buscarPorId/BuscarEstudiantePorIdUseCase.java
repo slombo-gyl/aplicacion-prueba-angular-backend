@@ -4,6 +4,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.puertos.in.Student.BuscarEstudiantePorId;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,6 @@ public class BuscarEstudiantePorIdUseCase implements BuscarEstudiantePorId {
     @Override
     public EstudianteDTOResponse ejecutar(Long id) {
         return repository.obtenerActivoPorId(id).map(StudentMapper::toDTOResponse)
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+                .orElseThrow(() -> new NoEncontradoException("Estudiante no encontrado"));
     }
 }
