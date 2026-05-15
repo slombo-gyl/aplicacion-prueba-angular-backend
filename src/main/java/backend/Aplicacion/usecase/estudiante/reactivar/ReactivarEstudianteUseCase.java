@@ -5,6 +5,7 @@ import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.in.Student.ReactivarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class ReactivarEstudianteUseCase implements ReactivarEstudiante {
     @Override
     public EstadoEstudianteDTOResponse ejecutar(Long id) {
         EstudianteModel estudiante = repository.obtenerPorId(id)
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+                .orElseThrow(() -> new NoEncontradoException("Estudiante no encontrado"));
 
         estudiante.setEstado(Estado.ACTIVO);
         repository.guardar(estudiante);

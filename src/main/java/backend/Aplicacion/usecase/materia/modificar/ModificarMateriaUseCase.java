@@ -5,6 +5,7 @@ import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.puertos.in.materia.ModificarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.shared.exception.NoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class ModificarMateriaUseCase implements ModificarMateria {
     @Override
     public ModificarMateriaDTOResponse ejecutar(Long id, ModificarMateriaDTORequest req) {
         MateriaModel materia = materiaRepositoryPort.buscarPorId(id)
-                .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
+                .orElseThrow(() -> new NoEncontradoException("Materia no encontrada"));
 
         materia.setNombre(req.nombre());
 
