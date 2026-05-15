@@ -8,6 +8,8 @@ import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpa
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 @AllArgsConstructor
@@ -22,5 +24,11 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
 
         return MateriaMapper.toModel(saved);
 
+    }
+
+    @Override
+    public Optional<MateriaModel> buscarPorId(Long id) {
+        return materiaJpaRepository.findById(id)
+                .map(MateriaMapper::toModel);
     }
 }
