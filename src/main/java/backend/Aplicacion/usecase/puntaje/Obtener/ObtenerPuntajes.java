@@ -1,6 +1,7 @@
 package backend.Aplicacion.usecase.puntaje.Obtener;
 
 import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
+import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
 import backend.Infraestructura.output.persistencia.repository.puntaje.PuntajeJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,8 @@ public class ObtenerPuntajes {
                 .map(p -> p.getMateria().getNombre())
                 .collect(Collectors.toList());
 
-        List<Integer> data = puntajes.stream()
-                .map(p -> (int) p.getValor())
+        List<Double> data = puntajes.stream()
+                .map(PuntajeEntity::getValor)
                 .collect(Collectors.toList());
 
         return new ObtenerPuntajesDTOResponse(labels,data);

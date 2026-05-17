@@ -1,10 +1,10 @@
 package backend.Aplicacion.dto.materia;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 public record RegistrarMateriaDTORequest(
 
-        @NotNull(message = "nombre es requerido")
+        @NotBlank(message = "El nombre es requerido")
+        @Size(min = 2, max = 100, message = "El nombre debe tener entre 2 y 100 caracteres")
         String nombre
-) {
-}
+) { }

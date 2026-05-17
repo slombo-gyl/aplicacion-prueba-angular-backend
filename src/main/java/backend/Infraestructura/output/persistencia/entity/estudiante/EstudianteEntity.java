@@ -2,10 +2,7 @@ package backend.Infraestructura.output.persistencia.entity.estudiante;
 
 import backend.Dominio.modelo.enums.Estado;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,26 +16,29 @@ public class EstudianteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 25)
-    @Column(name="nombre")
+    @NotBlank
+    @Size(min = 2, max = 25)
+    @Column(name = "nombre", nullable = false, length = 25)
     private String nombre;
 
-    @NotNull
-    @Column(name="apellido")
+    @NotBlank
+    @Size(min = 2, max = 25)
+    @Column(name = "apellido", nullable = false, length = 25)
     private String apellido;
 
-    @NotNull
-    @Column(name = "dni")
+    @NotBlank
+    @Pattern(regexp = "\\d{7,8}", message = "El DNI debe tener 7 u 8 dígitos")
+    @Column(name = "dni", nullable = false, unique = true, length = 8)
     private String dni;
 
-    @NotNull
+    @NotBlank
     @Email
-    @Column(name = "email")
+    @Size(max = 100)
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     private Estado estado = Estado.ACTIVO;
 }

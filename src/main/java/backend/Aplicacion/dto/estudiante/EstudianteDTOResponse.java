@@ -9,5 +9,4 @@ public record EstudianteDTOResponse(
         String email,
         String dni,
         Estado estado
-) {
-}
+) { }
