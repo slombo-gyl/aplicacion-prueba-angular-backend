@@ -3,6 +3,7 @@ package backend.Infraestructura.output.persistencia.entity.puntaje;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
@@ -15,14 +16,17 @@ public class PuntajeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "valor")
-    private double valor;
+    @NotNull
+    @DecimalMin(value = "0.0", message = "El puntaje no puede ser menor a 0")
+    @DecimalMax(value = "10.0", message = "El puntaje no puede ser mayor a 10")
+    @Column(name = "valor", nullable = false)
+    private Double valor;
 
-    @ManyToOne
-    @JoinColumn(name = "estudiante_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "estudiante_id", nullable = false)
     private EstudianteEntity estudiante;
 
-    @ManyToOne
-    @JoinColumn(name = "materia_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "materia_id", nullable = false)
     private MateriaEntity materia;
 }

@@ -1,6 +1,5 @@
 package backend.Infraestructura.input.controller;
 
-import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;

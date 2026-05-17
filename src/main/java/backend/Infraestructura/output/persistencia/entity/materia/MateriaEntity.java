@@ -2,7 +2,7 @@ package backend.Infraestructura.output.persistencia.entity.materia;
 
 import backend.Dominio.modelo.enums.Estado;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,9 +16,14 @@ public class MateriaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 100)
+    @Column(nullable = false, unique = true, length = 100)
     private String nombre;
 
+    @Min(value = 0, message = "El puntaje no puede ser menor a 0")
+    @Max(value = 10, message = "El puntaje no puede ser mayor a 10")
+    @Column(nullable = false)
     private int puntaje;
 
     @Enumerated(EnumType.STRING)
