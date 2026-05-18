@@ -6,6 +6,7 @@ import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.puertos.in.materia.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class MateriaController {
 
 
     @PostMapping
-    public ResponseEntity<MateriaResponseDTO> crearMateria(@RequestBody RegistrarMateriaDTORequest req){
+    public ResponseEntity<MateriaResponseDTO> crearMateria(@Valid @RequestBody RegistrarMateriaDTORequest req){
         MateriaResponseDTO materia = registrarMateria.ejecutar(req);
         return  ResponseEntity.status(HttpStatus.CREATED).body(materia);
     }
@@ -47,7 +48,7 @@ public class MateriaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @RequestBody ModificarMateriaDTORequest req)
+    public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @Valid @RequestBody ModificarMateriaDTORequest req)
     {
         ModificarMateriaDTOResponse response = modificarMateria.ejecutar(id,req);
         return ResponseEntity.ok(response);
