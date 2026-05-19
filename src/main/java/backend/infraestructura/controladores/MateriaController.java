@@ -1,8 +1,10 @@
 package backend.infraestructura.controladores;
 
 import backend.aplicacion.dto.materia.MateriaDTORequest;
+import backend.aplicacion.dto.materia.MateriaDTOResponse;
 import backend.aplicacion.usecases.materia.DeshabilitarMateriaUseCaseImpl;
 import backend.aplicacion.usecases.materia.RegistrarMateriaUseCaseImpl;
+import backend.dominio.puertos.in.materia.ObtenerMateriasUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import java.time.LocalDateTime;
 @CrossOrigin(origins= "*")
 public class MateriaController {
     private final RegistrarMateriaUseCaseImpl registrarMateriaUseCase;
+    private final ObtenerMateriasUseCase obtenerMateriasUseCase;
     private final DeshabilitarMateriaUseCaseImpl deshabilitarMateriaUseCase;
 
     @PostMapping
@@ -25,6 +28,12 @@ public class MateriaController {
         Long id = registrarMateriaUseCase.ejecutar(req);
 
         return  ResponseEntity.ok(id);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<MateriaDTOResponse> obtenerMateria(Long id){
+        return ResponseEntity.ok(obtenerMateriasUseCase.ejecutar(id));
     }
 
     @DeleteMapping("/{id}")

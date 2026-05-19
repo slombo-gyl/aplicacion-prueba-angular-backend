@@ -1,8 +1,10 @@
 package backend.infraestructura.controladores;
 
 import backend.aplicacion.dto.estudiante.EstudianteDTORequest;
+import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.aplicacion.usecases.estudiante.DeshabilitarEstudianteUseCaseImpl;
 import backend.aplicacion.usecases.estudiante.RegistrarEstudianteUseCaseImpl;
+import backend.dominio.puertos.in.estudiante.ObtenerEstudiantesUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import java.time.LocalDateTime;
 @CrossOrigin(origins = "*")
 public class EstudianteController {
     private final RegistrarEstudianteUseCaseImpl registrarEstudianteUseCase;
+    private final ObtenerEstudiantesUseCase obtenerEstudiantesUseCase;
     private final DeshabilitarEstudianteUseCaseImpl deshabilitarEstudianteUseCase;
 
     @PostMapping
@@ -26,6 +29,12 @@ public class EstudianteController {
         Long id = registrarEstudianteUseCase.ejecutar(req);
         return ResponseEntity.ok(id);
     }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+        public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(Long id){
+        return ResponseEntity.ok(obtenerEstudiantesUseCase.ejecutar(id));
+        }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

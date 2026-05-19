@@ -38,6 +38,11 @@ public class GlobalExceptionHandler {
         return construirError("Recurso duplicado", excepcion.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(RecursoInactivoException.class)
+    public ResponseEntity<MensajeErrorDTOResponse> manejarInactivo(RecursoInactivoException excepcion) {
+        return construirError("Recurso inactivo", excepcion.getMessage(), HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<MensajeErrorDTOResponse> manejarHttpMessageNotReadable(HttpMessageNotReadableException excepcion) {
         return construirError(

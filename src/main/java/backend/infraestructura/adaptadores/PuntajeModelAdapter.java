@@ -16,14 +16,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 @AllArgsConstructor
 public class PuntajeModelAdapter implements PuntajeModelPort {
-
     private final JpaPuntajeRepository puntajeJpaRepository;
     private final JpaEstudianteRepository estudianteJpaRepository;
     private final JpaMateriaRepository materiaJpaRepository;
 
     @Override
     public PuntajeModel guardar(PuntajeModel puntaje, Long materiaId, Long estudianteId) {
-
         EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Estudiante con ID: " + estudianteId + " no encontrado"));
 

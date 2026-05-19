@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ObtenerPuntajesUseCaseImpl {
+public class ObtenerPuntajesUseCase {
     private final JpaPuntajeRepository puntajeJpaRepository;
 
     public PuntajeDTOResponse ejecutar(){
@@ -24,6 +24,6 @@ public class ObtenerPuntajesUseCaseImpl {
                 .map(p -> (int) p.getValor())
                 .collect(Collectors.toList());
 
-        return new backend.aplicacion.dto.puntaje.PuntajeDTOResponse(labels,data);
+        return new PuntajeDTOResponse(labels,data);
     }
 }

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class RegistrarPuntajeUseCaseImpl {
+public class ActualizarPuntajeUseCase {
     private final PuntajeModelPort puntajeRepositoryPort;
 
     public PuntajeModel ejecutar(PuntajeDTORequest req){
-        PuntajeModel puntaje = new PuntajeModel();
+        PuntajeModel puntaje = puntajeRepositoryPort;
 
         puntaje.setValor(req.valor());
 
