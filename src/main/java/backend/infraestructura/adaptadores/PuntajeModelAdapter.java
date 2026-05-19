@@ -25,10 +25,10 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
     public PuntajeModel guardar(PuntajeModel puntaje, Long materiaId, Long estudianteId) {
 
         EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
-                .orElseThrow(() -> new RecursoNoEncontradoException("Estudiante con ID: "+ estudianteId +" no encontrado"));
+                .orElseThrow(() -> new RecursoNoEncontradoException("Estudiante con ID: " + estudianteId + " no encontrado"));
 
         MateriaEntity materia = materiaJpaRepository.findById(materiaId)
-                .orElseThrow(() -> new RuntimeException("Materia con ID: "+ materiaId +" no encontrada"));
+                .orElseThrow(() -> new RuntimeException("Materia con ID: " + materiaId + " no encontrada"));
 
         PuntajeEntity entity = PuntajeMapper.toEntity(puntaje, materia, estudiante);
         PuntajeEntity saved = puntajeJpaRepository.save(entity);

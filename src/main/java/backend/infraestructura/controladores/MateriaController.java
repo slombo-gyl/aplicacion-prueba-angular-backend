@@ -26,6 +26,7 @@ public class MateriaController {
 
         return  ResponseEntity.ok(id);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<LocalDateTime> deshabilitarMateria(@Valid @PathVariable Long id) {

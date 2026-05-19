@@ -10,6 +10,19 @@ public class EstudianteModel {
     private int dni;
     private LocalDateTime fechaBaja;
 
+    public EstudianteModel() {}
+
+    public EstudianteModel
+            (
+                    Long id,
+                    String nombre,
+                    String apellido,
+                    String email,
+                    int dni,
+                    LocalDateTime fechaBaja
+            )
+    {}
+
     public Long getId() {
         return id;
     }

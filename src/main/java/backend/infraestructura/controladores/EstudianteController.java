@@ -1,5 +1,6 @@
 package backend.infraestructura.controladores;
 
+import backend.aplicacion.dto.estudiante.EstudianteDTORequest;
 import backend.aplicacion.usecases.estudiante.DeshabilitarEstudianteUseCaseImpl;
 import backend.aplicacion.usecases.estudiante.RegistrarEstudianteUseCaseImpl;
 import jakarta.validation.Valid;
@@ -21,7 +22,7 @@ public class EstudianteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Long> crearEstudiante(@RequestBody backend.aplicacion.dto.estudiante.EstudianteDTORequest req) {
+    public ResponseEntity<Long> crearEstudiante(@RequestBody EstudianteDTORequest req) {
         Long id = registrarEstudianteUseCase.ejecutar(req);
         return ResponseEntity.ok(id);
     }

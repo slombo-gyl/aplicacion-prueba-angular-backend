@@ -13,6 +13,7 @@ public class RegistrarPuntajeUseCaseImpl {
 
     public PuntajeModel ejecutar(PuntajeDTORequest req){
         PuntajeModel puntaje = new PuntajeModel();
+
         puntaje.setValor(req.valor());
 
         puntaje.validar();
