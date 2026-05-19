@@ -1,13 +1,19 @@
-package backend.Infraestructura.output.excepciones.handler;
+package backend.Infraestructura.excepciones;
 
-import backend.Infraestructura.output.excepciones.RecursoNoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.LocalDateTime;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private ResponseEntity<MensajeErrorResponseDto> construirError(String error, String mensaje, HttpStatus status) {
+        return ResponseEntity.status(status).body(
+                new MensajeErrorResponseDto(error, mensaje, status.value(), LocalDateTime.now())
+        );
+    }
 
     @ExceptionHandler(RecursoNoEncontradoException.class)
     public ResponseEntity<String> handleNotFound(RecursoNoEncontradoException ex) {
