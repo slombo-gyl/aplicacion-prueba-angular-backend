@@ -1,7 +1,7 @@
 package backend.Infraestructura.input.exception;
 
 import backend.shared.exception.NoEncontradoException;
-import backend.shared.response.ErrorResponse;
+import backend.Aplicacion.utils.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

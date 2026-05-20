@@ -1,6 +1,6 @@
 package backend.Infraestructura.output.persistencia.adapater.materiaAdapter;
 
-import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
+import backend.Aplicacion.mappers.materiaMapper.MateriaDTOMapper;
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.out.materia.MateriaModelPort;
@@ -21,28 +21,28 @@ public class MateriaRepositryAdapter implements MateriaModelPort {
 
     @Override
     public Materia guardar(Materia materia) {
-        MateriaEntity entity = MateriaMapper.toEntity(materia);
+        MateriaEntity entity = MateriaDTOMapper.toEntity(materia);
         MateriaEntity saved = materiaJpaRepository.save(entity);
 
-        return MateriaMapper.toModel(saved);
+        return MateriaDTOMapper.toModel(saved);
 
     }
 
     @Override
     public Optional<Materia> buscarPorId(Long id) {
         return materiaJpaRepository.findById(id)
-                .map(MateriaMapper::toModel);
+                .map(MateriaDTOMapper::toModel);
     }
 
     @Override
     public Optional<Materia> buscarActivaPorId(Long id) {
         return materiaJpaRepository.findByIdAndEstado(id, Estado.ACTIVO)
-                .map(MateriaMapper::toModel);
+                .map(MateriaDTOMapper::toModel);
     }
 
     @Override
     public List<Materia> obtenerTodasLasMateriasActivas() {
         return materiaJpaRepository.findAllByEstado(Estado.ACTIVO).
-                stream().map(MateriaMapper::toModel).toList();
+                stream().map(MateriaDTOMapper::toModel).toList();
     }
 }

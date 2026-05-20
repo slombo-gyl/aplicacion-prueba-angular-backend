@@ -4,5 +4,5 @@ import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 
 public interface ActualizarEstudianteUseCase {
-    EstudianteDTOResponse ejecutar(Long id, ActualizarEstudianteDTORequest dto);
+    EstudianteDTOResponse actualizarEstudianteUseCase(Long id, ActualizarEstudianteDTORequest dto);
 }
