@@ -2,7 +2,6 @@ package backend.Aplicacion.usecase.materia.eliminar;
 
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.in.materia.EliminarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class EliminarMateriaUseCase implements EliminarMateria {
+public class EliminarMateriaUseCase implements backend.Dominio.puertos.in.materia.EliminarMateriaUseCase {
     private final MateriaRepositoryPort materiaRepositoryPort;
 
     @Override

@@ -21,48 +21,48 @@ import java.util.List;
 @CrossOrigin(origins= "*")
 public class MateriaController {
 
-    private final RegistrarMateria registrarMateria;
-    private final ModificarMateria modificarMateria;
-    private final EliminarMateria eliminarMateria;
-    private final RestaurarMateria restaurarMateria;
-    private final ListarTodasLasMaterias listarTodasLasMaterias;
-    private final BuscarMateriaPorId buscarMateriaPorId;
+    private final RegistrarMateriaUseCase registrarMateriaUseCase;
+    private final ModificarMateriaUseCase modificarMateriaUseCase;
+    private final EliminarMateriaUseCase eliminarMateriaUseCase;
+    private final RestaurarMateriaUseCase restaurarMateriaUseCase;
+    private final ListarTodasLasMateriasUseCase listarTodasLasMateriasUseCase;
+    private final BuscarMateriaPorIdUseCase buscarMateriaPorIdUseCase;
 
 
     @PostMapping
     public ResponseEntity<MateriaResponseDTO> crearMateria(@Valid @RequestBody RegistrarMateriaDTORequest req){
-        MateriaResponseDTO materia = registrarMateria.ejecutar(req);
+        MateriaResponseDTO materia = registrarMateriaUseCase.ejecutar(req);
         return  ResponseEntity.status(HttpStatus.CREATED).body(materia);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MateriaResponseDTO> obtenerMateriaPorId(@PathVariable Long id){
-        MateriaResponseDTO materia = buscarMateriaPorId.ejecutar(id);
+        MateriaResponseDTO materia = buscarMateriaPorIdUseCase.ejecutar(id);
         return ResponseEntity.ok(materia);
     }
 
     @GetMapping
     public ResponseEntity<List<MateriaResponseDTO>> listarMaterias(){
-        List<MateriaResponseDTO> materias = listarTodasLasMaterias.ejecutar();
+        List<MateriaResponseDTO> materias = listarTodasLasMateriasUseCase.ejecutar();
         return ResponseEntity.ok(materias);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @Valid @RequestBody ModificarMateriaDTORequest req)
     {
-        ModificarMateriaDTOResponse response = modificarMateria.ejecutar(id,req);
+        ModificarMateriaDTOResponse response = modificarMateriaUseCase.ejecutar(id,req);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Materia> eliminarMateria(@PathVariable Long id) {
-        Materia materiaEliminada = eliminarMateria.ejecutar(id);
+        Materia materiaEliminada = eliminarMateriaUseCase.ejecutar(id);
         return ResponseEntity.ok(materiaEliminada);
     }
 
     @PutMapping("/restaurar/{id}")
     public ResponseEntity<Materia> restaurarMateria(@PathVariable Long id) {
-        Materia materiaRestaurada = restaurarMateria.ejecutar(id);
+        Materia materiaRestaurada = restaurarMateriaUseCase.ejecutar(id);
         return ResponseEntity.ok(materiaRestaurada);
     }
 }

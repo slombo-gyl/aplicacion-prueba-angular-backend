@@ -4,14 +4,13 @@ import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
 import backend.Dominio.modelo.Materia;
-import backend.Dominio.puertos.in.materia.RegistrarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class RegistrarMateriaUseCase implements RegistrarMateria {
+public class RegistrarMateriaUseCase implements backend.Dominio.puertos.in.materia.RegistrarMateriaUseCase {
 
    private final MateriaRepositoryPort materiaRepositoryPortepository;
 

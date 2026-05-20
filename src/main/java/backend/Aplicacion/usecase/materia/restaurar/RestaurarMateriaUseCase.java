@@ -2,7 +2,6 @@ package backend.Aplicacion.usecase.materia.restaurar;
 
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.in.materia.RestaurarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,7 @@ import org.springframework.util.Assert;
 
 @Service
 @RequiredArgsConstructor
-public class RestaurarMateriaUseCase implements RestaurarMateria {
+public class RestaurarMateriaUseCase implements backend.Dominio.puertos.in.materia.RestaurarMateriaUseCase {
     private final MateriaRepositoryPort materiaRepositoryPort;
 
     @Override

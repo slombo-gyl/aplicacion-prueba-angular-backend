@@ -2,7 +2,6 @@ package backend.Aplicacion.usecase.materia.buscarPorId;
 
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
-import backend.Dominio.puertos.in.materia.BuscarMateriaPorId;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BuscarMateriaPorIdUseCase implements BuscarMateriaPorId {
+public class BuscarMateriaPorIdUseCase implements backend.Dominio.puertos.in.materia.BuscarMateriaPorIdUseCase {
 
     private final MateriaRepositoryPort repository;
 

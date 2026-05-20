@@ -2,6 +2,6 @@ package backend.Dominio.puertos.in.materia;
 
 import backend.Dominio.modelo.Materia;
 
-public interface RestaurarMateria {
+public interface RestaurarMateriaUseCase {
     Materia ejecutar(Long id);
 }

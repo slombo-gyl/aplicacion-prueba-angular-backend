@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 
 import java.util.List;
 
-public interface ListarTodasLasMaterias {
+public interface ListarTodasLasMateriasUseCase {
 
     List<MateriaResponseDTO> ejecutar();
 }
