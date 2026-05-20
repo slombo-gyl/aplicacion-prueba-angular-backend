@@ -5,10 +5,11 @@ import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import backend.Dominio.puertos.in.estudiante.RegistrarEstudiante;
 
 @Service
 @AllArgsConstructor
-public class RegistrarEstudianteUseCase implements backend.Dominio.puertos.in.Student.RegistrarEstudiante {
+public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
 
     private final EstudianteRepositoryPort repository;
 
