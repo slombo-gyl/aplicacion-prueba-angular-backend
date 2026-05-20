@@ -1,7 +1,7 @@
-package backend.Infraestructura.mappers;
+package backend.infraestructura.mappers;
 
 import backend.dominio.modelo.Materia;
-import backend.Infraestructura.entitites.MateriaEntity;
+import backend.infraestructura.entities.MateriaEntity;
 import org.mapstruct.Mapper;
 
 import java.util.List;

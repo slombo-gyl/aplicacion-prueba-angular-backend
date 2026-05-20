@@ -1,6 +1,6 @@
-package backend.Infraestructura.mappers;
+package backend.infraestructura.mappers;
 import backend.dominio.modelo.Estudiante;
-import backend.Infraestructura.entitites.EstudianteEntity;
+import backend.infraestructura.entities.EstudianteEntity;
 import org.mapstruct.Mapper;
 
 import java.util.List;

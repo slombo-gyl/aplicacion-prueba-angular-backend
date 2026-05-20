@@ -1,14 +1,14 @@
-package backend.Infraestructura.adapters;
+package backend.infraestructura.adapters;
 
 import backend.aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
 import backend.dominio.modelo.Puntaje;
 import backend.dominio.puertos.out.puntaje.PuntajeModelPort;
-import backend.Infraestructura.entitites.EstudianteEntity;
-import backend.Infraestructura.entitites.MateriaEntity;
-import backend.Infraestructura.entitites.PuntajeEntity;
-import backend.Infraestructura.repository.EstudianteJpaRepository;
-import backend.Infraestructura.repository.MateriaJpaRepository;
-import backend.Infraestructura.repository.PuntajeJpaRepository;
+import backend.infraestructura.entities.EstudianteEntity;
+import backend.infraestructura.entities.MateriaEntity;
+import backend.infraestructura.entities.PuntajeEntity;
+import backend.infraestructura.repositories.EstudianteJpaRepository;
+import backend.infraestructura.repositories.MateriaJpaRepository;
+import backend.infraestructura.repositories.PuntajeJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +19,7 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
     private final PuntajeJpaRepository puntajeJpaRepository;
     private final EstudianteJpaRepository estudianteJpaRepository;
     private final MateriaJpaRepository materiaJpaRepository;
+    private final PuntajeDTOMapper mapper;
 
     @Override
     public Puntaje guardar(Puntaje puntaje, Long materiaId, Long estudianteId) {

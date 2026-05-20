@@ -1,4 +1,4 @@
-package backend.Infraestructura.controller;
+package backend.infraestructura.controllers;
 
 import backend.aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;

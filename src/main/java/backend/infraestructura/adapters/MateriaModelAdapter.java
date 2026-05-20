@@ -1,11 +1,11 @@
-package backend.Infraestructura.adapters;
+package backend.infraestructura.adapters;
 
-import backend.aplicacion.mappers.materiaMapper.MateriaDTOMapper;
 import backend.dominio.modelo.Materia;
 import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
-import backend.Infraestructura.entitites.MateriaEntity;
-import backend.Infraestructura.repository.MateriaJpaRepository;
+import backend.infraestructura.entities.MateriaEntity;
+import backend.infraestructura.mappers.MateriaDominioMapper;
+import backend.infraestructura.repositories.MateriaJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -18,31 +18,32 @@ import java.util.Optional;
 public class MateriaModelAdapter implements MateriaModelPort {
 
     private final MateriaJpaRepository materiaJpaRepository;
+    private final MateriaDominioMapper mapper;
 
     @Override
     public Materia guardar(Materia materia) {
-        MateriaEntity entity = MateriaDTOMapper.toEntity(materia);
-        MateriaEntity saved = materiaJpaRepository.save(entity);
+        MateriaEntity materiaEntidad = mapper.fromDominioModel(materia);
+        MateriaEntity materiaGuardada = materiaJpaRepository.save(materiaEntidad);
 
-        return MateriaDTOMapper.toModel(saved);
+        return mapper.toDominioModel(materiaGuardada);
 
     }
 
     @Override
     public Optional<Materia> buscarPorId(Long id) {
         return materiaJpaRepository.findById(id)
-                .map(MateriaDTOMapper::toModel);
+                .map(mapper::toDominioModel);
     }
 
     @Override
     public Optional<Materia> buscarActivaPorId(Long id) {
         return materiaJpaRepository.findByIdAndEstado(id, Estado.ACTIVO)
-                .map(MateriaDTOMapper::toModel);
+                .map(mapper::toDominioModel);
     }
 
     @Override
     public List<Materia> obtenerTodasLasMateriasActivas() {
         return materiaJpaRepository.findAllByEstado(Estado.ACTIVO).
-                stream().map(MateriaDTOMapper::toModel).toList();
+                stream().map(mapper::toDominioModel).toList();
     }
 }

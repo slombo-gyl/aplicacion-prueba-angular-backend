@@ -1,4 +1,4 @@
-package backend.Infraestructura.entitites;
+package backend.infraestructura.entities;
 
 import backend.dominio.modelo.enums.Estado;
 import jakarta.persistence.*;

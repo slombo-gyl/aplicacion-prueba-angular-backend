@@ -1,4 +1,4 @@
-package backend.Infraestructura.entitites;
+package backend.infraestructura.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

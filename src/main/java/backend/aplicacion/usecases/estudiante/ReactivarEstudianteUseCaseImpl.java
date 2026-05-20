@@ -5,7 +5,7 @@ import backend.dominio.modelo.Estudiante;
 import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.in.student.ReactivarEstudianteUseCase;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
-import backend.Infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

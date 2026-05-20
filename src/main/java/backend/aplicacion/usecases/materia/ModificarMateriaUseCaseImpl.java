@@ -5,7 +5,7 @@ import backend.aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.dominio.modelo.Materia;
 import backend.dominio.puertos.in.materia.ModificarMateriaUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
-import backend.Infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

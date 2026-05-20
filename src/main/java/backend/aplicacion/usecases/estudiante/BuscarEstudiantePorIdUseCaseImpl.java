@@ -4,7 +4,7 @@ import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.dominio.puertos.in.student.BuscarEstudiantePorIdUseCase;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
-import backend.Infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

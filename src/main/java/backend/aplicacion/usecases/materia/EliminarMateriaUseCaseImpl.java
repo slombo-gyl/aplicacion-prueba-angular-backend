@@ -4,7 +4,7 @@ import backend.dominio.modelo.Materia;
 import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.in.materia.EliminarMateriaUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
-import backend.Infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

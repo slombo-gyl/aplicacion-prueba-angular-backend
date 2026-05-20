@@ -4,7 +4,7 @@ import backend.aplicacion.dto.materia.MateriaResponseDTO;
 import backend.aplicacion.mappers.materiaMapper.MateriaDTOMapper;
 import backend.dominio.puertos.in.materia.BuscarMateriaPorIdUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
-import backend.Infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

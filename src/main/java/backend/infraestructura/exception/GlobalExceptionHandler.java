@@ -1,4 +1,4 @@
-package backend.Infraestructura.exception;
+package backend.infraestructura.exception;
 
 
 

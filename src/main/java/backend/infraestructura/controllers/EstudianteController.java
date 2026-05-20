@@ -1,4 +1,4 @@
-package backend.Infraestructura.controller;
+package backend.infraestructura.controllers;
 
 import backend.aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;

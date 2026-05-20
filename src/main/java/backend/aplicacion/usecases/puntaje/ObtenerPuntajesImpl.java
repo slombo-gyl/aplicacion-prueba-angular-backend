@@ -2,8 +2,8 @@ package backend.aplicacion.usecases.puntaje;
 
 import backend.aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.dominio.puertos.in.puntaje.ObtenerPuntajesUseCase;
-import backend.Infraestructura.entitites.PuntajeEntity;
-import backend.Infraestructura.repository.PuntajeJpaRepository;
+import backend.infraestructura.entities.PuntajeEntity;
+import backend.infraestructura.repositories.PuntajeJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

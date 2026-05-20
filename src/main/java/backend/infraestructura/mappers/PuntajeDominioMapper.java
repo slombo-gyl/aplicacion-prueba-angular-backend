@@ -1,7 +1,7 @@
-package backend.Infraestructura.mappers;
+package backend.infraestructura.mappers;
 
 import backend.dominio.modelo.Puntaje;
-import backend.Infraestructura.entitites.PuntajeEntity;
+import backend.infraestructura.entities.PuntajeEntity;
 import org.mapstruct.Mapper;
 
 import java.util.List;
