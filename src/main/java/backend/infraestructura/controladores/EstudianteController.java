@@ -2,9 +2,10 @@ package backend.infraestructura.controladores;
 
 import backend.aplicacion.dto.estudiante.EstudianteDTORequest;
 import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
-import backend.aplicacion.usecases.estudiante.DeshabilitarEstudianteUseCaseImpl;
-import backend.aplicacion.usecases.estudiante.RegistrarEstudianteUseCaseImpl;
+import backend.dominio.puertos.in.estudiante.ActualizarEstudianteUseCase;
+import backend.dominio.puertos.in.estudiante.DeshabilitarEstudianteUseCase;
 import backend.dominio.puertos.in.estudiante.ObtenerEstudiantesUseCase;
+import backend.dominio.puertos.in.estudiante.RegistrarEstudianteUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,10 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class EstudianteController {
-    private final RegistrarEstudianteUseCaseImpl registrarEstudianteUseCase;
+    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
     private final ObtenerEstudiantesUseCase obtenerEstudiantesUseCase;
-    private final DeshabilitarEstudianteUseCaseImpl deshabilitarEstudianteUseCase;
+    private final DeshabilitarEstudianteUseCase deshabilitarEstudianteUseCase;
+    private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,6 +37,14 @@ public class EstudianteController {
         public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(Long id){
         return ResponseEntity.ok(obtenerEstudiantesUseCase.ejecutar(id));
         }
+
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@Valid @PathVariable Long id, @RequestBody EstudianteDTORequest req){
+        return ResponseEntity.ok(actualizarEstudianteUseCase.ejecutar(id,req));
+    }
+
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

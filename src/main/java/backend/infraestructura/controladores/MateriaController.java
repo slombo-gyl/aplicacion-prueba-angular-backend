@@ -4,6 +4,7 @@ import backend.aplicacion.dto.materia.MateriaDTORequest;
 import backend.aplicacion.dto.materia.MateriaDTOResponse;
 import backend.aplicacion.usecases.materia.DeshabilitarMateriaUseCaseImpl;
 import backend.aplicacion.usecases.materia.RegistrarMateriaUseCaseImpl;
+import backend.dominio.puertos.in.materia.ActualizarMateriaUseCase;
 import backend.dominio.puertos.in.materia.ObtenerMateriasUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,10 @@ public class MateriaController {
     private final RegistrarMateriaUseCaseImpl registrarMateriaUseCase;
     private final ObtenerMateriasUseCase obtenerMateriasUseCase;
     private final DeshabilitarMateriaUseCaseImpl deshabilitarMateriaUseCase;
+    private final ActualizarMateriaUseCase actualizarMateriaUseCase;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Long> creaMateria(@RequestBody MateriaDTORequest req){
         Long id = registrarMateriaUseCase.ejecutar(req);
 
@@ -34,6 +37,12 @@ public class MateriaController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<MateriaDTOResponse> obtenerMateria(Long id){
         return ResponseEntity.ok(obtenerMateriasUseCase.ejecutar(id));
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<MateriaDTOResponse> actualizarMateria(@Valid @PathVariable Long id, @RequestBody MateriaDTORequest req){
+        return ResponseEntity.ok(actualizarMateriaUseCase.ejecutar(id,req));
     }
 
     @DeleteMapping("/{id}")
