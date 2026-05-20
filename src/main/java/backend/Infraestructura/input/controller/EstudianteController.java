@@ -1,8 +1,11 @@
 package backend.Infraestructura.input.controller;
 
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.Aplicacion.services.estudiante.EstudianteService;
 import backend.Aplicacion.usecase.estudiante.registrar.RegistrarEstudianteUseCase;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class EstudianteController {
 
-    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
+    //private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
+    private final EstudianteService estudianteService;
 
     @PostMapping
-    public ResponseEntity<Long> crearEstudiante(@RequestBody RegistrarEstudianteDTORequest req) {
-        Long id = registrarEstudianteUseCase.ejecutar(req);
-        return ResponseEntity.ok(id);
+    public ResponseEntity<Long> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest req) {
+        Long id = estudianteService.registrar(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 }
