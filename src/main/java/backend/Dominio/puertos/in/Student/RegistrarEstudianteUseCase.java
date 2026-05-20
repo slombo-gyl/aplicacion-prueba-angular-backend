@@ -4,5 +4,5 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 
 public interface RegistrarEstudianteUseCase {
-    EstudianteDTOResponse ejecutar (RegistrarEstudianteDTORequest req);
+    EstudianteDTOResponse registrarEstudianteUseCase (RegistrarEstudianteDTORequest req);
 }

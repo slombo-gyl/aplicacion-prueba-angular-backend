@@ -1,5 +1,9 @@
 package backend.Infraestructura.exception;
 
+
+
+import backend.Aplicacion.utils.response.ErrorResponse;
+
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
