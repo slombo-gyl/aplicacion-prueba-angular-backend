@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
 import backend.Dominio.modelo.Materia;
-import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.Dominio.puertos.out.materia.MateriaModelPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RegistrarMateriaUseCase implements backend.Dominio.puertos.in.materia.RegistrarMateriaUseCase {
 
-   private final MateriaRepositoryPort materiaRepositoryPortepository;
+   private final MateriaModelPort materiaModelPortepository;
 
     @Override
     public MateriaResponseDTO ejecutar(RegistrarMateriaDTORequest req) {
         Materia materia = new Materia();
         materia.setNombre(req.nombre());
 
-        Materia materiaGuardada = materiaRepositoryPortepository.guardar(materia);
+        Materia materiaGuardada = materiaModelPortepository.guardar(materia);
        return MateriaMapper.toDTOResponse(materiaGuardada);
     }
 

@@ -5,7 +5,7 @@ import backend.Dominio.modelo.Materia;
 import java.util.List;
 import java.util.Optional;
 
-public interface MateriaRepositoryPort {
+public interface MateriaModelPort {
     Materia guardar(Materia materia);
     Optional<Materia>buscarPorId(Long id);
     Optional<Materia> buscarActivaPorId(Long id);

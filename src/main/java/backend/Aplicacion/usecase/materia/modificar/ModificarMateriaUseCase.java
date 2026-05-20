@@ -3,7 +3,7 @@ package backend.Aplicacion.usecase.materia.modificar;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Dominio.modelo.Materia;
-import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.Dominio.puertos.out.materia.MateriaModelPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,16 +13,16 @@ import org.springframework.stereotype.Service;
 
 public class ModificarMateriaUseCase implements backend.Dominio.puertos.in.materia.ModificarMateriaUseCase {
 
-    private final MateriaRepositoryPort materiaRepositoryPort;
+    private final MateriaModelPort materiaModelPort;
 
     @Override
     public ModificarMateriaDTOResponse ejecutar(Long id, ModificarMateriaDTORequest req) {
-        Materia materia = materiaRepositoryPort.buscarPorId(id)
+        Materia materia = materiaModelPort.buscarPorId(id)
                 .orElseThrow(() -> new NoEncontradoException("Materia no encontrada"));
 
         materia.setNombre(req.nombre());
 
-        Materia materiaGuardada = materiaRepositoryPort.guardar(materia);
+        Materia materiaGuardada = materiaModelPort.guardar(materia);
 
         return new ModificarMateriaDTOResponse(
                 materiaGuardada.getId(),

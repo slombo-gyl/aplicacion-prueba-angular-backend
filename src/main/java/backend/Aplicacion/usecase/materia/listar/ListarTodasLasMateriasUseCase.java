@@ -2,7 +2,7 @@ package backend.Aplicacion.usecase.materia.listar;
 
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
-import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.Dominio.puertos.out.materia.MateriaModelPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ListarTodasLasMateriasUseCase implements backend.Dominio.puertos.in.materia.ListarTodasLasMateriasUseCase {
 
-    private final MateriaRepositoryPort repository;
+    private final MateriaModelPort repository;
 
     @Override
     public List<MateriaResponseDTO> ejecutar() {

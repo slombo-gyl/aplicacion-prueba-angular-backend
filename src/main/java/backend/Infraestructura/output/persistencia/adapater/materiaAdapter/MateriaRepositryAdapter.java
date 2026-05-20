@@ -3,7 +3,7 @@ package backend.Infraestructura.output.persistencia.adapater.materiaAdapter;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.Dominio.puertos.out.materia.MateriaModelPort;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpaRepository;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class MateriaRepositryAdapter implements MateriaRepositoryPort {
+public class MateriaRepositryAdapter implements MateriaModelPort {
 
     private final MateriaJpaRepository materiaJpaRepository;
 
