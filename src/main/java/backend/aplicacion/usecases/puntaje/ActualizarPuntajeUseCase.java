@@ -12,7 +12,7 @@ public class ActualizarPuntajeUseCase {
     private final PuntajeModelPort puntajeRepositoryPort;
 
     public PuntajeModel ejecutar(PuntajeDTORequest req){
-        PuntajeModel puntaje = puntajeRepositoryPort;
+        PuntajeModel puntaje = puntajeRepositoryPort.buscar(req.materiaId(), req.estudianteId());
 
         puntaje.setValor(req.valor());
 

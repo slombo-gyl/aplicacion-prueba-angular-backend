@@ -3,6 +3,7 @@ package backend.aplicacion.usecases.puntaje;
 import backend.aplicacion.dto.puntaje.PuntajeDTORequest;
 import backend.dominio.modelos.PuntajeModel;
 import backend.dominio.puertos.out.PuntajeModelPort;
+import backend.infraestructura.excepciones.RecursoDuplicadoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,10 @@ public class RegistrarPuntajeUseCase {
     private final PuntajeModelPort puntajeRepositoryPort;
 
     public PuntajeModel ejecutar(PuntajeDTORequest req){
+        if (yaExiste(req)){
+            throw new RecursoDuplicadoException("Este puntaje ya está cargado, utiliza el método PUT para modificarlo");
+        }
+
         PuntajeModel puntaje = new PuntajeModel();
 
         puntaje.setValor(req.valor());
@@ -19,5 +24,9 @@ public class RegistrarPuntajeUseCase {
         puntaje.validar();
 
         return puntajeRepositoryPort.guardar(puntaje, req.materiaId(), req.estudianteId());
+    }
+
+    private boolean yaExiste(PuntajeDTORequest req){
+        return puntajeRepositoryPort.existePuntaje(req.materiaId(), req.estudianteId());
     }
 }
