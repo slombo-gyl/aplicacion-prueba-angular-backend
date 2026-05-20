@@ -1,8 +1,8 @@
 package backend.Infraestructura.adapters;
 
-import backend.Aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
-import backend.Dominio.modelo.Puntaje;
-import backend.Dominio.puertos.out.puntaje.PuntajeModelPort;
+import backend.aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
+import backend.dominio.modelo.Puntaje;
+import backend.dominio.puertos.out.puntaje.PuntajeModelPort;
 import backend.Infraestructura.entitites.EstudianteEntity;
 import backend.Infraestructura.entitites.MateriaEntity;
 import backend.Infraestructura.entitites.PuntajeEntity;

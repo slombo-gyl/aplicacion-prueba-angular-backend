@@ -1,9 +1,9 @@
 package backend.Infraestructura.adapters;
 
-import backend.Aplicacion.mappers.materiaMapper.MateriaDTOMapper;
-import backend.Dominio.modelo.Materia;
-import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.out.materia.MateriaModelPort;
+import backend.aplicacion.mappers.materiaMapper.MateriaDTOMapper;
+import backend.dominio.modelo.Materia;
+import backend.dominio.modelo.enums.Estado;
+import backend.dominio.puertos.out.materia.MateriaModelPort;
 import backend.Infraestructura.entitites.MateriaEntity;
 import backend.Infraestructura.repository.MateriaJpaRepository;
 import lombok.AllArgsConstructor;

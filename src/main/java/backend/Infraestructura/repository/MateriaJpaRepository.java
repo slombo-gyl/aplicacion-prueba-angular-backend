@@ -1,6 +1,6 @@
 package backend.Infraestructura.repository;
 
-import backend.Dominio.modelo.enums.Estado;
+import backend.dominio.modelo.enums.Estado;
 import backend.Infraestructura.entitites.MateriaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,11 +1,11 @@
 package backend.Infraestructura.controller;
 
-import backend.Aplicacion.dto.materia.MateriaResponseDTO;
-import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
-import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
-import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
-import backend.Dominio.modelo.Materia;
-import backend.Dominio.puertos.in.materia.*;
+import backend.aplicacion.dto.materia.MateriaResponseDTO;
+import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
+import backend.aplicacion.dto.materia.ModificarMateriaDTOResponse;
+import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
+import backend.dominio.modelo.Materia;
+import backend.dominio.puertos.in.materia.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

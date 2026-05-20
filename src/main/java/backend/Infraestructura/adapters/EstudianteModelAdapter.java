@@ -1,9 +1,9 @@
 package backend.Infraestructura.adapters;
 
-import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
-import backend.Dominio.modelo.Estudiante;
-import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
+import backend.aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
+import backend.dominio.modelo.Estudiante;
+import backend.dominio.modelo.enums.Estado;
+import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.Infraestructura.entitites.EstudianteEntity;
 import backend.Infraestructura.repository.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;

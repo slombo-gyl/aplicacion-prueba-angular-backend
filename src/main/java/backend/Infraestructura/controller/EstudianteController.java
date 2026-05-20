@@ -1,10 +1,10 @@
 package backend.Infraestructura.controller;
 
-import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
-import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
-import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
-import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
-import backend.Dominio.puertos.in.student.*;
+import backend.aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
+import backend.aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
+import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.dominio.puertos.in.student.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

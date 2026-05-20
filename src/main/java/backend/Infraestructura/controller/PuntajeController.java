@@ -1,10 +1,10 @@
 package backend.Infraestructura.controller;
 
-import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
-import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
-import backend.Aplicacion.usecases.puntaje.ObtenerPuntajesImpl;
-import backend.Aplicacion.usecases.puntaje.RegistrarPuntajeImpl;
-import backend.Dominio.modelo.Puntaje;
+import backend.aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
+import backend.aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
+import backend.aplicacion.usecases.puntaje.ObtenerPuntajesImpl;
+import backend.aplicacion.usecases.puntaje.RegistrarPuntajeImpl;
+import backend.dominio.modelo.Puntaje;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

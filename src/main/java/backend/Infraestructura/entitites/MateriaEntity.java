@@ -1,6 +1,6 @@
 package backend.Infraestructura.entitites;
 
-import backend.Dominio.modelo.enums.Estado;
+import backend.dominio.modelo.enums.Estado;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
