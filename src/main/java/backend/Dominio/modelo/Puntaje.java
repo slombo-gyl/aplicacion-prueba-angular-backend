@@ -2,20 +2,20 @@ package backend.Dominio.modelo;
 
 
 
-public class PuntajeModel {
+public class Puntaje {
     private Long id;
     private double valor;
-    private EstudianteModel estudiante;
-    private MateriaModel materia;
+    private Estudiante estudiante;
+    private Materia materia;
 
-    public PuntajeModel(Long id, double valor, EstudianteModel estudiante, MateriaModel materia) {
+    public Puntaje(Long id, double valor, Estudiante estudiante, Materia materia) {
         this.id = id;
         this.valor = valor;
         this.estudiante = estudiante;
         this.materia = materia;
     }
 
-    public PuntajeModel() {
+    public Puntaje() {
 
     }
 
@@ -35,19 +35,19 @@ public class PuntajeModel {
         this.valor = valor;
     }
 
-    public EstudianteModel getEstudiante() {
+    public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteModel estudiante) {
+    public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
 
-    public MateriaModel getMateria() {
+    public Materia getMateria() {
         return materia;
     }
 
-    public void setMateria(MateriaModel materia) {
+    public void setMateria(Materia materia) {
         this.materia = materia;
     }
 }

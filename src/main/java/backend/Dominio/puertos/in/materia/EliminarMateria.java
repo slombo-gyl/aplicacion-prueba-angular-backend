@@ -1,7 +1,7 @@
 package backend.Dominio.puertos.in.materia;
 
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 
 public interface EliminarMateria {
-    MateriaModel ejecutar(Long id);
+    Materia ejecutar(Long id);
 }

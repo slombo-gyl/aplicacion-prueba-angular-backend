@@ -1,7 +1,7 @@
 package backend.Aplicacion.usecase.estudiante.reactivar;
 
 import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
-import backend.Dominio.modelo.EstudianteModel;
+import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.in.Student.ReactivarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
@@ -16,7 +16,7 @@ public class ReactivarEstudianteUseCase implements ReactivarEstudiante {
 
     @Override
     public EstadoEstudianteDTOResponse ejecutar(Long id) {
-        EstudianteModel estudiante = repository.obtenerPorId(id)
+        Estudiante estudiante = repository.obtenerPorId(id)
                 .orElseThrow(() -> new NoEncontradoException("Estudiante no encontrado"));
 
         estudiante.setEstado(Estado.ACTIVO);

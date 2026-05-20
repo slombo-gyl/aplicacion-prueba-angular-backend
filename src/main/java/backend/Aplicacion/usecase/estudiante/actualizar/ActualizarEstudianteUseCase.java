@@ -3,7 +3,7 @@ package backend.Aplicacion.usecase.estudiante.actualizar;
 import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
-import backend.Dominio.modelo.EstudianteModel;
+import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.puertos.in.Student.ActualizarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
@@ -19,7 +19,7 @@ public class ActualizarEstudianteUseCase implements ActualizarEstudiante {
 
     @Override
     public EstudianteDTOResponse ejecutar(Long id, ActualizarEstudianteDTORequest dto) {
-        EstudianteModel estudiante = repository.obtenerPorId(id).
+        Estudiante estudiante = repository.obtenerPorId(id).
                 orElseThrow(() -> new NoEncontradoException("Estudiante no encontrado"));
 
         StudentMapper.updateModelFromDto(dto, estudiante);

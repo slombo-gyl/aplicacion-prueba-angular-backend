@@ -1,8 +1,7 @@
 package backend.Infraestructura.output.persistencia.adapater.puntajeAdapter;
 
 import backend.Aplicacion.mapper.puntajeMapper.PuntajeMapper;
-import backend.Dominio.modelo.PuntajeModel;
-import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
+import backend.Dominio.modelo.Puntaje;
 import backend.Dominio.puertos.out.puntaje.PuntajeRepositoryPort;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
@@ -22,7 +21,7 @@ public class PuntajeAdapter implements PuntajeRepositoryPort {
     private final MateriaJpaRepository materiaJpaRepository;
 
     @Override
-    public PuntajeModel guardar(PuntajeModel puntaje, Long materiaId, Long estudianteId) {
+    public Puntaje guardar(Puntaje puntaje, Long materiaId, Long estudianteId) {
 
         EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
                 .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));

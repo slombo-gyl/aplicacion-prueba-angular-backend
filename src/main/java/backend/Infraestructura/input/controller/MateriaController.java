@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Dominio.puertos.in.materia.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -55,14 +55,14 @@ public class MateriaController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<MateriaModel> eliminarMateria(@PathVariable Long id) {
-        MateriaModel materiaEliminada = eliminarMateria.ejecutar(id);
+    public ResponseEntity<Materia> eliminarMateria(@PathVariable Long id) {
+        Materia materiaEliminada = eliminarMateria.ejecutar(id);
         return ResponseEntity.ok(materiaEliminada);
     }
 
     @PutMapping("/restaurar/{id}")
-    public ResponseEntity<MateriaModel> restaurarMateria(@PathVariable Long id) {
-        MateriaModel materiaRestaurada = restaurarMateria.ejecutar(id);
+    public ResponseEntity<Materia> restaurarMateria(@PathVariable Long id) {
+        Materia materiaRestaurada = restaurarMateria.ejecutar(id);
         return ResponseEntity.ok(materiaRestaurada);
     }
 }

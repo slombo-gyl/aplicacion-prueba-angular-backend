@@ -3,7 +3,7 @@ package backend.Aplicacion.usecase.materia.registrar;
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Dominio.puertos.in.materia.RegistrarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import lombok.AllArgsConstructor;
@@ -17,10 +17,10 @@ public class RegistrarMateriaUseCase implements RegistrarMateria {
 
     @Override
     public MateriaResponseDTO ejecutar(RegistrarMateriaDTORequest req) {
-        MateriaModel materia = new MateriaModel();
+        Materia materia = new Materia();
         materia.setNombre(req.nombre());
 
-        MateriaModel materiaGuardada = materiaRepositoryPortepository.guardar(materia);
+        Materia materiaGuardada = materiaRepositoryPortepository.guardar(materia);
        return MateriaMapper.toDTOResponse(materiaGuardada);
     }
 

@@ -2,7 +2,7 @@ package backend.Aplicacion.usecase.materia.modificar;
 
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTOResponse;
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Dominio.puertos.in.materia.ModificarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
@@ -18,12 +18,12 @@ public class ModificarMateriaUseCase implements ModificarMateria {
 
     @Override
     public ModificarMateriaDTOResponse ejecutar(Long id, ModificarMateriaDTORequest req) {
-        MateriaModel materia = materiaRepositoryPort.buscarPorId(id)
+        Materia materia = materiaRepositoryPort.buscarPorId(id)
                 .orElseThrow(() -> new NoEncontradoException("Materia no encontrada"));
 
         materia.setNombre(req.nombre());
 
-        MateriaModel materiaGuardada = materiaRepositoryPort.guardar(materia);
+        Materia materiaGuardada = materiaRepositoryPort.guardar(materia);
 
         return new ModificarMateriaDTOResponse(
                 materiaGuardada.getId(),

@@ -1,6 +1,6 @@
 package backend.Aplicacion.usecase.materia.restaurar;
 
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.in.materia.RestaurarMateria;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
@@ -15,8 +15,8 @@ public class RestaurarMateriaUseCase implements RestaurarMateria {
     private final MateriaRepositoryPort materiaRepositoryPort;
 
     @Override
-    public MateriaModel ejecutar(Long id) {
-        MateriaModel materia = materiaRepositoryPort.buscarPorId(id)
+    public Materia ejecutar(Long id) {
+        Materia materia = materiaRepositoryPort.buscarPorId(id)
                 .orElseThrow(() -> new NoEncontradoException(
                         "No se ha encontrado la materia con el id " + id
                 ));

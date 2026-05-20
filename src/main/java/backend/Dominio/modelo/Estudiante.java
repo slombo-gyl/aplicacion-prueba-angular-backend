@@ -3,7 +3,7 @@ package backend.Dominio.modelo;
 
 import backend.Dominio.modelo.enums.Estado;
 
-public class EstudianteModel {
+public class Estudiante {
 
     private Long id;
     private String nombre;
@@ -12,7 +12,7 @@ public class EstudianteModel {
     private String dni;
     private Estado estado = Estado.ACTIVO;
 
-    public EstudianteModel(Long id, String nombre, String apellido, String email, String dni, Estado estado) {
+    public Estudiante(Long id, String nombre, String apellido, String email, String dni, Estado estado) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,7 +21,7 @@ public class EstudianteModel {
         this.estado = estado;
     }
 
-    public EstudianteModel() {
+    public Estudiante() {
 
     }
 

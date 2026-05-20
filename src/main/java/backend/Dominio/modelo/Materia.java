@@ -2,21 +2,21 @@ package backend.Dominio.modelo;
 
 import backend.Dominio.modelo.enums.Estado;
 
-public class MateriaModel {
+public class Materia {
 
     private Long id;
     private String nombre;
     private int puntaje;
     private Estado estado = Estado.ACTIVO;
 
-    public MateriaModel(Long id, String nombre, int puntaje, Estado estado) {
+    public Materia(Long id, String nombre, int puntaje, Estado estado) {
         this.id = id;
         this.nombre = nombre;
         this.puntaje = puntaje;
         this.estado = estado;
     }
 
-    public MateriaModel() {
+    public Materia() {
 
     }
 

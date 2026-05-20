@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
 import backend.Aplicacion.usecase.puntaje.Obtener.ObtenerPuntajes;
 import backend.Aplicacion.usecase.puntaje.registrar.RegistrarPuntaje;
-import backend.Dominio.modelo.PuntajeModel;
+import backend.Dominio.modelo.Puntaje;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +28,8 @@ public class PuntajeController {
     }
 
     @PostMapping
-    public ResponseEntity<PuntajeModel> registrar(@Valid @RequestBody RegistrarPuntajeDTORequest request) {
-        PuntajeModel puntaje = registrarPuntaje.ejecutar(request);
+    public ResponseEntity<Puntaje> registrar(@Valid @RequestBody RegistrarPuntajeDTORequest request) {
+        Puntaje puntaje = registrarPuntaje.ejecutar(request);
         return ResponseEntity.ok(puntaje);
     }
 }

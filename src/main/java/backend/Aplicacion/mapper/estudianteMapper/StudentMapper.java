@@ -3,7 +3,7 @@ package backend.Aplicacion.mapper.estudianteMapper;
 import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
-import backend.Dominio.modelo.EstudianteModel;
+import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentMapper {
 
-    public static EstudianteEntity toEntity(EstudianteModel model) {
+    public static EstudianteEntity toEntity(Estudiante model) {
         EstudianteEntity entity = new EstudianteEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
@@ -23,8 +23,8 @@ public class StudentMapper {
     }
 
 
-    public static EstudianteModel toModel(EstudianteEntity entity) {
-        EstudianteModel model = new EstudianteModel();
+    public static Estudiante toModel(EstudianteEntity entity) {
+        Estudiante model = new Estudiante();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
         model.setApellido(entity.getApellido());
@@ -34,8 +34,8 @@ public class StudentMapper {
         return model;
     }
 
-    public static EstudianteModel dtoToModel(RegistrarEstudianteDTORequest dto) {
-        EstudianteModel model = new EstudianteModel();
+    public static Estudiante dtoToModel(RegistrarEstudianteDTORequest dto) {
+        Estudiante model = new Estudiante();
         model.setNombre(dto.nombre());
         model.setApellido(dto.apellido());
         model.setEmail(dto.email());
@@ -44,7 +44,7 @@ public class StudentMapper {
         return model;
     }
 
-    public static void updateModelFromDto(ActualizarEstudianteDTORequest dto, EstudianteModel estudiante) {
+    public static void updateModelFromDto(ActualizarEstudianteDTORequest dto, Estudiante estudiante) {
         if (dto == null) return;
 
         if (dto.nombre() != null) {
@@ -61,7 +61,7 @@ public class StudentMapper {
         }
     }
 
-    public static EstudianteDTOResponse toDTOResponse(EstudianteModel estudiante) {
+    public static EstudianteDTOResponse toDTOResponse(Estudiante estudiante) {
         return new EstudianteDTOResponse(
                 estudiante.getId(),
                 estudiante.getNombre(),

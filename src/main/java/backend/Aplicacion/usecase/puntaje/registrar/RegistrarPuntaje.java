@@ -1,7 +1,7 @@
 package backend.Aplicacion.usecase.puntaje.registrar;
 
 import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
-import backend.Dominio.modelo.PuntajeModel;
+import backend.Dominio.modelo.Puntaje;
 import backend.Dominio.puertos.out.puntaje.PuntajeRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,8 @@ public class RegistrarPuntaje {
 
     private final PuntajeRepositoryPort puntajeRepositoryPort;
 
-    public PuntajeModel ejecutar(RegistrarPuntajeDTORequest req){
-        PuntajeModel puntaje = new PuntajeModel();
+    public Puntaje ejecutar(RegistrarPuntajeDTORequest req){
+        Puntaje puntaje = new Puntaje();
         puntaje.setValor(req.valor());
 
         validar(req.valor());

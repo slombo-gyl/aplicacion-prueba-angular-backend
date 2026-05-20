@@ -1,7 +1,7 @@
 package backend.Infraestructura.output.persistencia.adapater.materiaAdapter;
 
 import backend.Aplicacion.mapper.materiaMapper.MateriaMapper;
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.out.materia.MateriaRepositoryPort;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
@@ -20,7 +20,7 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
     private final MateriaJpaRepository materiaJpaRepository;
 
     @Override
-    public MateriaModel guardar(MateriaModel materia) {
+    public Materia guardar(Materia materia) {
         MateriaEntity entity = MateriaMapper.toEntity(materia);
         MateriaEntity saved = materiaJpaRepository.save(entity);
 
@@ -29,19 +29,19 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
     }
 
     @Override
-    public Optional<MateriaModel> buscarPorId(Long id) {
+    public Optional<Materia> buscarPorId(Long id) {
         return materiaJpaRepository.findById(id)
                 .map(MateriaMapper::toModel);
     }
 
     @Override
-    public Optional<MateriaModel> buscarActivaPorId(Long id) {
+    public Optional<Materia> buscarActivaPorId(Long id) {
         return materiaJpaRepository.findByIdAndEstado(id, Estado.ACTIVO)
                 .map(MateriaMapper::toModel);
     }
 
     @Override
-    public List<MateriaModel> obtenerTodasLasMateriasActivas() {
+    public List<Materia> obtenerTodasLasMateriasActivas() {
         return materiaJpaRepository.findAllByEstado(Estado.ACTIVO).
                 stream().map(MateriaMapper::toModel).toList();
     }

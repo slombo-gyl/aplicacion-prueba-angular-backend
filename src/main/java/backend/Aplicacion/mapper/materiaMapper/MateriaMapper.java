@@ -1,14 +1,12 @@
 package backend.Aplicacion.mapper.materiaMapper;
 
-import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
-import backend.Dominio.modelo.EstudianteModel;
-import backend.Dominio.modelo.MateriaModel;
+import backend.Dominio.modelo.Materia;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 
 public class MateriaMapper {
 
-    public static MateriaEntity toEntity(MateriaModel model) {
+    public static MateriaEntity toEntity(Materia model) {
         MateriaEntity entity = new MateriaEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
@@ -17,8 +15,8 @@ public class MateriaMapper {
         return entity;
     }
 
-    public static  MateriaModel toModel(MateriaEntity entity){
-        MateriaModel model = new MateriaModel();
+    public static Materia toModel(MateriaEntity entity){
+        Materia model = new Materia();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
         model.setPuntaje(entity.getPuntaje());
@@ -26,7 +24,7 @@ public class MateriaMapper {
         return  model;
     }
 
-    public static MateriaResponseDTO toDTOResponse(MateriaModel materia) {
+    public static MateriaResponseDTO toDTOResponse(Materia materia) {
         return new MateriaResponseDTO(
                 materia.getId(),
                 materia.getNombre()
