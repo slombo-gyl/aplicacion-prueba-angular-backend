@@ -33,9 +33,9 @@ public class MateriaController {
         return  ResponseEntity.ok(id);
     }
 
-    @GetMapping
+    @GetMapping("/buscar/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MateriaDTOResponse> obtenerMateria(Long id){
+    public ResponseEntity<MateriaDTOResponse> obtenerMateria(@PathVariable Long id){
         return ResponseEntity.ok(obtenerMateriasUseCase.ejecutar(id));
     }
 

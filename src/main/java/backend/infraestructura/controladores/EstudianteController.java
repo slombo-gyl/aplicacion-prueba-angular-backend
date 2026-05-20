@@ -32,11 +32,11 @@ public class EstudianteController {
         return ResponseEntity.ok(id);
     }
 
-    @GetMapping
+    @GetMapping("buscar/{id}")
     @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(Long id){
+        public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(@PathVariable Long id){
         return ResponseEntity.ok(obtenerEstudiantesUseCase.ejecutar(id));
-        }
+    }
 
 
     @PutMapping("/{id}")
