@@ -2,7 +2,7 @@ package backend.Aplicacion.usecase.puntaje.registrar;
 
 import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
 import backend.Dominio.modelo.Puntaje;
-import backend.Dominio.puertos.out.puntaje.PuntajeRepositoryPort;
+import backend.Dominio.puertos.out.puntaje.PuntajeModelPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RegistrarPuntaje {
 
-    private final PuntajeRepositoryPort puntajeRepositoryPort;
+    private final PuntajeModelPort puntajeModelPort;
 
     public Puntaje ejecutar(RegistrarPuntajeDTORequest req){
         Puntaje puntaje = new Puntaje();
@@ -18,7 +18,7 @@ public class RegistrarPuntaje {
 
         validar(req.valor());
 
-        return puntajeRepositoryPort.guardar(puntaje, req.materiaId(), req.estudianteId());
+        return puntajeModelPort.guardar(puntaje, req.materiaId(), req.estudianteId());
     }
 
     private void validar(Double valor) {

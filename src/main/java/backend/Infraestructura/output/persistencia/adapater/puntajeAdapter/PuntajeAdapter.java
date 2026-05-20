@@ -2,7 +2,7 @@ package backend.Infraestructura.output.persistencia.adapater.puntajeAdapter;
 
 import backend.Aplicacion.mapper.puntajeMapper.PuntajeMapper;
 import backend.Dominio.modelo.Puntaje;
-import backend.Dominio.puertos.out.puntaje.PuntajeRepositoryPort;
+import backend.Dominio.puertos.out.puntaje.PuntajeModelPort;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @AllArgsConstructor
-public class PuntajeAdapter implements PuntajeRepositoryPort {
+public class PuntajeAdapter implements PuntajeModelPort {
 
     private final PuntajeJpaRepository puntajeJpaRepository;
     private final EstudianteJpaRepository estudianteJpaRepository;
