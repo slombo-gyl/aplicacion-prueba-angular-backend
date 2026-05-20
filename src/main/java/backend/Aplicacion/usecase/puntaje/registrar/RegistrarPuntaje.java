@@ -16,8 +16,14 @@ public class RegistrarPuntaje {
         PuntajeModel puntaje = new PuntajeModel();
         puntaje.setValor(req.valor());
 
-        puntaje.validar();
+        validar(req.valor());
 
         return puntajeRepositoryPort.guardar(puntaje, req.materiaId(), req.estudianteId());
+    }
+
+    private void validar(Double valor) {
+        if (valor < 0 || valor > 10) {
+            throw new IllegalArgumentException("El puntaje debe estar entre 0 y 10");
+        }
     }
 }

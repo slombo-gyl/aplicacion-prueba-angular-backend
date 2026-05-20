@@ -12,6 +12,19 @@ public class EstudianteModel {
     private String dni;
     private Estado estado = Estado.ACTIVO;
 
+    public EstudianteModel(Long id, String nombre, String apellido, String email, String dni, Estado estado) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.dni = dni;
+        this.estado = estado;
+    }
+
+    public EstudianteModel() {
+
+    }
+
     public Long getId() {
         return id;
     }
