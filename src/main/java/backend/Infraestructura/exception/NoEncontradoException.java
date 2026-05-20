@@ -1,4 +1,4 @@
-package backend.shared.exception;
+package backend.Infraestructura.exception;
 
 public class NoEncontradoException extends RuntimeException {
 

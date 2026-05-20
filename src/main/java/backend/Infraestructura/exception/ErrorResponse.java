@@ -1,4 +1,4 @@
-package backend.shared.response;
+package backend.Infraestructura.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

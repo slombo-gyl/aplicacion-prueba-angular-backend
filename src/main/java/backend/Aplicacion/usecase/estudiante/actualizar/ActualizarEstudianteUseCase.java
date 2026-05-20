@@ -5,7 +5,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
-import backend.shared.exception.NoEncontradoException;
+import backend.Infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

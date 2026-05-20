@@ -1,4 +1,4 @@
-package backend.Infraestructura.input.controller;
+package backend.Infraestructura.controller;
 
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Aplicacion.dto.materia.ModificarMateriaDTORequest;
