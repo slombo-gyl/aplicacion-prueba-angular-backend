@@ -5,7 +5,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
+import backend.Infraestructura.entitites.EstudianteEntity;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,7 +1,7 @@
-package backend.Infraestructura.output.persistencia.repository.estudiante;
+package backend.Infraestructura.repository;
 
 import backend.Dominio.modelo.enums.Estado;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
+import backend.Infraestructura.entitites.EstudianteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

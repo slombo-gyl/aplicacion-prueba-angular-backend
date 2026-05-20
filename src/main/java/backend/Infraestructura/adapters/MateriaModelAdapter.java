@@ -1,11 +1,11 @@
-package backend.Infraestructura.output.persistencia.adapater.materiaAdapter;
+package backend.Infraestructura.adapters;
 
 import backend.Aplicacion.mappers.materiaMapper.MateriaDTOMapper;
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.out.materia.MateriaModelPort;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
-import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpaRepository;
+import backend.Infraestructura.entitites.MateriaEntity;
+import backend.Infraestructura.repository.MateriaJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class MateriaRepositryAdapter implements MateriaModelPort {
+public class MateriaModelAdapter implements MateriaModelPort {
 
     private final MateriaJpaRepository materiaJpaRepository;
 

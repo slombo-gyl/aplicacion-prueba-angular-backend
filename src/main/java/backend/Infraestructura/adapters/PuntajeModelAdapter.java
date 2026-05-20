@@ -1,20 +1,20 @@
-package backend.Infraestructura.output.persistencia.adapater.puntajeAdapter;
+package backend.Infraestructura.adapters;
 
 import backend.Aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
 import backend.Dominio.modelo.Puntaje;
 import backend.Dominio.puertos.out.puntaje.PuntajeModelPort;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
-import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
-import backend.Infraestructura.output.persistencia.repository.estudiante.EstudianteJpaRepository;
-import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpaRepository;
-import backend.Infraestructura.output.persistencia.repository.puntaje.PuntajeJpaRepository;
+import backend.Infraestructura.entitites.EstudianteEntity;
+import backend.Infraestructura.entitites.MateriaEntity;
+import backend.Infraestructura.entitites.PuntajeEntity;
+import backend.Infraestructura.repository.EstudianteJpaRepository;
+import backend.Infraestructura.repository.MateriaJpaRepository;
+import backend.Infraestructura.repository.PuntajeJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @AllArgsConstructor
-public class PuntajeAdapter implements PuntajeModelPort {
+public class PuntajeModelAdapter implements PuntajeModelPort {
 
     private final PuntajeJpaRepository puntajeJpaRepository;
     private final EstudianteJpaRepository estudianteJpaRepository;

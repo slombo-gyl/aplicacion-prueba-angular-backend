@@ -1,7 +1,7 @@
-package backend.Infraestructura.output.persistencia.repository.materia;
+package backend.Infraestructura.repository;
 
 import backend.Dominio.modelo.enums.Estado;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
+import backend.Infraestructura.entitites.MateriaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

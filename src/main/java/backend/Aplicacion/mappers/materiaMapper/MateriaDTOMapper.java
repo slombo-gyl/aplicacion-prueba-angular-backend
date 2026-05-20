@@ -2,7 +2,7 @@ package backend.Aplicacion.mappers.materiaMapper;
 
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Dominio.modelo.Materia;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
+import backend.Infraestructura.entitites.MateriaEntity;
 
 public class MateriaDTOMapper {
 

@@ -1,11 +1,11 @@
-package backend.Infraestructura.output.persistencia.adapater.studentAdapter;
+package backend.Infraestructura.adapters;
 
 import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
-import backend.Infraestructura.output.persistencia.repository.estudiante.EstudianteJpaRepository;
+import backend.Infraestructura.entitites.EstudianteEntity;
+import backend.Infraestructura.repository.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class EstudianteRepositoryAdapter implements EstudianteModelPort {
+public class EstudianteModelAdapter implements EstudianteModelPort {
 
     private final EstudianteJpaRepository estudianteJpaRepository;
 

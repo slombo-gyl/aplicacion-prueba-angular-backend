@@ -3,9 +3,9 @@ package backend.Aplicacion.mappers.puntajeMapper;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.Materia;
 import backend.Dominio.modelo.Puntaje;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
-import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
+import backend.Infraestructura.entitites.EstudianteEntity;
+import backend.Infraestructura.entitites.MateriaEntity;
+import backend.Infraestructura.entitites.PuntajeEntity;
 
 public class PuntajeDTOMapper {
 

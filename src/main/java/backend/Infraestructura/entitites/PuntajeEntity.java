@@ -1,7 +1,5 @@
-package backend.Infraestructura.output.persistencia.entity.puntaje;
+package backend.Infraestructura.entitites;
 
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
