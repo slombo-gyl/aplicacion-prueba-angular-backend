@@ -2,8 +2,8 @@ package backend.Infraestructura.input.controller;
 
 import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Aplicacion.dto.puntaje.RegistrarPuntajeDTORequest;
-import backend.Aplicacion.usecase.puntaje.Obtener.ObtenerPuntajes;
-import backend.Aplicacion.usecase.puntaje.registrar.RegistrarPuntaje;
+import backend.Aplicacion.usecases.puntaje.ObtenerPuntajesImpl;
+import backend.Aplicacion.usecases.puntaje.RegistrarPuntajeImpl;
 import backend.Dominio.modelo.Puntaje;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.*;
 public class PuntajeController {
 
 
-    private final ObtenerPuntajes obtenerPuntajes;
-    private final RegistrarPuntaje registrarPuntaje;
+    private final ObtenerPuntajesImpl obtenerPuntajesImpl;
+    private final RegistrarPuntajeImpl registrarPuntajeImpl;
 
 
     @GetMapping("/chart")
     public ResponseEntity<ObtenerPuntajesDTOResponse> getChart() {
-        ObtenerPuntajesDTOResponse chart = obtenerPuntajes.ejecutar();
+        ObtenerPuntajesDTOResponse chart = obtenerPuntajesImpl.ejecutar();
         return ResponseEntity.ok(chart);
     }
 
     @PostMapping
     public ResponseEntity<Puntaje> registrar(@Valid @RequestBody RegistrarPuntajeDTORequest request) {
-        Puntaje puntaje = registrarPuntaje.ejecutar(request);
+        Puntaje puntaje = registrarPuntajeImpl.ejecutar(request);
         return ResponseEntity.ok(puntaje);
     }
 }

@@ -1,6 +1,6 @@
 package backend.Infraestructura.output.persistencia.adapater.puntajeAdapter;
 
-import backend.Aplicacion.mapper.puntajeMapper.PuntajeMapper;
+import backend.Aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
 import backend.Dominio.modelo.Puntaje;
 import backend.Dominio.puertos.out.puntaje.PuntajeModelPort;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
@@ -29,9 +29,9 @@ public class PuntajeAdapter implements PuntajeModelPort {
         MateriaEntity materia = materiaJpaRepository.findById(materiaId)
                 .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
 
-        PuntajeEntity entity = PuntajeMapper.toEntity(puntaje, materia, estudiante);
+        PuntajeEntity entity = PuntajeDTOMapper.toEntity(puntaje, materia, estudiante);
         PuntajeEntity saved = puntajeJpaRepository.save(entity);
 
-        return PuntajeMapper.toModel(saved);
+        return PuntajeDTOMapper.toModel(saved);
     }
 }

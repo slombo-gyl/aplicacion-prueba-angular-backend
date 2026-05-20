@@ -29,35 +29,35 @@ public class EstudianteController {
 
     @PostMapping
     public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = registrarEstudianteUseCase.ejecutar(dto);
+        EstudianteDTOResponse estudianteResponse = registrarEstudianteUseCase.registrarEstudianteUseCase(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(estudianteResponse);
     }
 
     @GetMapping
     public ResponseEntity<List<EstudianteDTOResponse>> listarEstudiantes() {
-        List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantesUseCase.ejecutar();
+        List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantesUseCase.listarTodosLosEstudiantesUseCase();
         return ResponseEntity.ok(estudiantes);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> obtenerEstudiantePorId(@PathVariable Long id) {
-        EstudianteDTOResponse estudiante = buscarEstudiantePorIdUseCase.ejecutar(id);
+        EstudianteDTOResponse estudiante = buscarEstudiantePorIdUseCase.buscarEstudiantePorIdUseCase(id);
         return ResponseEntity.ok(estudiante);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@PathVariable Long id, @Valid @RequestBody ActualizarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = actualizarEstudianteUseCase.ejecutar(id, dto);
+        EstudianteDTOResponse estudianteResponse = actualizarEstudianteUseCase.actualizarEstudianteUseCase(id, dto);
         return ResponseEntity.ok(estudianteResponse);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> darBaja(@PathVariable Long id) {
-        return ResponseEntity.ok(bajaEstudianteUseCase.ejecutar(id));
+        return ResponseEntity.ok(bajaEstudianteUseCase.bajaEstudianteUseCase(id));
     }
 
     @PatchMapping("/reactivar/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> reactivar(@PathVariable Long id) {
-        return ResponseEntity.ok(reactivarEstudianteUseCase.ejecutar(id));
+        return ResponseEntity.ok(reactivarEstudianteUseCase.reactivarEstudianteUseCase(id));
     }
 }

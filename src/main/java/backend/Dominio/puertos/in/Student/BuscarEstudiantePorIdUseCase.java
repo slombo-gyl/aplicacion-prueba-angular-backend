@@ -4,5 +4,5 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 
 public interface BuscarEstudiantePorIdUseCase {
 
-    EstudianteDTOResponse ejecutar(Long id);
+    EstudianteDTOResponse buscarEstudiantePorIdUseCase(Long id);
 }

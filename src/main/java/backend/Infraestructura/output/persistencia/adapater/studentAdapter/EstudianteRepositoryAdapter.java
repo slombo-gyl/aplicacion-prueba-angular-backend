@@ -1,6 +1,6 @@
 package backend.Infraestructura.output.persistencia.adapater.studentAdapter;
 
-import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
+import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
@@ -20,27 +20,27 @@ public class EstudianteRepositoryAdapter implements EstudianteModelPort {
 
     @Override
     public Estudiante guardar(Estudiante student) {
-        EstudianteEntity entity = StudentMapper.toEntity(student);
+        EstudianteEntity entity = EstudianteDTOMapper.toEntity(student);
         EstudianteEntity saved = estudianteJpaRepository.save(entity);
-        return StudentMapper.toModel(saved);
+        return EstudianteDTOMapper.toModel(saved);
     }
 
     @Override
     public Optional<Estudiante> obtenerPorId(Long id) {
         return estudianteJpaRepository.findById(id).
-                map(StudentMapper::toModel);
+                map(EstudianteDTOMapper::toModel);
     }
 
     @Override
     public List<Estudiante> obtenerTodosLosEstudiantesActivos() {
         return estudianteJpaRepository.findAllByEstado(Estado.ACTIVO).
-                stream().map(StudentMapper::toModel).toList();
+                stream().map(EstudianteDTOMapper::toModel).toList();
     }
 
     @Override
     public Optional<Estudiante> obtenerActivoPorId(Long id) {
         return estudianteJpaRepository.findByIdAndEstado(id,Estado.ACTIVO)
-                .map(StudentMapper::toModel);
+                .map(EstudianteDTOMapper::toModel);
     }
 
 
