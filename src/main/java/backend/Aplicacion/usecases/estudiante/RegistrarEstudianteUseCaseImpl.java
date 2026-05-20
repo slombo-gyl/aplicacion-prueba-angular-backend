@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.Dominio.modelo.Estudiante;
-import backend.Dominio.puertos.in.Student.RegistrarEstudianteUseCase;
+import backend.Dominio.puertos.in.student.RegistrarEstudianteUseCase;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

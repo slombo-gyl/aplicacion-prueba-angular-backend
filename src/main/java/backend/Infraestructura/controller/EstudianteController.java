@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
-import backend.Dominio.puertos.in.Student.*;
+import backend.Dominio.puertos.in.student.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

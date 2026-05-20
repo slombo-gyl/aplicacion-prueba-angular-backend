@@ -2,7 +2,7 @@ package backend.Aplicacion.usecases.estudiante;
 
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
-import backend.Dominio.puertos.in.Student.ListarTodosLosEstudiantesUseCase;
+import backend.Dominio.puertos.in.student.ListarTodosLosEstudiantesUseCase;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

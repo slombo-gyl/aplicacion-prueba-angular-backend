@@ -2,7 +2,7 @@ package backend.Aplicacion.usecases.estudiante;
 
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
-import backend.Dominio.puertos.in.Student.BuscarEstudiantePorIdUseCase;
+import backend.Dominio.puertos.in.student.BuscarEstudiantePorIdUseCase;
 import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.Infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
