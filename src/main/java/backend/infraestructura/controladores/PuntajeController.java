@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/puntajes")
 @RequiredArgsConstructor
@@ -17,15 +19,21 @@ public class PuntajeController {
     private final ObtenerPuntajesUseCase obtenerPuntajes;
     private final RegistrarPuntajeUseCase registrarPuntaje;
 
-    @GetMapping("/chart")
-    public ResponseEntity<PuntajeDTOResponse> getChart() {
-        PuntajeDTOResponse chart = obtenerPuntajes.ejecutar();
-        return ResponseEntity.ok(chart);
-    }
-
     @PostMapping
     public ResponseEntity<PuntajeModel> registrar(@RequestBody PuntajeDTORequest request) {
         PuntajeModel puntaje = registrarPuntaje.ejecutar(request);
         return ResponseEntity.ok(puntaje);
     }
+
+    @GetMapping("/chart")
+    public ResponseEntity<List<PuntajeDTOResponse>> getChart() {
+        List<PuntajeDTOResponse> chart = obtenerPuntajes.ejecutar();
+        return ResponseEntity.ok(chart);
+    }
+
+//    @PatchMapping(/"{id}")
+//    public ResponseEntity<PuntajeModel> actualizar(@RequestBody PuntajeDTORequest request)
+//    {
+//
+//    }
 }

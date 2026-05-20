@@ -49,13 +49,13 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
         return puntajeJpaRepository.findByEstudianteAndMateria(estudiante,materia);
     }
 
-//    @Override
-//    public List<PuntajeModel> listar() {
-//        return puntajeJpaRepository.findAll()
-//                .stream()
-//                .map(PuntajeMapper::toModel)
-//                .toList();
-//    }
+    @Override
+    public List<PuntajeModel> listar() {
+        return puntajeJpaRepository.findAll()
+                .stream()
+                .map(PuntajeMapper::toModel)
+                .toList();
+    }
 
 //    @Override
 //    public List<PuntajeModel> listar(boolean activo) {
