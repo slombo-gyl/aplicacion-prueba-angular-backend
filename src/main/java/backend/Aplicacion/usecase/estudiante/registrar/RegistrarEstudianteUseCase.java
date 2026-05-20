@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.Estudiante;
-import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RegistrarEstudianteUseCase implements backend.Dominio.puertos.in.Student.RegistrarEstudianteUseCase {
 
-    private final EstudianteRepositoryPort repository;
+    private final EstudianteModelPort repository;
 
     @Override
     public EstudianteDTOResponse ejecutar(RegistrarEstudianteDTORequest dto) {

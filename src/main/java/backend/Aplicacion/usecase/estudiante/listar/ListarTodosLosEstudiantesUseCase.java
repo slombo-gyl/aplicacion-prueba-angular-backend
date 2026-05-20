@@ -2,7 +2,7 @@ package backend.Aplicacion.usecase.estudiante.listar;
 
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
-import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ListarTodosLosEstudiantesUseCase implements backend.Dominio.puertos.in.Student.ListarTodosLosEstudiantesUseCase {
 
-    private final EstudianteRepositoryPort repository;
+    private final EstudianteModelPort repository;
 
     @Override
     public List<EstudianteDTOResponse> ejecutar() {

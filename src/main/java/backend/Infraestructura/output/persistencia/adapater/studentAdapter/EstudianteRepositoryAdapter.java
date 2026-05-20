@@ -3,7 +3,7 @@ package backend.Infraestructura.output.persistencia.adapater.studentAdapter;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
 import backend.Infraestructura.output.persistencia.repository.estudiante.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
+public class EstudianteRepositoryAdapter implements EstudianteModelPort {
 
     private final EstudianteJpaRepository estudianteJpaRepository;
 

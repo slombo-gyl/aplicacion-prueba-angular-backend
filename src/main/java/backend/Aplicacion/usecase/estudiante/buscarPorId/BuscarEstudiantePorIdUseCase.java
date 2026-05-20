@@ -2,7 +2,7 @@ package backend.Aplicacion.usecase.estudiante.buscarPorId;
 
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
-import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
+import backend.Dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BuscarEstudiantePorIdUseCase implements backend.Dominio.puertos.in.Student.BuscarEstudiantePorIdUseCase {
 
-    private final EstudianteRepositoryPort repository;
+    private final EstudianteModelPort repository;
 
     @Override
     public EstudianteDTOResponse ejecutar(Long id) {
