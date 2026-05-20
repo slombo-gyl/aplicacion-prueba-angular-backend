@@ -3,7 +3,6 @@ package backend.Aplicacion.usecase.estudiante.reactivar;
 import backend.Aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
 import backend.Dominio.modelo.Estudiante;
 import backend.Dominio.modelo.enums.Estado;
-import backend.Dominio.puertos.in.Student.ReactivarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ReactivarEstudianteUseCase implements ReactivarEstudiante {
+public class ReactivarEstudianteUseCase implements backend.Dominio.puertos.in.Student.ReactivarEstudianteUseCase {
     private final EstudianteRepositoryPort repository;
 
     @Override

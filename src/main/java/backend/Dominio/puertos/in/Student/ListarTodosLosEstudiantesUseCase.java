@@ -4,7 +4,7 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 
 import java.util.List;
 
-public interface ListarTodosLosEstudiantes {
+public interface ListarTodosLosEstudiantesUseCase {
 
     List<EstudianteDTOResponse> ejecutar();
 }

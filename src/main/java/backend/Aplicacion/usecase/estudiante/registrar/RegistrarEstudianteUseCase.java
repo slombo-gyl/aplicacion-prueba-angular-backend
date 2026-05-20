@@ -4,14 +4,13 @@ import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.Estudiante;
-import backend.Dominio.puertos.in.Student.RegistrarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
+public class RegistrarEstudianteUseCase implements backend.Dominio.puertos.in.Student.RegistrarEstudianteUseCase {
 
     private final EstudianteRepositoryPort repository;
 

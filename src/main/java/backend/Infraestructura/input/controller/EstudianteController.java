@@ -20,44 +20,44 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class EstudianteController {
 
-    private final RegistrarEstudiante registrarEstudiante;
-    private final ActualizarEstudiante actualizarEstudiante;
-    private final BajaEstudiante bajaEstudiante;
-    private final ListarTodosLosEstudiantes listarTodosLosEstudiantes;
-    private final ReactivarEstudiante reactivarEstudiante;
-    private final BuscarEstudiantePorId buscarEstudiantePorId;
+    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
+    private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
+    private final BajaEstudianteUseCase bajaEstudianteUseCase;
+    private final ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase;
+    private final ReactivarEstudianteUseCase reactivarEstudianteUseCase;
+    private final BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase;
 
     @PostMapping
     public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = registrarEstudiante.ejecutar(dto);
+        EstudianteDTOResponse estudianteResponse = registrarEstudianteUseCase.ejecutar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(estudianteResponse);
     }
 
     @GetMapping
     public ResponseEntity<List<EstudianteDTOResponse>> listarEstudiantes() {
-        List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantes.ejecutar();
+        List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantesUseCase.ejecutar();
         return ResponseEntity.ok(estudiantes);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> obtenerEstudiantePorId(@PathVariable Long id) {
-        EstudianteDTOResponse estudiante = buscarEstudiantePorId.ejecutar(id);
+        EstudianteDTOResponse estudiante = buscarEstudiantePorIdUseCase.ejecutar(id);
         return ResponseEntity.ok(estudiante);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@PathVariable Long id, @Valid @RequestBody ActualizarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = actualizarEstudiante.ejecutar(id, dto);
+        EstudianteDTOResponse estudianteResponse = actualizarEstudianteUseCase.ejecutar(id, dto);
         return ResponseEntity.ok(estudianteResponse);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> darBaja(@PathVariable Long id) {
-        return ResponseEntity.ok(bajaEstudiante.ejecutar(id));
+        return ResponseEntity.ok(bajaEstudianteUseCase.ejecutar(id));
     }
 
     @PatchMapping("/reactivar/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> reactivar(@PathVariable Long id) {
-        return ResponseEntity.ok(reactivarEstudiante.ejecutar(id));
+        return ResponseEntity.ok(reactivarEstudianteUseCase.ejecutar(id));
     }
 }

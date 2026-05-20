@@ -4,7 +4,6 @@ import backend.Aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.Estudiante;
-import backend.Dominio.puertos.in.Student.ActualizarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import backend.shared.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ActualizarEstudianteUseCase implements ActualizarEstudiante {
+public class ActualizarEstudianteUseCase implements backend.Dominio.puertos.in.Student.ActualizarEstudianteUseCase {
 
     private final EstudianteRepositoryPort repository;
 
