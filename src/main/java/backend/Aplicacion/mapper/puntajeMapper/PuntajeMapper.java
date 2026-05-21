@@ -31,7 +31,8 @@ public class PuntajeMapper {
                 model.getId(),
                 estudianteId,
                 materiaId,
-                model.getValor()
+                model.getValor(),
+                model.getInsertFecha()
         );
     }
 }

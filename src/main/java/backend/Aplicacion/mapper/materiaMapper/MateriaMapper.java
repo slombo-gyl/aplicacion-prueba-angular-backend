@@ -15,7 +15,9 @@ public class MateriaMapper {
     public static MateriaResponseDTO toResponseDto(MateriaModel model) {
         return new MateriaResponseDTO(
                 model.getId(),
-                model.getNombre()
+                model.getNombre(),
+                model.getInsertFecha(),
+                model.getDeleteFecha()
         );
     }
 }

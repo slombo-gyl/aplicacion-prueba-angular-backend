@@ -1,13 +1,14 @@
 package backend.Infraestructura.input.controller;
 
-import backend.Aplicacion.dto.puntaje.PuntajeDTOResponse;
-import backend.Aplicacion.dto.puntaje.PuntajesDTOResponse;
 import backend.Aplicacion.dto.puntaje.PuntajeDTORequest;
-import backend.Aplicacion.usecase.puntaje.ObtenerPuntajes;
-import backend.Aplicacion.usecase.puntaje.RegistrarPuntaje;
+import backend.Aplicacion.dto.puntaje.PuntajeDTOResponse;
+import backend.Aplicacion.services.puntaje.PuntajeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/puntajes")
@@ -15,20 +16,23 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class PuntajeController {
 
-
-    private final ObtenerPuntajes obtenerPuntajes;
-    private final RegistrarPuntaje registrarPuntaje;
-
-
-    @GetMapping("/chart")
-    public ResponseEntity<PuntajesDTOResponse> getChart() {
-        PuntajesDTOResponse chart = obtenerPuntajes.ejecutar();
-        return ResponseEntity.ok(chart);
-    }
+    private final PuntajeService puntajeService;
 
     @PostMapping
-    public ResponseEntity<PuntajeDTOResponse> registrar(@RequestBody PuntajeDTORequest request) {
-        PuntajeDTOResponse puntaje = registrarPuntaje.ejecutar(request);
-        return ResponseEntity.ok(puntaje);
+    public ResponseEntity<PuntajeDTOResponse> registrar(@Valid @RequestBody PuntajeDTORequest request) {
+        return ResponseEntity.ok(puntajeService.create(request));
+    }
+
+    @GetMapping("/estudiante/{estudianteId}")
+    public ResponseEntity<List<PuntajeDTOResponse>> listarPorEstudiante(@PathVariable Long estudianteId) {
+        return ResponseEntity.ok(puntajeService.getByEstudianteId(estudianteId));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PuntajeDTOResponse> actualizar(
+            @PathVariable Long id,
+            @Valid @RequestBody PuntajeDTORequest request
+    ) {
+        return ResponseEntity.ok(puntajeService.update(id, request));
     }
 }

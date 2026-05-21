@@ -9,6 +9,9 @@ import backend.Infraestructura.exceptions.GenericNoContentException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 @Service
@@ -20,7 +23,9 @@ public class MateriaServiceImpl implements MateriaService {
     @Override
     public MateriaResponseDTO create(MateriaDTORequest materiaDto) {
         MateriaModel materia = MateriaMapper.toModel(materiaDto);
+        materia.setInsertFecha(LocalDateTime.now());
         MateriaModel materiaGuardada = materiaModelService.guardar(materia);
+
         return MateriaMapper.toResponseDto(materiaGuardada);
     }
 
@@ -58,6 +63,7 @@ public class MateriaServiceImpl implements MateriaService {
     @Override
     public MateriaResponseDTO delete(Long id) {
         MateriaModel materiaBorrada = materiaModelService.borrado(id);
+        materiaBorrada.setDeleteFecha(LocalDateTime.now());
         return MateriaMapper.toResponseDto(materiaBorrada);
     }
 }

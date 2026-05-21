@@ -1,10 +1,12 @@
 package backend.Infraestructura.output.persistencia.entity.materia;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity
 @NoArgsConstructor
@@ -21,5 +23,12 @@ public class MateriaEntity {
 
     @Column
     private boolean activo = true;
+
+    @Column(name = "delete_fecha")
+    private LocalDateTime deleteFecha;
+
+    @Column(name = "insert_fecha")
+    private LocalDateTime insertFecha;
+
 
 }

@@ -7,6 +7,10 @@ import backend.Infraestructura.exceptions.GenericNoContentException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 @Service
 @AllArgsConstructor
 public class BorrarMateriaUseCase implements BorrarMateria {
@@ -19,6 +23,7 @@ public class BorrarMateriaUseCase implements BorrarMateria {
                 .orElseThrow(() -> new GenericNoContentException("Materia no encontrada"));
 
         materia.setActivo(false);
+        materia.setDeleteFecha(LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()));
         return materiaRepositoryPort.guardar(materia);
     }
 }
