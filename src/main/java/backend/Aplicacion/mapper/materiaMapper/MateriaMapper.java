@@ -1,5 +1,6 @@
 package backend.Aplicacion.mapper.materiaMapper;
 
+import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
 
@@ -17,5 +18,12 @@ public class MateriaMapper {
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
         return  model;
+    }
+
+    public static MateriaResponseDTO toResponse(MateriaModel model){
+        return new MateriaResponseDTO(
+                model.getId(),
+                model.getNombre()
+        );
     }
 }
