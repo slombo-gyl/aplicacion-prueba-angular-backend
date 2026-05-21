@@ -8,6 +8,7 @@ import backend.Infraestructura.output.persistencia.repository.materia.MateriaJpa
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,13 +21,15 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
     @Override
     public MateriaModel guardar(MateriaModel materia) {
         MateriaEntity entity = MateriaDominioMapper.toEntity(materia);
+        entity.setInsertFecha(LocalDateTime.now());
+        System.out.println(entity.getInsertFecha());
         MateriaEntity saved = materiaJpaRepository.save(entity);
         return MateriaDominioMapper.toModel(saved);
     }
 
     @Override
     public List<MateriaModel> listarTodas() {
-        return materiaJpaRepository.findByActivoTrue()
+        return materiaJpaRepository.findByActivoTrueAndDeleteFechaIsNull()
                 .stream()
                 .map(MateriaDominioMapper::toModel)
                 .toList();
@@ -34,13 +37,13 @@ public class MateriaRepositryAdapter implements MateriaRepositoryPort {
 
     @Override
     public Optional<MateriaModel> buscarPorId(Long id) {
-        return materiaJpaRepository.findByIdAndActivoTrue(id)
+        return materiaJpaRepository.findByIdAndActivoTrueAndDeleteFechaIsNull(id)
                 .map(MateriaDominioMapper::toModel);
     }
 
     @Override
     public Optional<MateriaModel> buscarPorNombre(String nombre) {
-        return materiaJpaRepository.findByNombreAndActivoTrue(nombre)
+        return materiaJpaRepository.findByNombreAndActivoTrueAndDeleteFechaIsNull(nombre)
                 .map(MateriaDominioMapper::toModel);
     }
 }

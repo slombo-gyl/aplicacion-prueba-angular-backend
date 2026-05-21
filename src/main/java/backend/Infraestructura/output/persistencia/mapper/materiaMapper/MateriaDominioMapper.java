@@ -12,6 +12,8 @@ public class MateriaDominioMapper {
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
         entity.setActivo(model.isActivo());
+        entity.setDeleteFecha(model.getDeleteFecha());
+        entity.setInsertFecha(model.getInsertFecha());
         return entity;
     }
 
@@ -20,6 +22,8 @@ public class MateriaDominioMapper {
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
         model.setActivo(entity.isActivo());
+        model.setDeleteFecha(entity.getDeleteFecha());
+        model.setInsertFecha(entity.getInsertFecha());
         return model;
     }
 }

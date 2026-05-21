@@ -1,10 +1,13 @@
 package backend.Dominio.modelo;
 
+import java.time.LocalDateTime;
+
 public class PuntajeModel {
     private Long id;
     private double valor;
     private EstudianteModel estudiante;
     private MateriaModel materia;
+    private LocalDateTime insertFecha;
 
     public PuntajeModel() {
     }
@@ -14,6 +17,15 @@ public class PuntajeModel {
         this.estudiante = estudiante;
         this.materia = materia;
     }
+
+    public LocalDateTime getInsertFecha(){
+        return insertFecha;
+    }
+
+    public void setInsertFecha(LocalDateTime insertFecha){
+        this.insertFecha = insertFecha;
+    }
+
 
     public Long getId() {
         return id;
