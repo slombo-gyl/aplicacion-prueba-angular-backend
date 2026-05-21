@@ -1,23 +1,21 @@
 package backend.aplicacion.usecases.materia;
 
-import backend.aplicacion.dto.materia.MateriaResponseDTO;
-import backend.aplicacion.mappers.materiaMapper.MateriaDTOMapper;
+import backend.dominio.modelo.Materia;
 import backend.dominio.puertos.in.materia.ListarTodasLasMateriasUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ListarTodasLasMateriasUseCaseImpl implements ListarTodasLasMateriasUseCase {
+
     private final MateriaModelPort repository;
-    private final MateriaDTOMapper mapper;
 
     @Override
-    public List<MateriaResponseDTO> ejecutar() {
-        return repository.obtenerTodasLasMateriasActivas().
-                stream().map(mapper::toDto).toList();
+    public List<Materia> listarTodasLasMaterias() {
+        return repository.obtenerTodasLasMateriasActivas();
     }
 }

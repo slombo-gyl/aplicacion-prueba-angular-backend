@@ -1,8 +1,8 @@
 package backend.dominio.puertos.in.materia;
 
-import backend.aplicacion.dto.materia.MateriaResponseDTO;
+import backend.dominio.modelo.Materia;
 
 public interface BuscarMateriaPorIdUseCase {
 
-    MateriaResponseDTO ejecutar(Long id);
+    Materia buscarMateriaPorId(Long id);
 }

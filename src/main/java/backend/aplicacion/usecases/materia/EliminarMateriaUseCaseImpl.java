@@ -5,21 +5,22 @@ import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.in.materia.EliminarMateriaUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
 import backend.infraestructura.exception.NoEncontradoException;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class EliminarMateriaUseCaseImpl implements EliminarMateriaUseCase {
-    private final MateriaModelPort materiaModelPort;
+
+    private final MateriaModelPort repository;
 
     @Override
-    public Materia ejecutar(Long id) {
-        Materia materia = materiaModelPort.buscarActivaPorId(id)
-                .orElseThrow(() -> new NoEncontradoException(
-                        "No se ha encontrado la materia con el id " + id
-                ));
+    public Materia eliminarMateria(Long id) {
+        Materia materia = repository.buscarActivaPorId(id)
+                .orElseThrow(() -> new NoEncontradoException("Materia no encontrada o ya inactiva con id: " + id));
+
         materia.setEstado(Estado.INACTIVO);
-        return materiaModelPort.guardar(materia);
+
+        return repository.guardar(materia);
     }
 }

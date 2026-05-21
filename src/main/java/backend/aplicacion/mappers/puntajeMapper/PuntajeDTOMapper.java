@@ -27,6 +27,6 @@ public abstract class PuntajeDTOMapper {
 
     @Named("mapMateriaIdAMateria")
     protected Materia mapMateriaIdAMateria(Long materiaId) {
-        return materiaModelService.buscarPorId(materiaId);
+        return materiaModelService.buscarMateriaPorId(materiaId);
     }
 }

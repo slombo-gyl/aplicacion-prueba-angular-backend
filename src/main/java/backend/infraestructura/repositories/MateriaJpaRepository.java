@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface MateriaJpaRepository extends JpaRepository<MateriaEntity, Long> {
     Optional<MateriaEntity> findByIdAndEstado(Long id, Estado estado);
     List<MateriaEntity> findAllByEstado(Estado estado);
+    Optional<MateriaEntity> findByNombre(String nombre);
 }

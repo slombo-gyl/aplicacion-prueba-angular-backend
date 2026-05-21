@@ -1,23 +1,21 @@
 package backend.aplicacion.usecases.materia;
 
-import backend.aplicacion.dto.materia.MateriaResponseDTO;
-import backend.aplicacion.mappers.materiaMapper.MateriaDTOMapper;
+import backend.dominio.modelo.Materia;
 import backend.dominio.puertos.in.materia.BuscarMateriaPorIdUseCase;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
 import backend.infraestructura.exception.NoEncontradoException;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class BuscarMateriaPorIdUseCaseImpl implements BuscarMateriaPorIdUseCase {
+
     private final MateriaModelPort repository;
-    private final MateriaDTOMapper mapper;
 
     @Override
-    public MateriaResponseDTO ejecutar(Long id) {
+    public Materia buscarMateriaPorId(Long id) {
         return repository.buscarActivaPorId(id)
-                .map(mapper::toDto)
-                .orElseThrow(()-> new NoEncontradoException("Materia no encontrada"));
+                .orElseThrow(() -> new NoEncontradoException("Materia no encontrada o inactiva con id: " + id));
     }
 }

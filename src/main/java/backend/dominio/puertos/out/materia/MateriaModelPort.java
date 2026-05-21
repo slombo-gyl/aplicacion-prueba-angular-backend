@@ -10,4 +10,5 @@ public interface MateriaModelPort {
     Optional<Materia>buscarPorId(Long id);
     Optional<Materia> buscarActivaPorId(Long id);
     List<Materia> obtenerTodasLasMateriasActivas();
+    Optional<Materia> findByNombre(String nombre);
 }

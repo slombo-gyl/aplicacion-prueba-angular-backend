@@ -2,67 +2,58 @@ package backend.infraestructura.controllers;
 
 import backend.aplicacion.dto.materia.MateriaResponseDTO;
 import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
-import backend.aplicacion.dto.materia.ModificarMateriaDTOResponse;
 import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
-import backend.dominio.modelo.Materia;
-import backend.dominio.puertos.in.materia.*;
+import backend.aplicacion.services.materia.MateriaService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/materias")
 @RequiredArgsConstructor
-@CrossOrigin(origins= "*")
 public class MateriaController {
 
-    private final RegistrarMateriaUseCase registrarMateriaUseCase;
-    private final ModificarMateriaUseCase modificarMateriaUseCase;
-    private final EliminarMateriaUseCase eliminarMateriaUseCase;
-    private final RestaurarMateriaUseCase restaurarMateriaUseCase;
-    private final ListarTodasLasMateriasUseCase listarTodasLasMateriasUseCase;
-    private final BuscarMateriaPorIdUseCase buscarMateriaPorIdUseCase;
-
+    private final MateriaService materiaService;
 
     @PostMapping
-    public ResponseEntity<MateriaResponseDTO> crearMateria(@Valid @RequestBody RegistrarMateriaDTORequest req){
-        MateriaResponseDTO materia = registrarMateriaUseCase.ejecutar(req);
-        return  ResponseEntity.status(HttpStatus.CREATED).body(materia);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<MateriaResponseDTO> obtenerMateriaPorId(@PathVariable Long id){
-        MateriaResponseDTO materia = buscarMateriaPorIdUseCase.ejecutar(id);
-        return ResponseEntity.ok(materia);
+    public ResponseEntity<MateriaResponseDTO> registrarMateria(@Valid @RequestBody RegistrarMateriaDTORequest request) {
+        MateriaResponseDTO nuevaMateria = materiaService.registrar(request);
+        return new ResponseEntity<>(nuevaMateria, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<MateriaResponseDTO>> listarMaterias(){
-        List<MateriaResponseDTO> materias = listarTodasLasMateriasUseCase.ejecutar();
+    public ResponseEntity<List<MateriaResponseDTO>> listarTodasLasMaterias() {
+        List<MateriaResponseDTO> materias = materiaService.listarTodasLasMaterias();
         return ResponseEntity.ok(materias);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ModificarMateriaDTOResponse> modificarMateria(@PathVariable Long id , @Valid @RequestBody ModificarMateriaDTORequest req)
-    {
-        ModificarMateriaDTOResponse response = modificarMateriaUseCase.ejecutar(id,req);
-        return ResponseEntity.ok(response);
+    @GetMapping("/{id}")
+    public ResponseEntity<MateriaResponseDTO> buscarMateriaPorId(@PathVariable Long id) {
+        MateriaResponseDTO materia = materiaService.buscarPorId(id);
+        return ResponseEntity.ok(materia);
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<Materia> eliminarMateria(@PathVariable Long id) {
-        Materia materiaEliminada = eliminarMateriaUseCase.ejecutar(id);
+    @PatchMapping("/{id}")
+    public ResponseEntity<MateriaResponseDTO> actualizarMateria(
+            @PathVariable Long id,
+            @Valid @RequestBody ModificarMateriaDTORequest request) {
+        MateriaResponseDTO materiaActualizada = materiaService.actualizar(id, request);
+        return ResponseEntity.ok(materiaActualizada);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<MateriaResponseDTO> darDeBajaMateria(@PathVariable Long id) {
+        MateriaResponseDTO materiaEliminada = materiaService.eliminar(id);
         return ResponseEntity.ok(materiaEliminada);
     }
 
-    @PutMapping("/restaurar/{id}")
-    public ResponseEntity<Materia> restaurarMateria(@PathVariable Long id) {
-        Materia materiaRestaurada = restaurarMateriaUseCase.ejecutar(id);
+    @PatchMapping("/reactivar/{id}")
+    public ResponseEntity<MateriaResponseDTO> restaurarMateria(@PathVariable Long id) {
+        MateriaResponseDTO materiaRestaurada = materiaService.restaurar(id);
         return ResponseEntity.ok(materiaRestaurada);
     }
 }

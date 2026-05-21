@@ -24,7 +24,6 @@ public class EstudianteModelService implements RegistrarEstudianteUseCase, Actua
         this.reactivarEstudianteUseCase = reactivarEstudianteUseCase;
     }
 
-
     @Override
     public Estudiante actualizarEstudianteUseCase(Long id, Estudiante estudiante) {
         return actualizarEstudianteUseCase.actualizarEstudianteUseCase(id, estudiante);

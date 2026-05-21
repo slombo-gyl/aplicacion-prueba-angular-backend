@@ -113,20 +113,12 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErrorResponse> manejarDuplicados(DataIntegrityViolationException ex, HttpServletRequest request){
-
-        String mensaje = "Error de integridad de datos";
-
-        if (ex.getRootCause() != null && ex.getRootCause().getMessage().contains("@")) {
-            mensaje = "El email ya está registrado";
-        } else {
-            mensaje = "El DNI ya está registrado";
-        }
+    public ResponseEntity<ErrorResponse> manejarDuplicados(HttpServletRequest request){
 
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.CONFLICT.name(),
                 HttpStatus.CONFLICT.value(),
-                mensaje,
+                "Conflicto en la base de datos: Ya existe un registro con esos datos únicos o hay un problema de integridad.",
                 request.getRequestURI());
 
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
