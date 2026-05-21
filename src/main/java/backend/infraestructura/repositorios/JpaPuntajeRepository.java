@@ -11,6 +11,6 @@ import java.util.List;
 public interface JpaPuntajeRepository extends JpaRepository<PuntajeEntity,Long> {
     boolean existsByEstudianteAndMateria(EstudianteEntity estudiante, MateriaEntity materia);
     PuntajeModel findByEstudianteAndMateria(EstudianteEntity estudiante, MateriaEntity materia);
-//    List<PuntajeEntity> findByFechaBajaIsNull();
-//    List<PuntajeEntity> findByFechaBajaIsNotNull();
+    List<PuntajeEntity> findByFechaBajaIsNull();
+    List<PuntajeEntity> findByFechaBajaIsNotNull();
 }

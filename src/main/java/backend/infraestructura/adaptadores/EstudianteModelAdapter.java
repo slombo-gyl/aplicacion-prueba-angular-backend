@@ -8,6 +8,7 @@ import backend.dominio.puertos.out.EstudianteModelPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Repository
@@ -24,5 +25,27 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     @Override
     public EstudianteModel buscarPorId(Long id) {
         return EstudianteMapper.toModel(estudianteJpaRepository.findById(id).orElseThrow(NoSuchElementException::new));
+    }
+
+    @Override
+    public List<EstudianteModel> listar(){
+        return estudianteJpaRepository.findAll()
+                .stream()
+                .map(EstudianteMapper::toModel)
+                .toList();
+    }
+
+    @Override
+    public List<EstudianteModel> listar(boolean activo){
+        return activo ?
+                estudianteJpaRepository.findByFechaBajaIsNull()
+                .stream()
+                .map(EstudianteMapper::toModel)
+                .toList()
+                :
+                estudianteJpaRepository.findByFechaBajaIsNotNull()
+                .stream()
+                .map(EstudianteMapper::toModel)
+                .toList();
     }
 }
