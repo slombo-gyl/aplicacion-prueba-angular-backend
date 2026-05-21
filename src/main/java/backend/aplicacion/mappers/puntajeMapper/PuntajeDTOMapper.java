@@ -1,6 +1,6 @@
 package backend.aplicacion.mappers.puntajeMapper;
 
-import backend.aplicacion.services.estudiante.impl.EstudianteModelServices;
+import backend.aplicacion.services.estudiante.impl.EstudianteModelService;
 import backend.dominio.modelo.Estudiante;
 import backend.dominio.modelo.Materia;
 import backend.dominio.modelo.Puntaje;
@@ -13,8 +13,7 @@ import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public abstract class PuntajeDTOMapper {
-
-    protected EstudianteModelServices estudianteModelService;
+    protected EstudianteModelService estudianteModelService;
     protected MateriaModelService materiaModelService;
 
     @Mapping(source = "estudianteId", target = "estudiante", qualifiedByName = "mapEstudianteIdAEstudiante")

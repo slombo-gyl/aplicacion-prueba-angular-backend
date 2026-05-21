@@ -7,20 +7,16 @@ import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.aplicacion.services.estudiante.EstudianteService;
 import backend.dominio.modelo.Estudiante;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EstudianteServiceImpls implements EstudianteService {
-    private final EstudianteModelServices estudianteModelService;
+@AllArgsConstructor
+public class EstudianteServiceImpl implements EstudianteService {
+    private final EstudianteModelService estudianteModelService;
     private final EstudianteDTOMapper estudianteDTOMapper;
-
-    public EstudianteServiceImpls(EstudianteModelServices estudianteModelService, EstudianteDTOMapper estudianteDTOMapper) {
-        this.estudianteModelService = estudianteModelService;
-        this.estudianteDTOMapper = estudianteDTOMapper;
-    }
-
 
     @Override
     public EstudianteDTOResponse registrar(RegistrarEstudianteDTORequest estudianteDto) {

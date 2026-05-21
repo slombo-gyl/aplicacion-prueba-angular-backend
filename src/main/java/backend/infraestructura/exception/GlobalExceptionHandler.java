@@ -35,6 +35,19 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
+    @ExceptionHandler(ValidacionException.class)
+    public ResponseEntity<ErrorResponse> manejarValidacion(ValidacionException ex, HttpServletRequest request) {
+
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.name(),
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(), 
+                request.getRequestURI(),
+                ex.getErrores());
+
+        return ResponseEntity.badRequest().body(error);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> manejarValidaciones(MethodArgumentNotValidException ex, HttpServletRequest request) {
 
@@ -104,12 +117,10 @@ public class GlobalExceptionHandler {
 
         String mensaje = "Error de integridad de datos";
 
-        if (ex.getRootCause() != null && ex.getRootCause().getMessage().contains("email")) {
+        if (ex.getRootCause() != null && ex.getRootCause().getMessage().contains("@")) {
             mensaje = "El email ya está registrado";
-        }
-
-        if (ex.getRootCause() != null && ex.getRootCause().getMessage().contains("dni")) {
-            mensaje = "El dni ya está registrado";
+        } else {
+            mensaje = "El DNI ya está registrado";
         }
 
         ErrorResponse error = new ErrorResponse(

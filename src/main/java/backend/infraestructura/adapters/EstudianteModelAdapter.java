@@ -4,6 +4,7 @@ import backend.dominio.modelo.Estudiante;
 import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.infraestructura.entities.EstudianteEntity;
+import backend.infraestructura.exception.NoEncontradoException;
 import backend.infraestructura.mappers.EstudianteDominioMapper;
 import backend.infraestructura.repositories.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,6 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class EstudianteModelAdapter implements EstudianteModelPort {
-
     private final EstudianteJpaRepository estudianteJpaRepository;
     private final EstudianteDominioMapper mapper;
 
@@ -27,9 +27,9 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     }
 
     @Override
-    public Optional<Estudiante> obtenerPorId(Long id) {
-        return estudianteJpaRepository.findById(id).
-                map(mapper::toDominioModel);
+    public Optional<Estudiante> obtenerInactivoPorId(Long id) {
+        return estudianteJpaRepository.findByIdAndEstado(id,Estado.INACTIVO)
+                .map(mapper::toDominioModel);
     }
 
     @Override
@@ -45,17 +45,37 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     }
 
     @Override
-    public Estudiante actualizar(Long id, Estudiante estudiante) {
-        return null;
+    public Estudiante actualizar(Estudiante estudiante) {
+        EstudianteEntity estudianteEntidad = mapper.fromDominioModel(estudiante);
+        EstudianteEntity estudianteGuardado = estudianteJpaRepository.save(estudianteEntidad);
+        return mapper.toDominioModel(estudianteGuardado);
     }
 
     @Override
-    public Estudiante borrar(Long id) {
-        return null;
+    public Estudiante borrar(Estudiante estudiante) {
+
+        EstudianteEntity estudianteBorrado = estudianteJpaRepository.save(mapper.fromDominioModel(estudiante));
+
+        return mapper.toDominioModel(estudianteBorrado);
     }
 
     @Override
-    public Estudiante reactivarPorId(Long id) {
-        return null;
+    public Estudiante reactivar(Estudiante estudiante) {
+
+        EstudianteEntity estudianteReactivado = estudianteJpaRepository.save(mapper.fromDominioModel(estudiante));
+
+        return mapper.toDominioModel(estudianteReactivado);
+    }
+
+    @Override
+    public Optional<Estudiante> findByEmail(String email) {
+        return estudianteJpaRepository.findByEmail(email)
+                .map(mapper::toDominioModel);
+    }
+
+    @Override
+    public Optional<Estudiante> findByDni(String dni) {
+        return estudianteJpaRepository.findByDni(dni)
+                .map(mapper::toDominioModel);
     }
 }
