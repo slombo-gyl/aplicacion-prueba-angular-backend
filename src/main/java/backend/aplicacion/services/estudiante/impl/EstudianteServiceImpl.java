@@ -8,9 +8,10 @@ import backend.aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.aplicacion.services.estudiante.EstudianteService;
 import backend.dominio.modelo.Estudiante;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -26,8 +27,9 @@ public class EstudianteServiceImpl implements EstudianteService {
      }
 
     @Override
-    public List<EstudianteDTOResponse> listarTodosLosEstudiantes() {
-        return estudianteDTOMapper.toDtoList(estudianteModelService.listarTodosLosEstudiantesUseCase());
+    public Page<EstudianteDTOResponse> listarTodosLosEstudiantes(Pageable pageable) {
+        Page<Estudiante> estudiantes = estudianteModelService.listarTodosLosEstudiantesUseCase(pageable);
+        return estudiantes.map(estudianteDTOMapper::toDto);
     }
 
     @Override

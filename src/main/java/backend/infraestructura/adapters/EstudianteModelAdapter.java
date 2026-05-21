@@ -8,6 +8,8 @@ import backend.infraestructura.exception.NoEncontradoException;
 import backend.infraestructura.mappers.EstudianteDominioMapper;
 import backend.infraestructura.repositories.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -33,9 +35,9 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     }
 
     @Override
-    public List<Estudiante> obtenerTodosLosEstudiantesActivos() {
-        return estudianteJpaRepository.findAllByEstado(Estado.ACTIVO).
-                stream().map(mapper::toDominioModel).toList();
+    public Page<Estudiante> obtenerTodosLosEstudiantesActivos(Pageable pageable) {
+        return estudianteJpaRepository.findAllByEstado(Estado.ACTIVO,pageable)
+                .map(mapper::toDominioModel);
     }
 
     @Override

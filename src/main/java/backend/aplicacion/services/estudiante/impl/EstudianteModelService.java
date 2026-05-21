@@ -2,9 +2,9 @@ package backend.aplicacion.services.estudiante.impl;
 
 import backend.dominio.modelo.Estudiante;
 import backend.dominio.puertos.in.student.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class EstudianteModelService implements RegistrarEstudianteUseCase, ActualizarEstudianteUseCase, BajaEstudianteUseCase, BuscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase {
@@ -40,8 +40,8 @@ public class EstudianteModelService implements RegistrarEstudianteUseCase, Actua
     }
 
     @Override
-    public List<Estudiante> listarTodosLosEstudiantesUseCase() {
-        return listarTodosLosEstudiantesUseCase.listarTodosLosEstudiantesUseCase();
+    public Page<Estudiante> listarTodosLosEstudiantesUseCase(Pageable pageable) {
+        return listarTodosLosEstudiantesUseCase.listarTodosLosEstudiantesUseCase(pageable);
     }
 
     @Override

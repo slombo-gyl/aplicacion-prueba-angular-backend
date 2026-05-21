@@ -4,6 +4,8 @@ import backend.dominio.modelo.Estudiante;
 import backend.dominio.puertos.in.student.ListarTodosLosEstudiantesUseCase;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +16,7 @@ public class ListarTodosLosEstudiantesUseCaseImpl implements ListarTodosLosEstud
     private final EstudianteModelPort repository;
 
     @Override
-    public List<Estudiante> listarTodosLosEstudiantesUseCase() {
-        return repository.obtenerTodosLosEstudiantesActivos();
+    public Page<Estudiante> listarTodosLosEstudiantesUseCase(Pageable pageable) {
+        return repository.obtenerTodosLosEstudiantesActivos(pageable);
     }
 }
