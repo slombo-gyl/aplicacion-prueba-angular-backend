@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/students")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EstudianteController {
     private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
     private final ObtenerEstudiantePorIDUseCase obtenerEstudiantePorIDUseCase;

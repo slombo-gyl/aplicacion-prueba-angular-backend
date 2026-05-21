@@ -20,7 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/materias")
 @RequiredArgsConstructor
-@CrossOrigin(origins= "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MateriaController {
     private final RegistrarMateriaUseCaseImpl registrarMateriaUseCase;
     private final ObtenerMateriasUseCase obtenerMateriasUseCase;
