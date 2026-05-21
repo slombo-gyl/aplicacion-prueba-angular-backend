@@ -4,4 +4,8 @@ import backend.Dominio.modelo.PuntajeModel;
 
 public interface PuntajeRepositoryPort {
     PuntajeModel guardar(PuntajeModel puntaje,Long materiaId, Long estudianteId);
+
+
+
+
 }
