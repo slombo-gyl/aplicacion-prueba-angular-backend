@@ -7,16 +7,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EstudianteModelServices implements RegistrarEstudianteUseCases, ActualizarEstudianteUseCases,
-        BajaEstudianteUseCase, BuscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase {
-    private final RegistrarEstudianteUseCases registrarEstudianteUseCase;
-    private final ActualizarEstudianteUseCases actualizarEstudianteUseCase;
+public class EstudianteModelService implements RegistrarEstudianteUseCase, ActualizarEstudianteUseCase, BajaEstudianteUseCase, BuscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase {
+    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
+    private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
     private final BajaEstudianteUseCase bajaEstudianteUseCase;
     private final BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase;
     private final ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase;
     private final ReactivarEstudianteUseCase reactivarEstudianteUseCase;
 
-    public EstudianteModelServices(RegistrarEstudianteUseCases registrarEstudianteUseCase, ActualizarEstudianteUseCases actualizarEstudianteUseCase, BajaEstudianteUseCase bajaEstudianteUseCase, BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase reactivarEstudianteUseCase) {
+    public EstudianteModelService(RegistrarEstudianteUseCase registrarEstudianteUseCase, ActualizarEstudianteUseCase actualizarEstudianteUseCase, BajaEstudianteUseCase bajaEstudianteUseCase, BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase reactivarEstudianteUseCase) {
         this.registrarEstudianteUseCase = registrarEstudianteUseCase;
         this.actualizarEstudianteUseCase = actualizarEstudianteUseCase;
         this.bajaEstudianteUseCase = bajaEstudianteUseCase;

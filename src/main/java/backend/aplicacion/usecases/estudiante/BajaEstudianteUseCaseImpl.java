@@ -1,8 +1,10 @@
 package backend.aplicacion.usecases.estudiante;
 
 import backend.dominio.modelo.Estudiante;
+import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.in.student.BajaEstudianteUseCase;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
+import backend.infraestructura.exception.NoEncontradoException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,11 @@ public class BajaEstudianteUseCaseImpl implements BajaEstudianteUseCase {
 
     @Override
     public Estudiante bajaEstudianteUseCase(Long id) {
-        return repository.borrar(id);
+        Estudiante estudiante = repository.obtenerActivoPorId(id)
+                .orElseThrow(() -> new NoEncontradoException("Estudiante no encontrado con id: " + id));
+
+        estudiante.setEstado(Estado.INACTIVO);
+
+        return repository.borrar(estudiante);
     }
 }

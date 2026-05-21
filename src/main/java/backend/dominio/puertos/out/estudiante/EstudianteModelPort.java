@@ -7,10 +7,13 @@ import java.util.Optional;
 
 public interface EstudianteModelPort {
     Estudiante guardar(Estudiante estudiante);
-    Optional<Estudiante> obtenerPorId(Long id);
+    Optional<Estudiante> obtenerInactivoPorId(Long id);
     List<Estudiante> obtenerTodosLosEstudiantesActivos();
     Optional<Estudiante> obtenerActivoPorId(Long id);
-    Estudiante actualizar(Long id, Estudiante estudiante);
-    Estudiante borrar(Long id);
-    Estudiante reactivarPorId(Long id);
+    Estudiante actualizar(Estudiante estudiante);
+    Estudiante borrar(Estudiante estudiante);
+    Estudiante reactivar(Estudiante estudiante);
+
+    Optional<Estudiante> findByEmail(String email);
+    Optional<Estudiante> findByDni(String dni);
 }
