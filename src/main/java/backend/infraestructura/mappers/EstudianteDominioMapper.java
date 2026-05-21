@@ -1,4 +1,5 @@
 package backend.infraestructura.mappers;
+
 import backend.dominio.modelo.Estudiante;
 import backend.infraestructura.entities.EstudianteEntity;
 import org.mapstruct.Mapper;

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class RegistrarMateriaUseCaseImpl implements RegistrarMateriaUseCase {
-
    private final MateriaModelPort materiaModelPortepository;
+    private final MateriaDTOMapper mapper;
 
     @Override
     public MateriaResponseDTO ejecutar(RegistrarMateriaDTORequest req) {
@@ -21,7 +21,7 @@ public class RegistrarMateriaUseCaseImpl implements RegistrarMateriaUseCase {
         materia.setNombre(req.nombre());
 
         Materia materiaGuardada = materiaModelPortepository.guardar(materia);
-       return MateriaDTOMapper.toDTOResponse(materiaGuardada);
+       return mapper.toDto(materiaGuardada);
     }
 
 

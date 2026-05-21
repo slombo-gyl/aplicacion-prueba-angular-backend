@@ -44,5 +44,18 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
                 .map(mapper::toDominioModel);
     }
 
+    @Override
+    public Estudiante actualizar(Long id, Estudiante estudiante) {
+        return null;
+    }
 
+    @Override
+    public Estudiante borrar(Long id) {
+        return null;
+    }
+
+    @Override
+    public Estudiante reactivarPorId(Long id) {
+        return null;
+    }
 }

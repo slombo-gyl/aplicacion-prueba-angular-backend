@@ -1,26 +1,18 @@
 package backend.aplicacion.usecases.estudiante;
 
-import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
-import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
-import backend.aplicacion.mappers.estudianteMapper.EstudianteDTOMapper;
 import backend.dominio.modelo.Estudiante;
-import backend.dominio.puertos.in.student.RegistrarEstudianteUseCase;
+import backend.dominio.puertos.in.student.RegistrarEstudianteUseCases;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class RegistrarEstudianteUseCaseImpl implements RegistrarEstudianteUseCase {
-
+public class RegistrarEstudianteUseCaseImpl implements RegistrarEstudianteUseCases {
     private final EstudianteModelPort repository;
 
     @Override
-    public EstudianteDTOResponse registrarEstudianteUseCase(RegistrarEstudianteDTORequest dto) {
-        Estudiante estudiante = EstudianteDTOMapper.dtoToModel(dto);
-
-        Estudiante estudianteGuardado = repository.guardar(estudiante);
-
-        return EstudianteDTOMapper.toDTOResponse(estudianteGuardado);
+    public Estudiante registrarEstudianteUseCase(Estudiante estudiante) {
+        return repository.guardar(estudiante);
     }
 }

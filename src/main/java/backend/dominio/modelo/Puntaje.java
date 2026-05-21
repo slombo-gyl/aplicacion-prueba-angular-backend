@@ -1,7 +1,5 @@
 package backend.dominio.modelo;
 
-
-
 public class Puntaje {
     private Long id;
     private double valor;

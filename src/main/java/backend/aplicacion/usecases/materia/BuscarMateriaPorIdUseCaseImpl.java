@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class BuscarMateriaPorIdUseCaseImpl implements BuscarMateriaPorIdUseCase {
-
     private final MateriaModelPort repository;
+    private final MateriaDTOMapper mapper;
 
     @Override
     public MateriaResponseDTO ejecutar(Long id) {
         return repository.buscarActivaPorId(id)
-                .map(MateriaDTOMapper::toDTOResponse)
+                .map(mapper::toDto)
                 .orElseThrow(()-> new NoEncontradoException("Materia no encontrada"));
     }
 }

@@ -4,6 +4,7 @@ import backend.aplicacion.dto.estudiante.ActualizarEstudianteDTORequest;
 import backend.aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
 import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.aplicacion.services.estudiante.EstudianteService;
 import backend.dominio.puertos.in.student.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,49 +16,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/students")
+@RequestMapping("/api/estudiantes")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class EstudianteController {
-
-    private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
-    private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
-    private final BajaEstudianteUseCase bajaEstudianteUseCase;
-    private final ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase;
-    private final ReactivarEstudianteUseCase reactivarEstudianteUseCase;
-    private final BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase;
+    private  final EstudianteService estudianteService;
 
     @PostMapping
     public ResponseEntity<EstudianteDTOResponse> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = registrarEstudianteUseCase.registrarEstudianteUseCase(dto);
+        EstudianteDTOResponse estudianteResponse = estudianteService.registrar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(estudianteResponse);
     }
 
     @GetMapping
     public ResponseEntity<List<EstudianteDTOResponse>> listarEstudiantes() {
-        List<EstudianteDTOResponse> estudiantes = listarTodosLosEstudiantesUseCase.listarTodosLosEstudiantesUseCase();
+        List<EstudianteDTOResponse> estudiantes = estudianteService.listarTodosLosEstudiantes();
         return ResponseEntity.ok(estudiantes);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> obtenerEstudiantePorId(@PathVariable Long id) {
-        EstudianteDTOResponse estudiante = buscarEstudiantePorIdUseCase.buscarEstudiantePorIdUseCase(id);
+        EstudianteDTOResponse estudiante = estudianteService.buscarPorId(id);
         return ResponseEntity.ok(estudiante);
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@PathVariable Long id, @Valid @RequestBody ActualizarEstudianteDTORequest dto) {
-        EstudianteDTOResponse estudianteResponse = actualizarEstudianteUseCase.actualizarEstudianteUseCase(id, dto);
+        EstudianteDTOResponse estudianteResponse = estudianteService.actualizar(id, dto);
         return ResponseEntity.ok(estudianteResponse);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> darBaja(@PathVariable Long id) {
-        return ResponseEntity.ok(bajaEstudianteUseCase.bajaEstudianteUseCase(id));
+        return ResponseEntity.ok(estudianteService.baja(id));
     }
 
     @PatchMapping("/reactivar/{id}")
     public ResponseEntity<EstadoEstudianteDTOResponse> reactivar(@PathVariable Long id) {
-        return ResponseEntity.ok(reactivarEstudianteUseCase.reactivarEstudianteUseCase(id));
+        return ResponseEntity.ok(estudianteService.reactivar(id));
     }
 }
