@@ -9,9 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface MateriaJpaRepository extends JpaRepository<MateriaEntity, Long> {
-    List<MateriaEntity> findByActivoTrue();
+    List<MateriaEntity> findByActivoTrueAndDeleteFechaIsNull();
 
-    Optional<MateriaEntity> findByIdAndActivoTrue(Long id);
+    Optional<MateriaEntity> findByIdAndActivoTrueAndDeleteFechaIsNull(Long id);
 
-    Optional<MateriaEntity> findByNombreAndActivoTrue(String nombre);
+    Optional<MateriaEntity> findByNombreAndActivoTrueAndDeleteFechaIsNull(String nombre);
 }
