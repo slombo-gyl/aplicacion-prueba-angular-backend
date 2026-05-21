@@ -1,11 +1,11 @@
 package backend.Aplicacion.services.materia;
 
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
-import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
+import backend.Aplicacion.dto.materia.MateriaDTORequest;
 
 public interface MateriaService {
 
-    MateriaResponseDTO crear(RegistrarMateriaDTORequest request);
+    MateriaResponseDTO crear(MateriaDTORequest request);
 
 
 }

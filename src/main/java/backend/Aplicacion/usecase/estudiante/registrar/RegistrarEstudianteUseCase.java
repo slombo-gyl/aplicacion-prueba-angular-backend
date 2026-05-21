@@ -1,6 +1,6 @@
 package backend.Aplicacion.usecase.estudiante.registrar;
 
-import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
     private final EstudianteRepositoryPort repository;
 
     @Override
-    public Long ejecutar(RegistrarEstudianteDTORequest req) {
+    public Long ejecutar(EstudianteDTORequest req) {
         EstudianteModel student = new EstudianteModel();
         student.setNombre(req.nombre());
         student.setApellido(req.apellido());

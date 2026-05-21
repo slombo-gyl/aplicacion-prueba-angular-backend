@@ -1,6 +1,6 @@
 package backend.Infraestructura.input.controller;
 
-import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
+import backend.Aplicacion.dto.materia.MateriaDTORequest;
 import backend.Aplicacion.usecase.materia.registrar.RegistrarMateriaUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class MateriaController {
 
 
     @PostMapping
-    public ResponseEntity<Long> creaMateria(@RequestBody RegistrarMateriaDTORequest req){
+    public ResponseEntity<Long> creaMateria(@RequestBody MateriaDTORequest req){
         Long id = registrarMateriaUseCase.ejecutar(req);
         return  ResponseEntity.ok(id);
     }

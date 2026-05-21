@@ -1,7 +1,7 @@
 package backend.Dominio.puertos.in.estudiante;
 
-import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
 
 public interface RegistrarEstudiante {
-    Long ejecutar (RegistrarEstudianteDTORequest req);
+    Long ejecutar (EstudianteDTORequest req);
 }

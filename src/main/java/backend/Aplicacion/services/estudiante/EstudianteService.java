@@ -1,7 +1,7 @@
 package backend.Aplicacion.services.estudiante;
 
-import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
 
 public interface EstudianteService {
-    Long registrar(RegistrarEstudianteDTORequest req);
+    Long registrar(EstudianteDTORequest req);
 }

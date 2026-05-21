@@ -1,6 +1,6 @@
 package backend.Aplicacion.dto.estudiante;
 
-public record RegistrarEstudianteDTOResponse(
+public record EstudianteDTOResponse(
         Long id,
         String nombre,
         String apellido,
