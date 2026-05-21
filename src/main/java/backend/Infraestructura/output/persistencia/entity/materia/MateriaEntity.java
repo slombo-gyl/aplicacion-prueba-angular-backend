@@ -16,8 +16,7 @@ public class MateriaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column
     private String nombre;
 
-    private int puntaje;
 }

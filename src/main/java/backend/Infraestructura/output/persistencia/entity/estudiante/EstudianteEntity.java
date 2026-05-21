@@ -18,22 +18,18 @@ public class EstudianteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 25)
     @Column(name="nombre")
     private String nombre;
 
-    @NotNull
+
     @Column(name="apellido")
     private String apellido;
 
-    @NotNull
-    @Digits(integer = 8,fraction = 0)
+
     @Column(name = "dni")
     private int dni;
 
-    @NotNull
-    @Email
+
     @Column(name = "email")
     private String email;
 }

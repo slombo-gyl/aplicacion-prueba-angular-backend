@@ -1,9 +1,9 @@
-package backend.Infraestructura.output.persistencia.adapater.studentAdapter;
+package backend.Infraestructura.output.persistencia.adapter.studentAdapter;
 
-import backend.Aplicacion.mapper.estudianteMapper.StudentMapper;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
+import backend.Infraestructura.output.persistencia.mapper.estudianteMapper.EstudianteDominioMapper;
 import backend.Infraestructura.output.persistencia.repository.estudiante.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -16,9 +16,9 @@ public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
 
     @Override
     public EstudianteModel guardar(EstudianteModel student) {
-        EstudianteEntity entity = StudentMapper.toEntity(student);
+        EstudianteEntity entity = EstudianteDominioMapper.toEntity(student);
         EstudianteEntity saved = estudianteJpaRepository.save(entity);
-        return StudentMapper.toModel(saved);
+        return EstudianteDominioMapper.toModel(saved);
     }
 
 
