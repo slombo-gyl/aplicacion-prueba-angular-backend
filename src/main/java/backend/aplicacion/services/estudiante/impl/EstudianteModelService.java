@@ -2,11 +2,13 @@ package backend.aplicacion.services.estudiante.impl;
 
 import backend.dominio.modelo.Estudiante;
 import backend.dominio.puertos.in.student.*;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class EstudianteModelService implements RegistrarEstudianteUseCase, ActualizarEstudianteUseCase, BajaEstudianteUseCase, BuscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase {
     private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
     private final ActualizarEstudianteUseCase actualizarEstudianteUseCase;
@@ -14,15 +16,6 @@ public class EstudianteModelService implements RegistrarEstudianteUseCase, Actua
     private final BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase;
     private final ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase;
     private final ReactivarEstudianteUseCase reactivarEstudianteUseCase;
-
-    public EstudianteModelService(RegistrarEstudianteUseCase registrarEstudianteUseCase, ActualizarEstudianteUseCase actualizarEstudianteUseCase, BajaEstudianteUseCase bajaEstudianteUseCase, BuscarEstudiantePorIdUseCase buscarEstudiantePorIdUseCase, ListarTodosLosEstudiantesUseCase listarTodosLosEstudiantesUseCase, ReactivarEstudianteUseCase reactivarEstudianteUseCase) {
-        this.registrarEstudianteUseCase = registrarEstudianteUseCase;
-        this.actualizarEstudianteUseCase = actualizarEstudianteUseCase;
-        this.bajaEstudianteUseCase = bajaEstudianteUseCase;
-        this.buscarEstudiantePorIdUseCase = buscarEstudiantePorIdUseCase;
-        this.listarTodosLosEstudiantesUseCase = listarTodosLosEstudiantesUseCase;
-        this.reactivarEstudianteUseCase = reactivarEstudianteUseCase;
-    }
 
     @Override
     public Estudiante actualizarEstudianteUseCase(Long id, Estudiante estudiante) {

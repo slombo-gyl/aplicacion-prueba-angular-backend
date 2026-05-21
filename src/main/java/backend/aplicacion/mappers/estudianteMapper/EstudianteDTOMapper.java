@@ -6,18 +6,19 @@ import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import backend.dominio.modelo.Estudiante;
 import org.mapstruct.Mapper;
-
-import java.util.List;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface EstudianteDTOMapper {
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "estado", ignore = true)
     Estudiante toModel(RegistrarEstudianteDTORequest dto);
 
     EstudianteDTOResponse toDto(Estudiante estudiante);
 
-    List<EstudianteDTOResponse> toDtoList(List<Estudiante> estudiantes);
-
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "estado", ignore = true)
     Estudiante updateModelFromDto(ActualizarEstudianteDTORequest dto);
 
     EstadoEstudianteDTOResponse toEstadoDto(Estudiante estudiante);

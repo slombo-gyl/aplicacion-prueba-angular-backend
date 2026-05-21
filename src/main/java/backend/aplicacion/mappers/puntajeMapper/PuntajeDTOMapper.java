@@ -21,6 +21,7 @@ public abstract class PuntajeDTOMapper {
     protected EstudianteModelService estudianteModelService;
     protected MateriaModelService materiaModelService;
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(source = "estudianteId", target = "estudiante", qualifiedByName = "mapEstudianteIdAEstudiante")
     @Mapping(source = "materiaId", target = "materia", qualifiedByName = "mapMateriaIdAMateria")
     public abstract Puntaje toModel(RegistrarPuntajeDTORequest dto);

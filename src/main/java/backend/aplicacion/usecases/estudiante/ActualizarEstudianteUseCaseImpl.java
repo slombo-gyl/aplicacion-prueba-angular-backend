@@ -28,12 +28,12 @@ public class ActualizarEstudianteUseCaseImpl implements ActualizarEstudianteUseC
         if (estudiante.getEmail() != null && !estudiante.getEmail().equals(estudianteExistente.getEmail())) {
 
             repository.findByEmail(estudiante.getEmail())
-                    .ifPresent(e -> errors.put("email", List.of("ya existe")));
+                    .ifPresent(e -> errors.put("email", List.of("Ya está registrado")));
         }
         if (estudiante.getDni() != null && !estudiante.getDni().equals(estudianteExistente.getDni())) {
 
             repository.findByDni(estudiante.getDni())
-                    .ifPresent(e -> errors.put("dni", List.of("ya existe")));
+                    .ifPresent(e -> errors.put("dni", List.of("Ya está registrado")));
         }
 
         if (!errors.isEmpty()) {

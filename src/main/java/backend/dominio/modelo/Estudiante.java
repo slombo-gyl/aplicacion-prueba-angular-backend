@@ -3,7 +3,6 @@ package backend.dominio.modelo;
 import backend.dominio.modelo.enums.Estado;
 
 public class Estudiante {
-
     private Long id;
     private String nombre;
     private String apellido;
@@ -21,7 +20,6 @@ public class Estudiante {
     }
 
     public Estudiante() {
-
     }
 
     public Long getId() {
