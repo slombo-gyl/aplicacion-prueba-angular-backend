@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ObtenerPuntajesImpl implements ObtenerPuntajesUseCase {
+public class ObtenerPuntajesUseCaseImpl implements ObtenerPuntajesUseCase {
 
     private final PuntajeJpaRepository puntajeJpaRepository;
 
