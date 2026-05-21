@@ -11,6 +11,7 @@ public class MateriaDominioMapper {
         MateriaEntity entity = new MateriaEntity();
         entity.setId(model.getId());
         entity.setNombre(model.getNombre());
+        entity.setActivo(model.isActivo());
         return entity;
     }
 
@@ -18,6 +19,7 @@ public class MateriaDominioMapper {
         MateriaModel model = new MateriaModel();
         model.setId(entity.getId());
         model.setNombre(entity.getNombre());
+        model.setActivo(entity.isActivo());
         return model;
     }
 }

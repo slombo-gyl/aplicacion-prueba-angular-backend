@@ -1,48 +1,37 @@
 package backend.Aplicacion.mapper.puntajeMapper;
 
+import backend.Aplicacion.dto.puntaje.PuntajeDTORequest;
+import backend.Aplicacion.dto.puntaje.PuntajeDTOResponse;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.modelo.MateriaModel;
 import backend.Dominio.modelo.PuntajeModel;
-import backend.Infraestructura.output.persistencia.entity.estudiante.EstudianteEntity;
-import backend.Infraestructura.output.persistencia.entity.materia.MateriaEntity;
-import backend.Infraestructura.output.persistencia.entity.puntaje.PuntajeEntity;
 
 public class PuntajeMapper {
 
-    public static PuntajeEntity toEntity(PuntajeModel model,
-                                         MateriaEntity materia,
-                                         EstudianteEntity estudiante) {
-        PuntajeEntity entity = new PuntajeEntity();
-        entity.setId(model.getId());
-        entity.setValor(model.getValor());
-        entity.setEstudiante(estudiante);
-        entity.setMateria(materia);
-        return entity;
-    }
-
-    public static PuntajeModel toModel(PuntajeEntity entity) {
+    public static PuntajeModel toModel(PuntajeDTORequest dto) {
         PuntajeModel model = new PuntajeModel();
-        model.setId(entity.getId());
-        model.setValor(entity.getValor());
+        model.setValor(dto.valor());
 
+        EstudianteModel estudiante = new EstudianteModel();
+        estudiante.setId(dto.estudianteId());
+        model.setEstudiante(estudiante);
 
-        if (entity.getEstudiante() != null) {
-            EstudianteModel estudianteModel = new EstudianteModel();
-            estudianteModel.setId(entity.getEstudiante().getId());
-            estudianteModel.setNombre(entity.getEstudiante().getNombre());
-            estudianteModel.setApellido(entity.getEstudiante().getApellido());
-            estudianteModel.setEmail(entity.getEstudiante().getEmail());
-            estudianteModel.setDni(entity.getEstudiante().getDni());
-            model.setEstudiante(estudianteModel);
-        }
-
-        if (entity.getMateria() != null) {
-            MateriaModel materiaModel = new MateriaModel();
-            materiaModel.setId(entity.getMateria().getId());
-            materiaModel.setNombre(entity.getMateria().getNombre());
-            model.setMateria(materiaModel);
-        }
+        MateriaModel materia = new MateriaModel();
+        materia.setId(dto.materiaId());
+        model.setMateria(materia);
 
         return model;
+    }
+
+    public static PuntajeDTOResponse toResponseDto(PuntajeModel model) {
+        Long estudianteId = model.getEstudiante() != null ? model.getEstudiante().getId() : null;
+        Long materiaId = model.getMateria() != null ? model.getMateria().getId() : null;
+
+        return new PuntajeDTOResponse(
+                model.getId(),
+                estudianteId,
+                materiaId,
+                model.getValor()
+        );
     }
 }

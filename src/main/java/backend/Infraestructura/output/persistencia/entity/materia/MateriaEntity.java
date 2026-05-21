@@ -19,4 +19,7 @@ public class MateriaEntity {
     @Column
     private String nombre;
 
+    @Column
+    private boolean activo = true;
+
 }

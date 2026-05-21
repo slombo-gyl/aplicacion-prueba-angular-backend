@@ -1,11 +1,21 @@
 package backend.Aplicacion.services.materia;
 
+import backend.Aplicacion.dto.materia.MateriaDTORequest;
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
-import backend.Aplicacion.dto.materia.RegistrarMateriaDTORequest;
+
+import java.util.List;
 
 public interface MateriaService {
 
-    MateriaResponseDTO crear(RegistrarMateriaDTORequest request);
+    MateriaResponseDTO create(MateriaDTORequest materiaDto);
 
+    List<MateriaResponseDTO> getAll();
 
+    MateriaResponseDTO getById(Long id);
+
+    MateriaResponseDTO getByName(String name);
+
+    MateriaResponseDTO update(Long materiaId, MateriaDTORequest materiaDtoToUpdate);
+
+    MateriaResponseDTO delete(Long id);
 }

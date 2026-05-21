@@ -2,6 +2,6 @@ package backend.Dominio.puertos.in.materia;
 
 import backend.Dominio.modelo.MateriaModel;
 
-public interface RegistrarMateria {
-    MateriaModel guardar(MateriaModel materia);
+public interface BorrarMateria {
+    MateriaModel borrado(Long id);
 }

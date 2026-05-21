@@ -1,8 +1,7 @@
 package backend.Infraestructura.input.controller;
 
-import backend.Aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
 import backend.Aplicacion.services.estudiante.EstudianteService;
-import backend.Aplicacion.usecase.estudiante.registrar.RegistrarEstudianteUseCase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,9 +18,4 @@ public class EstudianteController {
     //private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
     private final EstudianteService estudianteService;
 
-    @PostMapping
-    public ResponseEntity<Long> crearEstudiante(@Valid @RequestBody RegistrarEstudianteDTORequest req) {
-        Long id = estudianteService.registrar(req);
-        return ResponseEntity.status(HttpStatus.CREATED).body(id);
-    }
 }
