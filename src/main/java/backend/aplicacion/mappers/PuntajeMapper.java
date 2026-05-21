@@ -8,19 +8,20 @@ import backend.infraestructura.entidades.MateriaEntity;
 import backend.infraestructura.entidades.PuntajeEntity;
 
 public class PuntajeMapper {
-    public static PuntajeEntity toEntity(PuntajeModel model,
-                                         MateriaEntity materia,
-                                         EstudianteEntity estudiante) {
+    public static PuntajeEntity toEntity(PuntajeModel model, MateriaEntity materia, EstudianteEntity estudiante) {
         PuntajeEntity entity = new PuntajeEntity();
+
         entity.setId(model.getId());
         entity.setValor(model.getValor());
         entity.setEstudiante(estudiante);
         entity.setMateria(materia);
+
         return entity;
     }
 
     public static PuntajeModel toModel(PuntajeEntity entity) {
         PuntajeModel model = new PuntajeModel();
+
         model.setId(entity.getId());
         model.setValor(entity.getValor());
 

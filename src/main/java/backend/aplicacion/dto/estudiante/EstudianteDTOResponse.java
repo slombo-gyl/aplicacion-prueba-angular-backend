@@ -9,4 +9,4 @@ public record EstudianteDTOResponse (
         String email,
         int dni,
         LocalDateTime fechaBaja
-){}
+) {}

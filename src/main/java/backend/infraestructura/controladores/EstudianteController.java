@@ -33,7 +33,7 @@ public class EstudianteController {
 
     @GetMapping("buscar/{id}")
     @ResponseStatus(HttpStatus.OK)
-        public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(@PathVariable Long id){
+    public ResponseEntity<EstudianteDTOResponse> consultarEstudiante(@PathVariable Long id){
         return ResponseEntity.ok(obtenerEstudiantePorIDUseCase.ejecutar(id));
     }
 
@@ -60,7 +60,6 @@ public class EstudianteController {
     public ResponseEntity<EstudianteDTOResponse> actualizarEstudiante(@Valid @PathVariable Long id, @RequestBody EstudianteDTORequest req){
         return ResponseEntity.ok(actualizarEstudianteUseCase.ejecutar(id,req));
     }
-
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)

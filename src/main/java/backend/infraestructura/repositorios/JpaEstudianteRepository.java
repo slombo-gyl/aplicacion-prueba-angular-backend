@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface JpaEstudianteRepository extends JpaRepository<EstudianteEntity, Long> {
     List<EstudianteEntity> findByFechaBajaIsNull();
+
     List<EstudianteEntity> findByFechaBajaIsNotNull();
 }

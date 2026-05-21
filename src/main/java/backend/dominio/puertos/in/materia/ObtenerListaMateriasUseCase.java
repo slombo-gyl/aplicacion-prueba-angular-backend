@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ObtenerListaMateriasUseCase {
     List<MateriaDTOResponse> ejecutar();
+
     List<MateriaDTOResponse> ejecutar(boolean activo);
 }

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface JpaMateriaRepository extends JpaRepository<MateriaEntity, Long> {
     List<MateriaEntity> findByFechaBajaIsNull();
+
     List<MateriaEntity> findByFechaBajaIsNotNull();
 }
