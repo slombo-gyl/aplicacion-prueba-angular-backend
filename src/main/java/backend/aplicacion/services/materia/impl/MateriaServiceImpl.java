@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class MateriaServiceImpl implements MateriaService {
-
     private final MateriaModelService materiaModelService;
     private final MateriaDTOMapper materiaDTOMapper;
+
     @Override
     public MateriaResponseDTO registrar(RegistrarMateriaDTORequest request) {
         Materia nuevaMateria = materiaModelService.registrarMateria(request);

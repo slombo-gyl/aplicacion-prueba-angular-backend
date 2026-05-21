@@ -21,10 +21,10 @@ public class RegistrarEstudianteUseCaseImpl implements RegistrarEstudianteUseCas
         Map<String, List<String>> errors = new HashMap<>();
 
         repository.findByEmail(estudiante.getEmail())
-                .ifPresent(student -> errors.put("email", List.of("El email ya está registrado")));
+                .ifPresent(student -> errors.put("email", List.of("Ya está registrado")));
 
         repository.findByDni(estudiante.getDni())
-                .ifPresent(student -> errors.put("dni", List.of("El dni ya está registrado")));
+                .ifPresent(student -> errors.put("dni", List.of("Ya está registrado")));
 
         if (!errors.isEmpty()) {
             throw new ValidacionException(errors);

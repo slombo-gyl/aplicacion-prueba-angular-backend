@@ -21,7 +21,7 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
 
     @Override
     public Estudiante guardar(Estudiante estudiante) {
-        EstudianteEntity estudianteEntidad = mapper.fromDominioModel(estudiante);
+        EstudianteEntity estudianteEntidad = mapper.toEntity(estudiante);
         EstudianteEntity estudianteGuardado = estudianteJpaRepository.save(estudianteEntidad);
         return mapper.toDominioModel(estudianteGuardado);
     }
@@ -46,7 +46,7 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
 
     @Override
     public Estudiante actualizar(Estudiante estudiante) {
-        EstudianteEntity estudianteEntidad = mapper.fromDominioModel(estudiante);
+        EstudianteEntity estudianteEntidad = mapper.toEntity(estudiante);
         EstudianteEntity estudianteGuardado = estudianteJpaRepository.save(estudianteEntidad);
         return mapper.toDominioModel(estudianteGuardado);
     }
@@ -54,7 +54,7 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     @Override
     public Estudiante borrar(Estudiante estudiante) {
 
-        EstudianteEntity estudianteBorrado = estudianteJpaRepository.save(mapper.fromDominioModel(estudiante));
+        EstudianteEntity estudianteBorrado = estudianteJpaRepository.save(mapper.toEntity(estudiante));
 
         return mapper.toDominioModel(estudianteBorrado);
     }
@@ -62,7 +62,7 @@ public class EstudianteModelAdapter implements EstudianteModelPort {
     @Override
     public Estudiante reactivar(Estudiante estudiante) {
 
-        EstudianteEntity estudianteReactivado = estudianteJpaRepository.save(mapper.fromDominioModel(estudiante));
+        EstudianteEntity estudianteReactivado = estudianteJpaRepository.save(mapper.toEntity(estudiante));
 
         return mapper.toDominioModel(estudianteReactivado);
     }
