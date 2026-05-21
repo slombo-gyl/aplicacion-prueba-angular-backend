@@ -1,8 +1,8 @@
 package backend.dominio.puertos.in.student;
 
-import backend.aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.dominio.modelo.Estudiante;
 
 public interface BuscarEstudiantePorIdUseCase {
 
-    EstudianteDTOResponse buscarEstudiantePorIdUseCase(Long id);
+    Estudiante buscarEstudiantePorIdUseCase(Long id);
 }

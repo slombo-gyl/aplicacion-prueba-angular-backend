@@ -1,7 +1,5 @@
 package backend.infraestructura.exception;
 
-
-
 import backend.aplicacion.utils.response.ErrorResponse;
 
 import jakarta.servlet.http.HttpServletRequest;

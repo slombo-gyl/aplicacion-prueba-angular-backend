@@ -1,7 +1,7 @@
 package backend.dominio.puertos.in.student;
 
-import backend.aplicacion.dto.estudiante.EstadoEstudianteDTOResponse;
+import backend.dominio.modelo.Estudiante;
 
 public interface BajaEstudianteUseCase {
-    EstadoEstudianteDTOResponse bajaEstudianteUseCase(Long id);
+    Estudiante bajaEstudianteUseCase(Long id);
 }

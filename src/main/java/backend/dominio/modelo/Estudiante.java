@@ -1,6 +1,5 @@
 package backend.dominio.modelo;
 
-
 import backend.dominio.modelo.enums.Estado;
 
 public class Estudiante {

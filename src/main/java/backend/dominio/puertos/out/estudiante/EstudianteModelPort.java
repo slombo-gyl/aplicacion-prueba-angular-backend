@@ -10,4 +10,7 @@ public interface EstudianteModelPort {
     Optional<Estudiante> obtenerPorId(Long id);
     List<Estudiante> obtenerTodosLosEstudiantesActivos();
     Optional<Estudiante> obtenerActivoPorId(Long id);
+    Estudiante actualizar(Long id, Estudiante estudiante);
+    Estudiante borrar(Long id);
+    Estudiante reactivarPorId(Long id);
 }

@@ -12,12 +12,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ListarTodasLasMateriasUseCaseImpl implements ListarTodasLasMateriasUseCase {
-
     private final MateriaModelPort repository;
+    private final MateriaDTOMapper mapper;
 
     @Override
     public List<MateriaResponseDTO> ejecutar() {
         return repository.obtenerTodasLasMateriasActivas().
-                stream().map(MateriaDTOMapper::toDTOResponse).toList();
+                stream().map(mapper::toDto).toList();
     }
 }

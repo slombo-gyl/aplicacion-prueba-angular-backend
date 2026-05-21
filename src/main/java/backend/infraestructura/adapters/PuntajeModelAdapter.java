@@ -23,16 +23,21 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
 
     @Override
     public Puntaje guardar(Puntaje puntaje, Long materiaId, Long estudianteId) {
-
-        EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
-                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
-
-        MateriaEntity materia = materiaJpaRepository.findById(materiaId)
-                .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
-
-        PuntajeEntity entity = PuntajeDTOMapper.toEntity(puntaje, materia, estudiante);
-        PuntajeEntity saved = puntajeJpaRepository.save(entity);
-
-        return PuntajeDTOMapper.toModel(saved);
+        return null;
     }
+
+//    @Override
+//    public Puntaje guardar(Puntaje puntaje, Long materiaId, Long estudianteId) {
+//
+//        EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
+//                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+//
+//        MateriaEntity materia = materiaJpaRepository.findById(materiaId)
+//                .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
+//
+//        PuntajeEntity entity = mapper.toEntity(puntaje, materia, estudiante);
+//        PuntajeEntity saved = puntajeJpaRepository.save(entity);
+//
+//        return mapper.toModel(saved);
+//    }
 }
