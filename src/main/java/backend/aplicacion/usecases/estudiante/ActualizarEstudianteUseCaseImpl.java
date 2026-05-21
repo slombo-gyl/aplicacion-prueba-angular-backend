@@ -22,18 +22,23 @@ public class ActualizarEstudianteUseCaseImpl implements ActualizarEstudianteUseC
     public Estudiante actualizarEstudianteUseCase(Long id, Estudiante estudiante) {
         Map<String, List<String>> errors = new HashMap<>();
 
-        repository.findByEmail(estudiante.getEmail())
-                .ifPresent(student -> errors.put("email", List.of("El email ya está registrado")));
+        Estudiante estudianteExistente = repository.obtenerActivoPorId(id)
+                .orElseThrow(() -> new NoEncontradoException("No se encontró un estudiante"));
 
-        repository.findByDni(estudiante.getDni())
-                .ifPresent(student -> errors.put("dni", List.of("El dni ya está registrado")));
+        if (estudiante.getEmail() != null && !estudiante.getEmail().equals(estudianteExistente.getEmail())) {
+
+            repository.findByEmail(estudiante.getEmail())
+                    .ifPresent(e -> errors.put("email", List.of("ya existe")));
+        }
+        if (estudiante.getDni() != null && !estudiante.getDni().equals(estudianteExistente.getDni())) {
+
+            repository.findByDni(estudiante.getDni())
+                    .ifPresent(e -> errors.put("dni", List.of("ya existe")));
+        }
 
         if (!errors.isEmpty()) {
             throw new ValidacionException(errors);
         }
-
-        Estudiante estudianteExistente = repository.obtenerActivoPorId(id)
-                .orElseThrow(() -> new NoEncontradoException("No se encontró un estudiante"));
 
         Optional.ofNullable(estudiante.getNombre()).ifPresent(estudianteExistente::setNombre);
 
