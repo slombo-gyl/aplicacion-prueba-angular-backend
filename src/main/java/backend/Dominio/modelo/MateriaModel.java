@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 public class MateriaModel {
 
     private Long id;
-    private  String nombre;
+    private String nombre;
 
 
     public MateriaModel(String nombre){
