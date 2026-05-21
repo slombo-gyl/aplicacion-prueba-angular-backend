@@ -1,4 +1,4 @@
-package backend.Aplicacion.usecase.puntaje.Obtener;
+package backend.Aplicacion.usecase.puntaje;
 
 import backend.Aplicacion.dto.puntaje.PuntajesDTOResponse;
 import backend.Infraestructura.output.persistencia.repository.puntaje.PuntajeJpaRepository;

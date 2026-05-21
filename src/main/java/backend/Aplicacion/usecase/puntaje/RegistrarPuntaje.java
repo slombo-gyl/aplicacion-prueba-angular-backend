@@ -1,4 +1,4 @@
-package backend.Aplicacion.usecase.puntaje.registrar;
+package backend.Aplicacion.usecase.puntaje;
 
 import backend.Aplicacion.dto.puntaje.PuntajeDTORequest;
 import backend.Aplicacion.dto.puntaje.PuntajeDTOResponse;

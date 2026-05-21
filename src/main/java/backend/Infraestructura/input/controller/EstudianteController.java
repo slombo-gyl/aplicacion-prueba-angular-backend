@@ -18,9 +18,4 @@ public class EstudianteController {
     //private final RegistrarEstudianteUseCase registrarEstudianteUseCase;
     private final EstudianteService estudianteService;
 
-    @PostMapping
-    public ResponseEntity<Long> crearEstudiante(@Valid @RequestBody EstudianteDTORequest req) {
-        Long id = estudianteService.registrar(req);
-        return ResponseEntity.status(HttpStatus.CREATED).body(id);
-    }
 }

@@ -1,6 +1,8 @@
-package backend.Aplicacion.usecase.estudiante.registrar;
+package backend.Aplicacion.usecase.estudiante;
 
 import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
+import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.Aplicacion.mapper.estudianteMapper.EstudianteMapper;
 import backend.Dominio.modelo.EstudianteModel;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.AllArgsConstructor;
@@ -14,7 +16,7 @@ public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
     private final EstudianteRepositoryPort repository;
 
     @Override
-    public Long ejecutar(EstudianteDTORequest req) {
+    public EstudianteDTOResponse ejecutar(EstudianteDTORequest req) {
         EstudianteModel student = new EstudianteModel();
         student.setNombre(req.nombre());
         student.setApellido(req.apellido());
@@ -22,6 +24,7 @@ public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
         student.setDni(req.dni());
 
         EstudianteModel saved = repository.guardar(student);
-        return saved.getId();
+        EstudianteDTOResponse dto = EstudianteMapper.toResponseDto(saved);
+        return dto;
     }
 }

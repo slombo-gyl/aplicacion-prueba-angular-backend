@@ -1,10 +1,14 @@
 package backend.Dominio.puertos.in.materia;
 
-import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Dominio.modelo.MateriaModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ListarMateria {
-    List<MateriaResponseDTO> ejecutar();
+    List<MateriaModel> listarTodas();
+
+    Optional<MateriaModel> buscarPorId(Long id);
+
+    Optional<MateriaModel> buscarPorNombre(String nombre);
 }
