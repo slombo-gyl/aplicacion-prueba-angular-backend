@@ -9,6 +9,7 @@ import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.dominio.puertos.out.materia.MateriaModelPort;
 import backend.dominio.puertos.out.puntaje.PuntajeModelPort;
 import backend.infraestructura.exception.NoEncontradoException;
+import backend.infraestructura.exception.ValidarPuntajeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +46,9 @@ public class RegistrarPuntajeUseCaseImpl implements RegistrarPuntajeUseCase {
 
     private void validar(Double valor) {
         if (valor < 0 || valor > 10) {
-            throw new IllegalArgumentException("El puntaje debe estar entre 0 y 10");
+            throw new ValidarPuntajeException(
+                    "El puntaje debe estar entre 0 y 10"
+            );
         }
     }
 }

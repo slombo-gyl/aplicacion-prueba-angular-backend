@@ -4,7 +4,6 @@ import backend.dominio.modelo.Estudiante;
 import backend.dominio.modelo.enums.Estado;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
 import backend.infraestructura.entities.EstudianteEntity;
-import backend.infraestructura.exception.NoEncontradoException;
 import backend.infraestructura.mappers.EstudianteDominioMapper;
 import backend.infraestructura.repositories.EstudianteJpaRepository;
 import lombok.AllArgsConstructor;
@@ -12,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

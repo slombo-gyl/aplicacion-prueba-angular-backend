@@ -7,8 +7,6 @@ import backend.aplicacion.dto.estudiante.RegistrarEstudianteDTORequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-
 public interface EstudianteService {
     EstudianteDTOResponse registrar(RegistrarEstudianteDTORequest estudianteDto);
     Page<EstudianteDTOResponse> listarTodosLosEstudiantes(Pageable pageable);

@@ -2,7 +2,6 @@ package backend.aplicacion.usecases.puntaje;
 
 import backend.aplicacion.dto.puntaje.MateriaNotasDTOResponse;
 import backend.aplicacion.mappers.puntajeMapper.PuntajeDTOMapper;
-import backend.dominio.modelo.Estudiante;
 import backend.dominio.modelo.Puntaje;
 import backend.dominio.puertos.in.puntaje.ObtenerPuntajesPorEstudianteUseCase;
 import backend.dominio.puertos.out.estudiante.EstudianteModelPort;
