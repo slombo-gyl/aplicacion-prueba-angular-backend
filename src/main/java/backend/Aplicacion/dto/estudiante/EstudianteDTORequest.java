@@ -1,9 +1,6 @@
 package backend.Aplicacion.dto.estudiante;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public record EstudianteDTORequest(
         @NotNull(message = "Nombre es requerido")
@@ -19,7 +16,7 @@ public record EstudianteDTORequest(
         String email,
 
         @NotNull(message = "Dni es requerido")
-        @Pattern(regexp = "^\\d{8}$", message = "Numero de DNI invalido")
-        int dni
+        @Digits(integer = 8, fraction = 0, message = "Numero de DNI invalido")
+        Integer dni
 ) {
 }

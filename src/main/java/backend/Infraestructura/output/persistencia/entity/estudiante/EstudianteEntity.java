@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @Data
@@ -32,4 +34,10 @@ public class EstudianteEntity {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "INSERT_FECHA")
+    private LocalDateTime insertFecha;
+
+    @Column(name = "DELETE_FECHA")
+    private LocalDateTime deleteFecha;
 }
