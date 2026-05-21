@@ -1,6 +1,8 @@
 package backend.Dominio.modelo;
 
 
+import java.time.LocalDateTime;
+
 public class EstudianteModel {
 
     private Long id;
@@ -8,6 +10,8 @@ public class EstudianteModel {
     private String apellido;
     private String email;
     private int dni;
+    private LocalDateTime insertFecha;
+    private LocalDateTime deleteFecha;
 
     public Long getId() {
         return id;
@@ -48,4 +52,13 @@ public class EstudianteModel {
     public void setDni(int dni) {
         this.dni = dni;
     }
+
+    public LocalDateTime getInsertFecha() { return insertFecha; }
+
+    public void setInsertFecha(LocalDateTime insertFecha) { this.insertFecha = insertFecha; }
+
+    public LocalDateTime getDeleteFecha() { return deleteFecha; }
+
+    public void setDeleteFecha(LocalDateTime deleteFecha) { this.deleteFecha = deleteFecha; }
+
 }

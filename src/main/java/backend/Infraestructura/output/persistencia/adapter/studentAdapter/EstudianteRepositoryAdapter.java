@@ -8,6 +8,9 @@ import backend.Infraestructura.output.persistencia.repository.estudiante.Estudia
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 @AllArgsConstructor
 public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
@@ -19,6 +22,41 @@ public class EstudianteRepositoryAdapter implements EstudianteRepositoryPort {
         EstudianteEntity entity = EstudianteDominioMapper.toEntity(student);
         EstudianteEntity saved = estudianteJpaRepository.save(entity);
         return EstudianteDominioMapper.toModel(saved);
+    }
+
+    @Override
+    public List<EstudianteModel> listarTodos() {
+        return estudianteJpaRepository.findByDeleteFechaIsNull()
+                .stream()
+                .map(EstudianteDominioMapper::toModel)
+                .toList();
+    }
+
+    @Override
+    public Optional<EstudianteModel> buscarPorId(Long id) {
+        return estudianteJpaRepository.findByIdAndDeleteFechaIsNull(id)
+                .map(EstudianteDominioMapper::toModel);
+    }
+
+
+    @Override
+    public EstudianteModel actualizar(EstudianteModel estudiante) {
+        EstudianteEntity entity = EstudianteDominioMapper.toEntity(estudiante);
+        EstudianteEntity saved = estudianteJpaRepository.save(entity);
+        return EstudianteDominioMapper.toModel(saved);
+    }
+
+
+    @Override
+    public EstudianteModel borrar(Long id) {
+        return null;
+    }
+
+
+    @Override
+    public Optional<EstudianteModel> buscarPorIdIncluyendoBorrados(Long id) {
+        return estudianteJpaRepository.findById(id)
+                .map(EstudianteDominioMapper::toModel);
     }
 
 

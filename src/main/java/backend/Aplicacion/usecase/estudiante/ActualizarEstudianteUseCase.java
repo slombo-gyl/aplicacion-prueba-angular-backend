@@ -1,22 +1,19 @@
 package backend.Aplicacion.usecase.estudiante;
 
 import backend.Dominio.modelo.EstudianteModel;
-import backend.Dominio.puertos.in.estudiante.RegistrarEstudiante;
+import backend.Dominio.puertos.in.estudiante.ActualizarEstudiante;
 import backend.Dominio.puertos.out.estudiante.EstudianteRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 @AllArgsConstructor
-public class RegistrarEstudianteUseCase implements RegistrarEstudiante {
+public class ActualizarEstudianteUseCase implements ActualizarEstudiante {
 
     private final EstudianteRepositoryPort estudianteRepositoryPort;
 
     @Override
-    public EstudianteModel guardar(EstudianteModel estudiante) {
-        estudiante.setInsertFecha(LocalDateTime.now());
-        return estudianteRepositoryPort.guardar(estudiante);
+    public EstudianteModel actualizar(EstudianteModel estudiante) {
+        return estudianteRepositoryPort.actualizar(estudiante);
     }
 }

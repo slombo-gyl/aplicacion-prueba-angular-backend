@@ -1,7 +1,7 @@
 package backend.Dominio.puertos.in.estudiante;
 
-import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
+import backend.Dominio.modelo.EstudianteModel;
 
 public interface BorrarEstudiante {
-    EstudianteDTOResponse ejecutar (Long id);
+    EstudianteModel borrar(Long id);
 }
