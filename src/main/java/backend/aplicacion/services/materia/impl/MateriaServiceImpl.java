@@ -1,5 +1,6 @@
 package backend.aplicacion.services.materia.impl;
 
+import backend.aplicacion.dto.materia.MateriaDetalleResponseDTO;
 import backend.aplicacion.dto.materia.MateriaResponseDTO;
 import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
@@ -51,5 +52,10 @@ public class MateriaServiceImpl implements MateriaService {
     public MateriaResponseDTO restaurar(Long id) {
         Materia materiaRestaurada = materiaModelService.restaurarMateria(id);
         return materiaDTOMapper.toDto(materiaRestaurada);
+    }
+
+    @Override
+    public List<MateriaDetalleResponseDTO> listarMateriasConDetalles() {
+        return materiaModelService.listarMateriasConDetalle();
     }
 }

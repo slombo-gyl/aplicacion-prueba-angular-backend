@@ -1,5 +1,6 @@
 package backend.aplicacion.services.materia.impl;
 
+import backend.aplicacion.dto.materia.MateriaDetalleResponseDTO;
 import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
 import backend.dominio.modelo.Materia;
@@ -11,13 +12,14 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class MateriaModelService implements BuscarMateriaPorIdUseCase, EliminarMateriaUseCase, ListarTodasLasMateriasUseCase, ModificarMateriaUseCase, RegistrarMateriaUseCase, RestaurarMateriaUseCase {
+public class MateriaModelService implements BuscarMateriaPorIdUseCase, EliminarMateriaUseCase, ListarTodasLasMateriasUseCase, ModificarMateriaUseCase, RegistrarMateriaUseCase, RestaurarMateriaUseCase, ListarMateriasConDetalleUseCase {
     private final BuscarMateriaPorIdUseCase buscarMateriaPorIdUseCase;
     private final EliminarMateriaUseCase eliminarMateriaUseCase;
     private final ListarTodasLasMateriasUseCase listarTodasLasMateriasUseCase;
     private final ModificarMateriaUseCase modificarMateriaUseCase;
     private final RegistrarMateriaUseCase registrarMateriaUseCase;
     private final RestaurarMateriaUseCase restaurarMateriaUseCase;
+    private final ListarMateriasConDetalleUseCase listarMateriasConDetalleUseCase;
 
     @Override
     public Materia buscarMateriaPorId(Long id) {
@@ -47,5 +49,10 @@ public class MateriaModelService implements BuscarMateriaPorIdUseCase, EliminarM
     @Override
     public Materia restaurarMateria(Long id) {
         return restaurarMateriaUseCase.restaurarMateria(id);
+    }
+
+    @Override
+    public List<MateriaDetalleResponseDTO> listarMateriasConDetalle() {
+        return listarMateriasConDetalleUseCase.listarMateriasConDetalle();
     }
 }

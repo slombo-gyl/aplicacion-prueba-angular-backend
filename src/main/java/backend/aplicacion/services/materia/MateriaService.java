@@ -1,5 +1,6 @@
 package backend.aplicacion.services.materia;
 
+import backend.aplicacion.dto.materia.MateriaDetalleResponseDTO;
 import backend.aplicacion.dto.materia.MateriaResponseDTO;
 import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
@@ -14,4 +15,5 @@ public interface MateriaService {
     MateriaResponseDTO actualizar(Long id, ModificarMateriaDTORequest request);
     MateriaResponseDTO eliminar(Long id);
     MateriaResponseDTO restaurar(Long id);
+    List<MateriaDetalleResponseDTO> listarMateriasConDetalles();
 }

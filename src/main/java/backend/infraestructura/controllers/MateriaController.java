@@ -1,5 +1,6 @@
 package backend.infraestructura.controllers;
 
+import backend.aplicacion.dto.materia.MateriaDetalleResponseDTO;
 import backend.aplicacion.dto.materia.MateriaResponseDTO;
 import backend.aplicacion.dto.materia.ModificarMateriaDTORequest;
 import backend.aplicacion.dto.materia.RegistrarMateriaDTORequest;
@@ -56,5 +57,11 @@ public class MateriaController {
     public ResponseEntity<MateriaResponseDTO> restaurarMateria(@PathVariable Long id) {
         MateriaResponseDTO materiaRestaurada = materiaService.restaurar(id);
         return ResponseEntity.ok(materiaRestaurada);
+    }
+
+    @GetMapping("/detalles")
+    public ResponseEntity<List<MateriaDetalleResponseDTO>> listarMateriasConDetalles() {
+        List<MateriaDetalleResponseDTO> respuesta = materiaService.listarMateriasConDetalles();
+        return ResponseEntity.ok(respuesta);
     }
 }

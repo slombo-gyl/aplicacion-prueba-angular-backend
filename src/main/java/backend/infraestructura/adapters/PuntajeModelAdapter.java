@@ -31,4 +31,12 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
                 .map(mapper::toDominioModel)
                 .toList();
     }
+
+    @Override
+    public List<Puntaje> obtenerPorMateriaId(Long id) {
+        return puntajeJpaRepository.findAllByMateriaId(id)
+                .stream()
+                .map(mapper::toDominioModel)
+                .toList();
+    }
 }
