@@ -7,6 +7,6 @@ public record PuntajeDTOResponse(
         Long estudianteId,
         Long materiaId,
         double valor,
-        LocalDateTime fechaInsert
+        LocalDateTime insertFecha
 ) {
 }

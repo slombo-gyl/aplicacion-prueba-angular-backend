@@ -7,8 +7,8 @@ public record MateriaResponseDTO(
 
         Long id,
         String nombre,
-        LocalDateTime fechaInsert,
-        LocalDateTime fechaDelete
+        LocalDateTime insertFecha,
+        LocalDateTime deleteFecha
 
 ) {
 }
