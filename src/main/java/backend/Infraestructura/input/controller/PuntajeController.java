@@ -23,9 +23,9 @@ public class PuntajeController {
         return ResponseEntity.ok(puntajeService.create(request));
     }
 
-    @GetMapping("/estudiante/{estudianteId}")
-    public ResponseEntity<List<PuntajeDTOResponse>> listarPorEstudiante(@PathVariable Long estudianteId) {
-        return ResponseEntity.ok(puntajeService.getByEstudianteId(estudianteId));
+    @GetMapping
+    public ResponseEntity<List<PuntajeDTOResponse>> listarPorEstudiante() {
+        return ResponseEntity.ok(puntajeService.listarTodos());
     }
 
     @PutMapping("/{id}")

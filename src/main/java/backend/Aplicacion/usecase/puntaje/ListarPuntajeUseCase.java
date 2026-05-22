@@ -18,8 +18,8 @@ public class ListarPuntajeUseCase implements ListarPuntaje {
     private final PuntajeRepositoryPort puntajeRepository;
 
     @Override
-    public List<PuntajeModel> buscarPorEstudiante(Long estudianteId){
-        return puntajeRepository.buscarPorEstudiante(estudianteId);
+    public List<PuntajeModel> listarTodos(){
+        return puntajeRepository.listarTodos();
     }
 
 }
