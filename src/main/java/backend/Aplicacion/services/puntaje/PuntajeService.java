@@ -8,7 +8,7 @@ import java.util.List;
 public interface PuntajeService {
 
     PuntajeDTOResponse create(PuntajeDTORequest puntajeDto);
-
+    List<PuntajeDTOResponse> getByEstudianteId(Long estudianteId);
     List<PuntajeDTOResponse> listarTodos();
 
     PuntajeDTOResponse update(Long puntajeId, PuntajeDTORequest puntajeDtoToUpdate);

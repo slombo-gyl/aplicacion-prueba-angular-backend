@@ -8,6 +8,8 @@ public interface PuntajeRepositoryPort {
 
     PuntajeModel guardar(PuntajeModel puntaje,Long materiaId, Long estudianteId);
 
+    List<PuntajeModel> buscarPorEstudiante (Long estudianteId);
+
     List<PuntajeModel> listarTodos ();
 
     PuntajeModel actualizar(PuntajeModel puntaje);

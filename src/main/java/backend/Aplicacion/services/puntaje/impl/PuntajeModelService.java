@@ -20,7 +20,9 @@ public class PuntajeModelService {
     public PuntajeModel guardar(PuntajeModel puntaje, Long materiaId, Long estudianteId) {
         return registrarPuntajeUseCase.guardar(puntaje, materiaId, estudianteId);
     }
-
+    public List<PuntajeModel> buscarPorEstudiante(Long estudianteId) {
+        return listarPuntajeUseCase.buscarPorEstudiante(estudianteId);
+    }
     public List<PuntajeModel> listarTodos() {
         return listarPuntajeUseCase.listarTodos();
     }

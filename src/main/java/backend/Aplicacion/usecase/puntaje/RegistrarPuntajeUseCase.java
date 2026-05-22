@@ -19,4 +19,5 @@ public class RegistrarPuntajeUseCase implements RegistrarPuntaje {
     @Override
     public PuntajeModel guardar(PuntajeModel puntajeModel, Long materiaId, Long estudianteId){ return puntajeRepositoryPort.
             guardar(puntajeModel, materiaId, estudianteId); }
+
 }

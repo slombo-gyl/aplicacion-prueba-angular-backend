@@ -22,4 +22,8 @@ public class ListarPuntajeUseCase implements ListarPuntaje {
         return puntajeRepository.listarTodos();
     }
 
+    @Override
+    public List<PuntajeModel> buscarPorEstudiante(Long estudianteId){
+        return puntajeRepository.buscarPorEstudiante(estudianteId);
+    }
 }

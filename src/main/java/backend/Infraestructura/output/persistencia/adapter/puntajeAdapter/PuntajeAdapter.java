@@ -43,6 +43,16 @@ public class PuntajeAdapter implements PuntajeRepositoryPort {
     }
 
     @Override
+    public List<PuntajeModel> buscarPorEstudiante(Long estudianteId) {
+        EstudianteEntity estudiante = estudianteJpaRepository.findById(estudianteId)
+            .orElseThrow(() -> new GenericErrorException("Estudiante no encontrado"));
+        return puntajeJpaRepository.findByEstudianteId(estudianteId).
+            stream().
+            map(PuntajeDominioMapper::toModel).
+            toList();
+    }
+
+    @Override
     public List<PuntajeModel> listarTodos() {
         return puntajeJpaRepository.findAll().
                 stream().
