@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ListarPuntaje {
 
-    List<PuntajeModel> buscarPorEstudiante (Long estudianteId);
+    List<PuntajeModel> listarTodos ();
 
 }

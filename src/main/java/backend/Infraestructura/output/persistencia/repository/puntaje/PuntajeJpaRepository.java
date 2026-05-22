@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface PuntajeJpaRepository extends JpaRepository<PuntajeEntity,Long> {
-    List<PuntajeEntity> findByEstudianteId (Long estudianteId);
 }

@@ -32,8 +32,8 @@ public class PuntajeServiceImpl implements PuntajeService {
     }
 
     @Override
-    public List<PuntajeDTOResponse> getByEstudianteId(Long estudianteId) {
-        return puntajeModelService.buscarPorEstudiante(estudianteId)
+    public List<PuntajeDTOResponse> listarTodos() {
+        return puntajeModelService.listarTodos()
                 .stream()
                 .map(PuntajeMapper::toResponseDto)
                 .toList();
