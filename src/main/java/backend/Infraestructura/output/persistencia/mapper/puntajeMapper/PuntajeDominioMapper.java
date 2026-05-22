@@ -26,6 +26,7 @@ public class PuntajeDominioMapper {
         PuntajeModel model = new PuntajeModel();
         model.setId(entity.getId());
         model.setValor(entity.getValor());
+        model.setInsertFecha(entity.getInsertFecha());
 
 
         if (entity.getEstudiante() != null) {

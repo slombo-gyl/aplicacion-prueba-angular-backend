@@ -3,21 +3,17 @@ package backend.Aplicacion.mapper.materiaMapper;
 import backend.Aplicacion.dto.materia.MateriaDTORequest;
 import backend.Aplicacion.dto.materia.MateriaResponseDTO;
 import backend.Dominio.modelo.MateriaModel;
+import org.mapstruct.Mapper;
 
-public class MateriaMapper {
+import java.util.List;
 
-    public static MateriaModel toModel(MateriaDTORequest dto) {
-        MateriaModel model = new MateriaModel();
-        model.setNombre(dto.nombre());
-        return model;
-    }
+@Mapper(componentModel = "spring")
+public abstract class MateriaMapper {
 
-    public static MateriaResponseDTO toResponseDto(MateriaModel model) {
-        return new MateriaResponseDTO(
-                model.getId(),
-                model.getNombre(),
-                model.getInsertFecha(),
-                model.getDeleteFecha()
-        );
-    }
+    public abstract MateriaModel toModel(MateriaDTORequest dto);
+
+    public abstract MateriaResponseDTO toResponseDto(MateriaModel model);
+
+    public abstract List<MateriaResponseDTO> toResponseDtoList(List<MateriaModel> models);
+
 }
