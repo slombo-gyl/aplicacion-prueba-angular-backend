@@ -1,0 +1,596 @@
+{
+  "info": {
+    "_postman_id": "de255b4b-83a8-4415-b2ff-b8628afd3b50",
+    "name": "Al Angular Pa",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54262924",
+    "_collection_link": "https://go.postman.co/collection/54262924-de255b4b-83a8-4415-b2ff-b8628afd3b50?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Estudiantes",
+      "item": [
+        {
+          "name": "Obtener Estudiantes",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Nuevo Estudiante",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Capturar el número de la respuesta",
+                  "const id = pm.response.text();",
+                  "",
+                  "pm.collectionVariables.set(\"lastIDEstudianteCreated\", id);",
+                  "",
+                  "console.log(\"ID capturado:\", id);",
+                  "console.log(\"Se almacena como variable de coleccion:\", pm.collectionVariables.get(\"lastIDEstudianteCreated\"));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNZXRhOTEiLCJleHAiOjE3Nzg2ODkyNTR9.pT2GVVBuQs_0Sh7M8sjBFqaRcJhrOu4NtwJxsHxpbfw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"{{$randomFirstName}}\",\r\n    \"apellido\": \"{{$randomLastName}}\",\r\n    \"dni\": {{randomDni}},\r\n    \"email\": \"{{$randomEmail}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{8080}}/api/students",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Estudiante Creado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/students/buscar/{{lastIDCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                "buscar",
+                "{{lastIDCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar Estudiante",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNZXRhOTEiLCJleHAiOjE3Nzg2ODkyNTR9.pT2GVVBuQs_0Sh7M8sjBFqaRcJhrOu4NtwJxsHxpbfw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"{{$randomFirstName}}\",\r\n    \"apellido\": \"{{$randomLastName}}\",\r\n    \"dni\": {{randomDni}},\r\n    \"email\": \"{{$randomUserName}}@modificado.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{8080}}/api/students/{{lastIDEstudianteCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                "{{lastIDEstudianteCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Borrar Estudiante",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/students/{{lastIDEstudianteCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                "{{lastIDEstudianteCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Estudiantes Inactivos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/students/inactivos",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                "inactivos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Estudiantes DataBase",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/students/todo",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "students",
+                "todo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Materias",
+      "item": [
+        {
+          "name": "Obtener Materias",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Nueva Materia",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "// Capturar el número de la respuesta",
+                  "const id = pm.response.text();",
+                  "",
+                  "pm.collectionVariables.set(\"lastIDMateriaCreated\", id);",
+                  "",
+                  "console.log(\"ID capturado:\", id);",
+                  "console.log(\"Se almacena como variable de coleccion:\", pm.collectionVariables.get(\"lastIDMateriaCreated\"));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNZXRhOTEiLCJleHAiOjE3Nzg2ODkyNTR9.pT2GVVBuQs_0Sh7M8sjBFqaRcJhrOu4NtwJxsHxpbfw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"{{randomMateria}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{8080}}/api/materias",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Materia Creada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/materias/buscar/{{lastIDMateriaCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias",
+                "buscar",
+                "{{lastIDMateriaCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Modificar Materia",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNZXRhOTEiLCJleHAiOjE3Nzg2ODkyNTR9.pT2GVVBuQs_0Sh7M8sjBFqaRcJhrOu4NtwJxsHxpbfw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nombre\": \"Introducción a {{randomMateria}}\" \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{8080}}/api/materias/{{lastIDMateriaCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias",
+                "{{lastIDMateriaCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Borrar Materia",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/materias/{{lastIDMateriaCreated}}",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias",
+                "{{lastIDMateriaCreated}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Materias Inactivas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/materias/inactivos",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias",
+                "inactivos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Materias DataBase",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/materias/todo",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "materias",
+                "todo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Notas",
+      "item": [
+        {
+          "name": "Obtener Chart",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{8080}}/api/puntajes/chart",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "puntajes",
+                "chart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cargar Materia A Estudiante",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNZXRhOTEiLCJleHAiOjE3Nzg2ODkyNTR9.pT2GVVBuQs_0Sh7M8sjBFqaRcJhrOu4NtwJxsHxpbfw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"estudianteId\": {{lastIDEstudianteCreated}},\r\n    \"materiaId\": {{lastIDMateriaCreated}},\r\n    \"valor\": {{randomValor1a10}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{8080}}/api/puntajes",
+              "host": [
+                "{{8080}}"
+              ],
+              "path": [
+                "api",
+                "puntajes"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Generar un número aleatorio de 8 dígitos\r",
+          "const random8Digits = Math.floor(10000000 + Math.random() * 90000000);\r",
+          "\r",
+          "// Guardar como variable local de la request\r",
+          "pm.variables.set(\"randomDni\", random8Digits);\r",
+          "\r",
+          "const materias = [\r",
+          "    \"Matemática\",\r",
+          "    \"Lengua y Literatura\",\r",
+          "    \"Historia\",\r",
+          "    \"Geografía\",\r",
+          "    \"Biología\",\r",
+          "    \"Física\",\r",
+          "    \"Química\",\r",
+          "    \"Panaderia\",\r",
+          "    \"Educación Física\",\r",
+          "    \"Inglés\",\r",
+          "    \"Informática\",\r",
+          "    \"Tecnología\",\r",
+          "    \"Filosofía\",\r",
+          "    \"Psicología\",\r",
+          "    \"Economía\",\r",
+          "    \"Contabilidad\",\r",
+          "    \"Arte\",\r",
+          "    \"Música\",\r",
+          "    \"Programación\",\r",
+          "    \"Robótica\",\r",
+          "    \"Emprendimiento\"\r",
+          "];\r",
+          "\r",
+          "// Seleccionar una materia aleatoria\r",
+          "const materiaRandom = materias[Math.floor(Math.random() * materias.length)];\r",
+          "\r",
+          "// Guardar en variable de Postman\r",
+          "pm.variables.set(\"randomMateria\", `${materiaRandom} ${Math.floor(Math.random()*5)}`);\r",
+          "\r",
+          "pm.variables.set(\"randomValor1a10\", Math.floor(Math.random()*10)+1)"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "8080",
+      "value": ""
+    },
+    {
+      "key": "lastIDMateriaCreated",
+      "value": ""
+    },
+    {
+      "key": "lastIDEstudianteCreated",
+      "value": ""
+    }
+  ]
+}
