@@ -17,7 +17,6 @@ public class GlobalExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    // GENERIC ERROR
     @ExceptionHandler(GenericErrorException.class)
     public ResponseEntity<ErrorResponse> genericErrorHandler(GenericErrorException ex) {
         ErrorResponse error = new ErrorResponse(
@@ -28,7 +27,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    // GENERIC NO CONTENT
     @ExceptionHandler(GenericNoContentException.class)
     public ResponseEntity<ErrorResponse> genericNotFoundHandler(GenericNoContentException ex) {
         String errorMessage = "NO CONTENT - " + ex.getMessage();
@@ -40,7 +38,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.OK);
     }
 
-    // @NotNull @NotBlank @Size
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> fieldInformationValidationHandler(MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult().getAllErrors().stream()

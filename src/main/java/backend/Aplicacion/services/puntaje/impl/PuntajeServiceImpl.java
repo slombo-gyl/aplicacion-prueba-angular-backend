@@ -18,33 +18,34 @@ import java.util.List;
 public class PuntajeServiceImpl implements PuntajeService {
 
     private final PuntajeModelService puntajeModelService;
+    private final PuntajeMapper puntajeMapper;
 
     @Override
     public PuntajeDTOResponse create(PuntajeDTORequest puntajeDto) {
-        PuntajeModel puntaje = PuntajeMapper.toModel(puntajeDto);
+        PuntajeModel puntaje = puntajeMapper.toModel(puntajeDto);
         PuntajeModel puntajeGuardado = puntajeModelService.guardar(
                 puntaje,
                 puntajeDto.materiaId(),
                 puntajeDto.estudianteId()
         );
         puntajeGuardado.setInsertFecha(LocalDateTime.now());
-        return PuntajeMapper.toResponseDto(puntajeGuardado);
+        return puntajeMapper.toResponseDto(puntajeGuardado);
     }
 
     @Override
     public List<PuntajeDTOResponse> getByEstudianteId(Long estudianteId) {
         return puntajeModelService.buscarPorEstudiante(estudianteId)
                 .stream()
-                .map(PuntajeMapper::toResponseDto)
+                .map(puntajeMapper::toResponseDto)
                 .toList();
     }
 
     @Override
     public PuntajeDTOResponse update(Long puntajeId, PuntajeDTORequest puntajeDtoToUpdate) {
-        PuntajeModel puntaje = PuntajeMapper.toModel(puntajeDtoToUpdate);
+        PuntajeModel puntaje = puntajeMapper.toModel(puntajeDtoToUpdate);
         puntaje.setId(puntajeId);
 
         PuntajeModel puntajeActualizado = puntajeModelService.actualizar(puntaje);
-        return PuntajeMapper.toResponseDto(puntajeActualizado);
+        return puntajeMapper.toResponseDto(puntajeActualizado);
     }
 }

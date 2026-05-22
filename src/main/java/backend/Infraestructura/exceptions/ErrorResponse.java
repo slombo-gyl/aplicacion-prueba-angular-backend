@@ -10,7 +10,7 @@ public class ErrorResponse {
     private int status;
     private String message;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 🔹 Esto establece el formato de la fecha
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
 
     public ErrorResponse(int status, String message, LocalDateTime timestamp) {

@@ -16,12 +16,14 @@ import java.util.List;
 public class EstudianteServiceImpl implements EstudianteService {
 
     private final EstudianteModelService estudianteModelService;
+    private final EstudianteMapper estudianteMapper;
+
 
     @Override
     public EstudianteDTOResponse create(EstudianteDTORequest req) {
-        EstudianteModel estudiante = EstudianteMapper.toModel(req);
+        EstudianteModel estudiante = estudianteMapper.toModel(req);
         EstudianteModel guardado = estudianteModelService.guardar(estudiante);
-        return EstudianteMapper.toResponseDto(guardado);
+        return estudianteMapper.toResponseDto(guardado);
     }
 
 
@@ -29,7 +31,7 @@ public class EstudianteServiceImpl implements EstudianteService {
     public List<EstudianteDTOResponse> getAll() {
         return estudianteModelService.listarTodos()
                 .stream()
-                .map(EstudianteMapper::toResponseDto)
+                .map(estudianteMapper::toResponseDto)
                 .toList();
     }
 
@@ -37,27 +39,27 @@ public class EstudianteServiceImpl implements EstudianteService {
     @Override
     public EstudianteDTOResponse getById(Long id) {
         return estudianteModelService.buscarPorId(id)
-                .map(EstudianteMapper::toResponseDto)
+                .map(estudianteMapper::toResponseDto)
                 .orElseThrow(() -> new GenericNoContentException("Estudiante no encontrado"));
     }
 
     @Override
     public EstudianteDTOResponse update(Long id, EstudianteDTORequest req) {
-        EstudianteModel estudiante = EstudianteMapper.toModel(req);
+        EstudianteModel estudiante = estudianteMapper.toModel(req);
         estudiante.setId(id);
         EstudianteModel actualizado = estudianteModelService.actualizar(estudiante);
-        return EstudianteMapper.toResponseDto(actualizado);
+        return estudianteMapper.toResponseDto(actualizado);
     }
 
     @Override
     public EstudianteDTOResponse delete(Long id) {
-        return EstudianteMapper.toResponseDto(estudianteModelService.borrar(id));
+        return estudianteMapper.toResponseDto(estudianteModelService.borrar(id));
     }
 
 
     @Override
     public EstudianteDTOResponse activar(Long id) {
-        return EstudianteMapper.toResponseDto(estudianteModelService.activar(id));
+        return estudianteMapper.toResponseDto(estudianteModelService.activar(id));
     }
 
 }

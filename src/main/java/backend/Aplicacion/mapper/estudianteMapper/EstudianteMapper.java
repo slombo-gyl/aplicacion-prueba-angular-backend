@@ -3,27 +3,18 @@ package backend.Aplicacion.mapper.estudianteMapper;
 import backend.Aplicacion.dto.estudiante.EstudianteDTORequest;
 import backend.Aplicacion.dto.estudiante.EstudianteDTOResponse;
 import backend.Dominio.modelo.EstudianteModel;
+import org.mapstruct.Mapper;
 
-public class EstudianteMapper {
+import java.util.List;
 
-    public static EstudianteDTOResponse toResponseDto(EstudianteModel model) {
-        EstudianteDTOResponse dto = new EstudianteDTOResponse(
-                model.getId(),
-                model.getNombre(),
-                model.getApellido(),
-                model.getEmail(),
-                model.getDni()
-        );
-        return dto;
-    }
+@Mapper(componentModel = "spring")
+public abstract class EstudianteMapper {
+
+    public abstract EstudianteDTOResponse toResponseDto(EstudianteModel model);
 
 
-    public static EstudianteModel toModel(EstudianteDTORequest dto) {
-        EstudianteModel model = new EstudianteModel();
-        model.setNombre(dto.nombre());
-        model.setApellido(dto.apellido());
-        model.setEmail(dto.email());
-        model.setDni(dto.dni());
-        return model;
-    }
+    public abstract EstudianteModel toModel(EstudianteDTORequest dto);
+
+    public abstract List<EstudianteDTOResponse> toResponseDtoList(List<EstudianteModel> models);
+
 }
