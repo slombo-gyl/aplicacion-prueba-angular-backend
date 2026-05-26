@@ -1,8 +1,10 @@
 package backend.Infraestructura.input.controller;
 
+import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Aplicacion.dto.puntaje.PuntajeDTORequest;
 import backend.Aplicacion.dto.puntaje.PuntajeDTOResponse;
 import backend.Aplicacion.services.puntaje.PuntajeService;
+import backend.Aplicacion.usecase.puntaje.ObtenerPuntaje;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,16 @@ import java.util.List;
 public class PuntajeController {
 
     private final PuntajeService puntajeService;
+    private final ObtenerPuntaje obtenerPuntajeService;
 
     @PostMapping
     public ResponseEntity<PuntajeDTOResponse> registrar(@Valid @RequestBody PuntajeDTORequest request) {
         return ResponseEntity.ok(puntajeService.create(request));
+    }
+    @GetMapping("/chart")
+    public ResponseEntity<ObtenerPuntajesDTOResponse> getChart() {
+        ObtenerPuntajesDTOResponse chart = obtenerPuntajeService.ejecutar();
+        return ResponseEntity.ok(chart);
     }
 
     @GetMapping("/estudiante/{estudianteId}")
