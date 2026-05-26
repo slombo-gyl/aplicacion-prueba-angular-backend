@@ -10,7 +10,10 @@ public interface PuntajeModelPort {
     PuntajeModel buscar(Long id);
 
     PuntajeModel buscar(Long materiaId, Long estudianteId);
+
     List<PuntajeModel> listar();
+
     List<PuntajeModel> listarDeEstudiante(Long estudianteId);
+
     boolean existePuntaje(Long materiaId, Long estudianteId);
 }

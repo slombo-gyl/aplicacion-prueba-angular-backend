@@ -12,15 +12,11 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "materia")
 public class MateriaEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotNull
     private String nombre;
-
     private int puntaje;
-
     @Column(name = "fecha_baja")
     private LocalDateTime fechaBaja;
 }

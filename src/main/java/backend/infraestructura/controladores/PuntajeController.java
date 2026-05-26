@@ -1,7 +1,7 @@
 package backend.infraestructura.controladores;
 
+import backend.aplicacion.dto.chart.ChartDTOResponse;
 import backend.aplicacion.dto.puntaje.PuntajeDTORequest;
-import backend.aplicacion.dto.puntaje.ChartDTOResponse;
 import backend.aplicacion.dto.puntaje.PuntajeDTOResponse;
 import backend.aplicacion.usecases.puntaje.ObtenerChartUseCase;
 import backend.aplicacion.usecases.puntaje.RegistrarPuntajeUseCase;

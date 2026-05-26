@@ -14,8 +14,6 @@ import java.util.List;
 public class ObtenerPuntajesDeEstudianteUseCaseImpl implements ObtenerPuntajesDeEstudianteUseCase {
     private final PuntajeModelPort repository;
 
-
-
     @Override
     public List<PuntajeDTOResponse> ejecutar(Long EstudianteID) {
         return repository.listarDeEstudiante(EstudianteID)

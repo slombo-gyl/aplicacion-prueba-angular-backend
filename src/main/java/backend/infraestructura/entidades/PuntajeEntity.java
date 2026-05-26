@@ -8,18 +8,12 @@ import lombok.*;
 @NoArgsConstructor
 @Table(name = "puntajes")
 public class PuntajeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "valor")
     private double valor;
-
-    @ManyToOne
-    @JoinColumn(name = "estudiante_id")
+    @ManyToOne @JoinColumn(name = "estudiante_id")
     private EstudianteEntity estudiante;
-
-    @ManyToOne
-    @JoinColumn(name = "materia_id")
+    @ManyToOne @JoinColumn(name = "materia_id")
     private MateriaEntity materia;
 }

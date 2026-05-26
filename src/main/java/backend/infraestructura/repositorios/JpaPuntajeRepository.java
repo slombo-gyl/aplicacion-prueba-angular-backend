@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface JpaPuntajeRepository extends JpaRepository<PuntajeEntity,Long> {
     boolean existsByEstudianteAndMateria(EstudianteEntity estudiante, MateriaEntity materia);
-    List<PuntajeEntity> findByEstudiante(EstudianteEntity estudiante);
-    PuntajeEntity findByEstudianteAndMateria(EstudianteEntity estudiante, MateriaEntity materia);
 
+    List<PuntajeEntity> findByEstudiante(EstudianteEntity estudiante);
+
+    PuntajeEntity findByEstudianteAndMateria(EstudianteEntity estudiante, MateriaEntity materia);
 }

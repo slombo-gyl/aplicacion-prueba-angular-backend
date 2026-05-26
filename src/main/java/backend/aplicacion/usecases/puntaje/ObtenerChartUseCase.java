@@ -1,6 +1,6 @@
 package backend.aplicacion.usecases.puntaje;
 
-import backend.aplicacion.dto.puntaje.ChartDTOResponse;
+import backend.aplicacion.dto.chart.ChartDTOResponse;
 import backend.infraestructura.repositorios.JpaPuntajeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
