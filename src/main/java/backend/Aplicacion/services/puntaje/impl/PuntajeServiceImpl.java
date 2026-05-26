@@ -38,7 +38,7 @@ public class PuntajeServiceImpl implements PuntajeService {
     public List<PuntajeDTOResponse> getByEstudianteId(Long estudianteId) {
         return puntajeModelService.buscarPorEstudiante(estudianteId)
             .stream()
-            .map(PuntajeMapper::toResponseDto)
+            .map(puntajeMapper::toResponseDto)
             .toList();
     }
 
