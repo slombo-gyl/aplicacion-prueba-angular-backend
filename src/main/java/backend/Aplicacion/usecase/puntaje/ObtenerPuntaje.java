@@ -2,10 +2,12 @@ package backend.Aplicacion.usecase.puntaje;
 
 import backend.Aplicacion.dto.puntaje.ObtenerPuntajesDTOResponse;
 import backend.Infraestructura.output.persistencia.repository.puntaje.PuntajeJpaRepository;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Service
 public class ObtenerPuntaje {
 
     PuntajeJpaRepository puntajeJpaRepository;
