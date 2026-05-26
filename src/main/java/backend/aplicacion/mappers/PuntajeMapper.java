@@ -1,5 +1,6 @@
 package backend.aplicacion.mappers;
 
+import backend.aplicacion.dto.puntaje.PuntajeDTOResponse;
 import backend.dominio.modelos.EstudianteModel;
 import backend.dominio.modelos.MateriaModel;
 import backend.dominio.modelos.PuntajeModel;
@@ -43,5 +44,13 @@ public class PuntajeMapper {
         }
 
         return model;
+    }
+
+    public static PuntajeDTOResponse toResponseDto(PuntajeModel model) {
+        return new PuntajeDTOResponse(
+                model.getEstudiante().getId(),
+                model.getMateria().getId(),
+                model.getValor()
+        );
     }
 }

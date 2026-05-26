@@ -1,6 +1,6 @@
 package backend.aplicacion.usecases.puntaje;
 
-import backend.aplicacion.dto.puntaje.PuntajeDTOResponse;
+import backend.aplicacion.dto.puntaje.ChartDTOResponse;
 import backend.infraestructura.repositorios.JpaPuntajeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ObtenerPuntajesUseCase {
+public class ObtenerChartUseCase {
     private final JpaPuntajeRepository puntajeJpaRepository;
 
-    public PuntajeDTOResponse ejecutar(){
+    public ChartDTOResponse ejecutar(){
         var puntajes = puntajeJpaRepository.findAll();
 
         List<String> labels = puntajes.stream()
@@ -24,6 +24,6 @@ public class ObtenerPuntajesUseCase {
                 .map(p -> (int) p.getValor())
                 .collect(Collectors.toList());
 
-        return new PuntajeDTOResponse(labels,data);
+        return new ChartDTOResponse(labels,data);
     }
 }

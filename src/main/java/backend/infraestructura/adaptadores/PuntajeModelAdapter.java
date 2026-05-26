@@ -2,7 +2,6 @@ package backend.infraestructura.adaptadores;
 
 import backend.aplicacion.mappers.PuntajeMapper;
 import backend.dominio.modelos.PuntajeModel;
-import backend.infraestructura.excepciones.RecursoDuplicadoException;
 import backend.infraestructura.excepciones.RecursoNoEncontradoException;
 import backend.infraestructura.entidades.EstudianteEntity;
 import backend.infraestructura.entidades.MateriaEntity;
@@ -46,30 +45,27 @@ public class PuntajeModelAdapter implements PuntajeModelPort {
         EstudianteEntity estudiante = buscarEstudiante(estudianteId);
         MateriaEntity materia = buscarMateria(materiaId);
 
-        return puntajeJpaRepository.findByEstudianteAndMateria(estudiante,materia);
+        return PuntajeMapper.toModel(puntajeJpaRepository.findByEstudianteAndMateria(estudiante,materia));
     }
 
-//    @Override
-//    public List<PuntajeModel> listar() {
-//        return puntajeJpaRepository.findAll()
-//                .stream()
-//                .map(PuntajeMapper::toModel)
-//                .toList();
-//    }
+    @Override
+    public List<PuntajeModel> listar() {
+        return puntajeJpaRepository.findAll()
+                .stream()
+                .map(PuntajeMapper::toModel)
+                .toList();
+    }
 
-//    @Override
-//    public List<PuntajeModel> listar(boolean activo) {
-//        return activo?
-//                puntajeJpaRepository.findByFechaBajaIsNull()
-//                .stream()
-//                .map(PuntajeMapper::toModel)
-//                .toList()
-//        :
-//                puntajeJpaRepository.findByFechaBajaIsNotNull()
-//                .stream()
-//                .map(PuntajeMapper::toModel)
-//                .toList();
-//    }
+    @Override
+    public List<PuntajeModel> listarDeEstudiante(Long estudianteId) {
+        return puntajeJpaRepository.findByEstudiante(
+                estudianteJpaRepository.findById(estudianteId)
+                        .orElseThrow(() -> new RecursoNoEncontradoException("No se encuentra estudiante con ID: " + estudianteId)))
+                .stream()
+                .map(PuntajeMapper::toModel)
+                .toList();
+    }
+
 
     @Override
     public boolean existePuntaje(Long materiaId, Long estudianteId){
